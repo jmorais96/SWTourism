@@ -145,7 +145,7 @@ $conn->isClientLoggedIn();
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="fullname">Confirmar password</label>
-                                                        <input type="text" id="pass" name="pass" class="form-control">
+                                                        <input type="text" id="pass" name="retype" class="form-control">
                                                     </div>
                                                 </div>
 
