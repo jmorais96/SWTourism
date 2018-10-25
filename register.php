@@ -1,47 +1,16 @@
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-    $dbname="segurancaWeb";
 
 
     if(isset($_POST['pass'])){
-        
-        try {
-            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-            // set the PDO error mode to exception
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            //echo "Connected successfully";
-        }
-        catch(PDOException $e)
-        {
-            echo "Connection failed: " . $e->getMessage();
-        }   
-        
-        if(isset($conn))
-        {
-            $name = $_POST['name']; 
-            $user = $_POST['username']; 
-            $pass = $_POST['pass']; 
-            $checkPass = $_POST['pass']; 
-            if ($pass == $checkPass){
-                $sql = "INSERT INTO user (username, password, name) 
-                        VALUES (:username, :password, :name)";
-                        
-                       // $data = mysql_query ($sql)or die(mysql_error()); 
-                $stm=$conn->prepare($sql);
-                
-                $password = $_POST['pass'];
-                $hashed_password =  crypt ($password ,"salt" );
-                
-                $login = array ('username' => $user, 'password' => $hashed_password, 'name' => $name);
-                
-                $stm->execute($login);
-                
-                header("location:home.php");
-                }
-            }
+
+        require_once('data/SWTourism.class.php');
+        require_once('data/User.class.php');
+
+        $conn=new SWTourism('data/config.ini');
+
+        $conn->signInClient($_POST['username'], $_POST['pass'],$_POST['name']);
     }
+
 ?> 
 <!DOCTYPE html>
 <html lang="en">

@@ -1,45 +1,14 @@
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-    $dbname="segurancaWeb";
+
 
     if(isset($_POST['pass'])){
-        try {
-            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-            // set the PDO error mode to exception
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            //echo "Connected successfully";
-        }
-        catch(PDOException $e)
-        {
-            echo "Connection failed: " . $e->getMessage();
-        }
 
-            var_dump($_POST);
-        if(isset($conn)){
-        $sql = 'SELECT * FROM user WHERE username = :username  AND password = :password';
-        $stm=$conn->prepare($sql);
-        //echo $sql;
+        require_once('data/SWTourism.class.php');
+        require_once('data/User.class.php');
 
-        $password = $_POST['pass'];
-        $hashed_password =  crypt ( $password ,"salt" );
-        $login = array('username' => $_POST['username'], 'password' => $hashed_password);
-            
-            var_dump($login);
+        $conn=new SWTourism('data/config.ini');
 
-        $stm->execute($login);
-        //$info=$conn->query($sql);
-        $info=$stm->fetch(PDO::FETCH_ASSOC);
-        //var_dump($info);
-
-        if (isset($info["idUser"])) {
-            header("location:home.php");
-        }else {
-            echo "<script> alert('Não existe um utilizador com este email e password') </script>";
-        }
-    }
-        //echo"algo";
+        $conn->loginClient($_POST['username'], $_POST['pass']);
     }
 ?> 
 
