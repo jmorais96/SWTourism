@@ -1,16 +1,18 @@
 <?php
 
+//requesting the classes needed for sign in
+require_once('data/SWTourism.class.php');
+require_once('data/User.class.php');
+
+//connect do database
+$conn=new SWTourism('data/config.ini');
+//know if user can be here
+$conn->isClientLoggedIn();
+
     //Know if data was sent by post
     if(isset($_POST['pass'])){
         //know if password equals confirmation
         if ($_POST['pass']==$_POST['retype']){
-
-            //requesting the classes needed for sign in
-            require_once('data/SWTourism.class.php');
-            require_once('data/User.class.php');
-
-            //connect do database
-            $conn=new SWTourism('data/config.ini');
 
             //filter special chars
             foreach ($_POST as $key => $value) {

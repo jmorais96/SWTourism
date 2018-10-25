@@ -47,11 +47,30 @@ class SWTourism extends Database
 
         //create array of fields for query
         $fields=array('username'=> $user, 'password' => crypt ( $pass ,"salt" ), 'name'=>$name );
+
         //put the fields and prepared query + execute query
         $this->query($sql, $fields);
 
         //login using the information for the signup
         $this->loginClient($user, $pass);
+    }
+
+    public function isClientLoggedIn(){
+        session_start();
+
+        if (isset($_SESSION['user'])) {
+            header("location:home.php");
+        }
+
+    }
+
+    public function isClientLoggedOff(){
+        session_start();
+
+        if (!isset($_SESSION['user'])) {
+            header("location:index.php");
+        }
+
     }
 
 }

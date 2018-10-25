@@ -1,12 +1,16 @@
 <?php
 
+    require_once('data/SWTourism.class.php');
+    require_once('data/User.class.php');
+
+    $conn=new SWTourism('data/config.ini');
+
+    //know if user can be here
+    $conn->isClientLoggedIn();
+
 
     if(isset($_POST['pass'])){
 
-        require_once('data/SWTourism.class.php');
-        require_once('data/User.class.php');
-
-        $conn=new SWTourism('data/config.ini');
 
         $conn->loginClient($_POST['username'], $_POST['pass']);
     }
