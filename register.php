@@ -1,14 +1,27 @@
 <?php
 
-
+    //Know if data was sent by post
     if(isset($_POST['pass'])){
+        //know if password equals confirmation
+        if ($_POST['pass']==$_POST['retype']){
 
-        require_once('data/SWTourism.class.php');
-        require_once('data/User.class.php');
+            //requesting the classes needed for sign in
+            require_once('data/SWTourism.class.php');
+            require_once('data/User.class.php');
 
-        $conn=new SWTourism('data/config.ini');
+            //connect do database
+            $conn=new SWTourism('data/config.ini');
 
-        $conn->signInClient($_POST['username'], $_POST['pass'],$_POST['name']);
+            //filter special chars
+            foreach ($_POST as $key => $value) {
+                $_POST["$key"] = filter_var($value, FILTER_SANITIZE_STRING);
+            }
+
+            //call method to log in
+            $conn->signUpClient($_POST['username'], $_POST['pass'],$_POST['name']);
+
+        }
+
     }
 
 ?> 
@@ -60,7 +73,7 @@
 					</div>
 					
 					<div class="wrap-input100 validate-input" data-validate="Confirm password">
-						<input class="input100" type="password" name="pass" placeholder="Confirmar password">
+						<input class="input100" type="password" name="retype" placeholder="Confirmar password">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 <!--
