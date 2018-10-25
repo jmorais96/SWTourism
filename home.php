@@ -1,12 +1,7 @@
-olá
-
-
-
-
-
-
 <?php
-
-echo( crypt ( "12345678" ,"salt" ));
+require_once('data/SWTourism.class.php');
+require_once('data/User.class.php');
+session_start();
+echo( $_SESSION['user']->getName());
 
 ?>
