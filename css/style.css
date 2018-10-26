@@ -1292,6 +1292,7 @@ form label {
   background: #09C6AB;
   color: #fff;
   border: 2px solid #09C6AB !important;
+  width: 100%;
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
   background: #0adec0 !important;
@@ -1664,7 +1665,7 @@ form label {
   overflow: hidden;
   z-index: 9;
   bottom: 0;
-  margin-bottom: 30px;
+ /* margin-bottom: 30px;*/_
   -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
   -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
   -ms-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
@@ -1719,7 +1720,7 @@ form label {
   transition: 0.3s;
 }
 .fh5co-card-item .fh5co-text {
-  padding: 0px 10px 10px 20px;
+  padding: 0px 10px 0px 20px;
   text-align: center;
 }
 .fh5co-card-item .fh5co-text h2, .fh5co-card-item .fh5co-text span {

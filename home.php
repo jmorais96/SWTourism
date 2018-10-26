@@ -122,8 +122,8 @@ $conn->isClientLoggedOff();
                     <div class="fh5co-text">
                         <h2>Observação de Cetáceos</h2>
                         <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-                        <p><span class="btn btn-primary">Marcar Visita</span></p>
                     </div>
+                    <a class="btn btn-primary" href="visit.php">Marcar Visita</a>
                 </a>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6">
@@ -135,8 +135,8 @@ $conn->isClientLoggedOff();
                     <div class="fh5co-text">
                         <h2>Mergulho</h2>
                         <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-                        <p><span class="btn btn-primary">Marcar Visita</span></p>
                     </div>
+                    <a class="btn btn-primary" href="visit.php">Marcar Visita</a>
                 </a>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6">
@@ -148,8 +148,8 @@ $conn->isClientLoggedOff();
                     <div class="fh5co-text">
                         <h2>Parapente</h2>
                         <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-                        <p><span class="btn btn-primary">Marcar Visita</span></p>
                     </div>
+                    <a class="btn btn-primary" href="visit.php">Marcar Visita</a>
                 </a>
             </div>
 
@@ -163,8 +163,8 @@ $conn->isClientLoggedOff();
                     <div class="fh5co-text">
                         <h2>Passeios Pedestres</h2>
                         <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-                        <p><span class="btn btn-primary">Marcar Visita</span></p>
                     </div>
+                    <a class="btn btn-primary" href="visit.php">Marcar Visita</a>
                 </a>
             </div>
 
@@ -177,8 +177,8 @@ $conn->isClientLoggedOff();
                     <div class="fh5co-text">
                         <h2>Pesca Desportiva</h2>
                         <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-                        <p><span class="btn btn-primary">Marcar Visita</span></p>
                     </div>
+                    <a class="btn btn-primary" href="visit.php">Marcar Visita</a>
                 </a>
             </div>
 
@@ -191,8 +191,8 @@ $conn->isClientLoggedOff();
                     <div class="fh5co-text">
                         <h2>Passeios a Cavalo</h2>
                         <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-                        <p><span class="btn btn-primary">Marcar Visita</span></p>
                     </div>
+                    <a class="btn btn-primary" href="visit.php">Marcar Visita</a>
                 </a>
             </div>
 
