@@ -5,6 +5,10 @@ $conn=new SWTourism('data/config.ini');
 
 //know if user can be here
 $conn->isClientLoggedOff();
+
+if(isset($_GET['logout'])) {
+   $_SESSION['user']->logout();
+}
 ?>
 
 <!DOCTYPE HTML>
@@ -74,8 +78,8 @@ $conn->isClientLoggedOff();
 				</div>
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
-
 						<li><a href="contact.html">Contactos</a></li>
+						<li><a href="?logout">Logout</a></li>
 					</ul>
 				</div>
 			</div>
@@ -83,7 +87,7 @@ $conn->isClientLoggedOff();
 		</div>
 	</nav>
 
-	<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(images/img_7.jpg)">
+	<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(images/img_2.jpg)">
 		<div class="overlay"></div>
 		<div class="gtco-container">
 			<div class="row">
@@ -114,7 +118,7 @@ $conn->isClientLoggedOff();
         <div class="row">
 
             <div class="col-lg-4 col-md-4 col-sm-6">
-                <a href="images/img_1.jpg" class="fh5co-card-item image-popup">
+                <a class="fh5co-card-item">
                     <figure>
                         <div class="overlay"><i class="ti-plus"></i></div>
                         <img src="images/img_1.jpg" alt="Image" class="img-responsive">
@@ -122,8 +126,8 @@ $conn->isClientLoggedOff();
                     <div class="fh5co-text">
                         <h2>Observação de Cetáceos</h2>
                         <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-                    </div>
-                    <a class="btn btn-primary" href="visit.php">Marcar Visita</a>
+                  </div>
+                    <a class="btn btn-primary" href="visit.php">Marcar Visita</a>  
                 </a>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6">

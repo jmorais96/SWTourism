@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jose
- * Date: 25-10-2018
- * Time: 21:24
- */
 
 require_once('Database.class.php');
 

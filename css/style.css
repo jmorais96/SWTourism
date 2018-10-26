@@ -1755,6 +1755,7 @@ form label {
   -o-transition: 0.5s;
   transition: 0.5s;
 }
+/*
 .fh5co-card-item:hover, .fh5co-card-item:focus {
   bottom: 7px;
   text-decoration: none;
@@ -1764,6 +1765,8 @@ form label {
   -o-box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.19);
   box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.19);
 }
+*/
+/*
 .fh5co-card-item:hover img, .fh5co-card-item:focus img {
   -webkot-transform: scale(1.2);
   -moz-transform: scale(1.2);
@@ -1788,6 +1791,7 @@ form label {
 .fh5co-card-item:hover h2, .fh5co-card-item:hover span, .fh5co-card-item:focus h2, .fh5co-card-item:focus span {
   text-decoration: none !important;
 }
+*/
 
 @media screen and (max-width: 768px) {
   .macbook-wrap img {

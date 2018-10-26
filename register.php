@@ -126,26 +126,26 @@ $conn->isClientLoggedIn();
                                             <form class="login100-form validate-form" method="post">
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
-                                                        <label for="fullname">Nome</label>
+                                                        <label for="name">Nome</label>
                                                         <input type="text" id="name" name="name" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
-                                                        <label for="fullname">Username</label>
+                                                        <label for="username">Username</label>
                                                         <input type="text" id="username" name="username" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
-                                                        <label for="fullname">Password</label>
-                                                        <input type="text" id="pass" name="pass" class="form-control">
+                                                        <label for="pass">Password</label>
+                                                        <input type="password" id="pass" name="pass" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
-                                                        <label for="fullname">Confirmar password</label>
-                                                        <input type="text" id="pass" name="retype" class="form-control">
+                                                        <label for="retry">Confirmar password</label>
+                                                        <input type="password" id="pass" name="retype" class="form-control">
                                                     </div>
                                                 </div>
 

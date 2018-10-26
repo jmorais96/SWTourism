@@ -122,7 +122,7 @@
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="fullname">Password</label>
-                                                        <input type="text" id="pass" name="pass" class="form-control">
+                                                        <input type="password" id="pass" name="pass" class="form-control">
                                                     </div>
                                                 </div>
 
