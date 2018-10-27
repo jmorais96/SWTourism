@@ -2,8 +2,8 @@
 
 require_once('data/SWTourism.class.php');
 require_once('data/User.class.php');
-require_once('data/reservation.class.php');
-require_once('data/activity.class.php');
+require_once('data/Reservation.class.php');
+require_once('data/Activity.class.php');
 $conn=new SWTourism('data/config.ini');
 
 //know if user can be here
