@@ -97,4 +97,36 @@ class SWTourism extends Database
 
     }
 
+
+
+    public function loginAdmin($user, $pass)
+    {
+        $sql = 'SELECT * FROM admin WHERE username = :username  AND password = :password';
+
+        //create array of fields to log in
+        $fields=array('username'=> $user, 'password' => crypt ( $pass ,"salt" ));
+
+        //put the fields and prepared query + execute query
+        $pesquisa=$this->query($sql, $fields);
+
+        //Know if there is anyone with thos credentials
+        if(isset($pesquisa[0]['idAdmin'])){
+            $pesquisa=$pesquisa[0];
+            //create object admin with what was found in the database
+            $admin= new Admin($pesquisa['idAdmin'], $pesquisa['user'], $pesquisa['pass'], $pesquisa['name']);
+
+            //start session and put the object to a session variable so it can used on other pages
+            session_start();
+            $_SESSION['admin']=$admin;
+
+            //direction to login
+            header("location:administrator.php");
+
+        }else {
+            //since there wasn't anyone with those credentials send error message
+            echo "<script> alert('Não existe um utilizador com este email e password') </script>";
+        }
+
+    }
+
 }
