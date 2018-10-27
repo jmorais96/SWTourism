@@ -48,6 +48,29 @@ class SWTourism extends Database
         //login using the information for the signup
         $this->loginClient($user, $pass);
     }
+    
+    public function listActivity ()
+    {
+         $sql = 'SELECT * FROM activity';
+         $pesquisa=$this->query($sql);   
+        return $pesquisa;
+    }
+    
+    public function reserveActivity($dateReservation, $time, $name, $cardNumber, $expiry, $cardType, $securityCode)
+    {
+        $sqlReservation = "INSERT INTO reservation (dateReservation, time) VALUES (:dateReservation, :time)";
+        
+        $fieldsReservation=array('dateReservation'=>$dateReservation, 'time'=>$time);
+        
+        $this->query($sqlReservation, $fieldsReservation);
+        
+        
+        $sqlCard = "INSERT INTO creditCard (name, cardNumber, expiry, cardType, securityCode) VALUES (:name, :cardNumber, :expiry, :cardType, :securityCode)";
+        
+        $fieldsCard = array('name'=>$name, 'cardNumber'=>$cardNumber, 'expiry'=>$expiry, 'cardType'=>$cardType, 'securityCode'=>$securityCode);
+        
+        $this->query($sqlCard, $fieldsCard);
+    }
 
     public function isClientLoggedIn(){
         session_start();
