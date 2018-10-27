@@ -5,10 +5,12 @@ $conn=new SWTourism('data/config.ini');
 
 //know if user can be here
 $conn->isClientLoggedOff();
+$conn->listActivity(); 
 
 if(isset($_GET['logout'])) {
    $_SESSION['user']->logout();
 }
+
 ?>
 
 <!DOCTYPE HTML>
@@ -117,6 +119,8 @@ if(isset($_GET['logout'])) {
         </div>
         <div class="row">
 
+           <?php foreach ($conn->listActivity() as $value) {
+            ?>
             <div class="col-lg-4 col-md-4 col-sm-6">
                 <a class="fh5co-card-item">
                     <figure>
@@ -124,82 +128,14 @@ if(isset($_GET['logout'])) {
                         <img src="images/img_1.jpg" alt="Image" class="img-responsive">
                     </figure>
                     <div class="fh5co-text">
-                        <h2>Observação de Cetáceos</h2>
-                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                        <h2><?php echo $value['name']?></h2><!-- observacao de cetaceos -->
+                        <p><?php echo $value['desc']?></p>
                   </div>
-                    <a class="btn btn-primary" href="visit.php">Marcar Visita</a>  
+                    <a class="btn btn-primary" href="reserveActivity.php">Reservar atividade</a>  
                 </a>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <a href="images/img_2.jpg" class="fh5co-card-item image-popup">
-                    <figure>
-                        <div class="overlay"><i class="ti-plus"></i></div>
-                        <img src="images/img_2.jpg" alt="Image" class="img-responsive">
-                    </figure>
-                    <div class="fh5co-text">
-                        <h2>Mergulho</h2>
-                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-                    </div>
-                    <a class="btn btn-primary" href="visit.php">Marcar Visita</a>
-                </a>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <a href="images/img_3.jpg" class="fh5co-card-item image-popup">
-                    <figure>
-                        <div class="overlay"><i class="ti-plus"></i></div>
-                        <img src="images/img_3.jpg" alt="Image" class="img-responsive">
-                    </figure>
-                    <div class="fh5co-text">
-                        <h2>Parapente</h2>
-                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-                    </div>
-                    <a class="btn btn-primary" href="visit.php">Marcar Visita</a>
-                </a>
-            </div>
-
-
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <a href="images/img_4.jpg" class="fh5co-card-item image-popup">
-                    <figure>
-                        <div class="overlay"><i class="ti-plus"></i></div>
-                        <img src="images/img_4.jpg" alt="Image" class="img-responsive">
-                    </figure>
-                    <div class="fh5co-text">
-                        <h2>Passeios Pedestres</h2>
-                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-                    </div>
-                    <a class="btn btn-primary" href="visit.php">Marcar Visita</a>
-                </a>
-            </div>
-
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <a href="images/img_5.jpg" class="fh5co-card-item image-popup">
-                    <figure>
-                        <div class="overlay"><i class="ti-plus"></i></div>
-                        <img src="images/img_5.jpg" alt="Image" class="img-responsive">
-                    </figure>
-                    <div class="fh5co-text">
-                        <h2>Pesca Desportiva</h2>
-                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-                    </div>
-                    <a class="btn btn-primary" href="visit.php">Marcar Visita</a>
-                </a>
-            </div>
-
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <a href="images/img_6.jpg" class="fh5co-card-item image-popup">
-                    <figure>
-                        <div class="overlay"><i class="ti-plus"></i></div>
-                        <img src="images/img_6.jpg" alt="Image" class="img-responsive">
-                    </figure>
-                    <div class="fh5co-text">
-                        <h2>Passeios a Cavalo</h2>
-                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-                    </div>
-                    <a class="btn btn-primary" href="visit.php">Marcar Visita</a>
-                </a>
-            </div>
-
+            <?php } ?>
+            
         </div>
     </div>
 </div>

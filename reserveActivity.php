@@ -2,14 +2,29 @@
 
 require_once('data/SWTourism.class.php');
 require_once('data/User.class.php');
+require_once('data/reservation.class.php');
+require_once('data/activity.class.php');
 $conn=new SWTourism('data/config.ini');
 
 //know if user can be here
 $conn->isClientLoggedOff();
+//$conn->getActivity();
 
 if(isset($_GET['logout'])) {
    $_SESSION['user']->logout();
 }
+
+    //Know if data was sent by post
+    if(isset($_POST['name'])){
+            //filter special chars
+            foreach ($_POST as $key => $value) {
+                $_POST["$key"] = filter_var($value, FILTER_SANITIZE_STRING);
+            }
+
+            //call method to sign up
+            $conn->reserveActivity($_POST['dateReservation'], $_POST['time'], $_POST['name'], $_POST['cardNumber'], $_POST['expiry'], $_POST['cardType'], $_POST['securityCode']);
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -105,27 +120,28 @@ if(isset($_GET['logout'])) {
 
                                     <div class="tab-content">
                                         <div class="tab-content-inner active" data-content="signup">
-                                            <h3>Marcar visista</h3>
+                                            <h3>Reservar atividade <?php ?></h3>
 
 
                                             <form class="login100-form validate-form" method="post">
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
-                                                        <label for="date">Data</label>
-                                                        <input type="date" id="name" name="name" class="form-control">
+                                                        <label for="dateReservation">Data</label>
+                                                        <input type="date" id="dateReservation" name="dateReservation" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
-                                                        <label for="hour">Hora</label>
-                                                        <input type="time" id="username" name="username" class="form-control">
+                                                        <label for="time">Hora</label>
+                                                        <input type="time" id="time" name="time" class="form-control">
                                                     </div>
                                                 </div>
-                                                <h3>Dados do cartão de crédito</h3>
+                                                <br>
+                                                <h4>Dados do cartão de crédito</h4>
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
-                                                        <label for="cardName">Nome cartão</label>
-                                                        <input type="text" id="cardName" name="cardName" class="form-control">
+                                                        <label for="name">Nome</label>
+                                                        <input type="text" id="name" name="name" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
@@ -137,7 +153,7 @@ if(isset($_GET['logout'])) {
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="expiry">Data de validade</label>
-                                                        <input type="text" id="expiry" name="expiry" class="form-control">
+                                                        <input type="date" id="expiry" name="expiry" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
@@ -148,14 +164,14 @@ if(isset($_GET['logout'])) {
                                                 </div>
                                                  <div class="row form-group">
                                                     <div class="col-md-12">
-                                                        <label for="code">Código de segurança</label>
-                                                        <input type="text" id="code" name="code" class="form-control">
+                                                        <label for="securityCode">Código de segurança</label>
+                                                        <input type="text" id="securityCode" name="securityCode" class="form-control">
                                                     </div>
                                                 </div>
 
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
-                                                        <button class="btn btn-primary btn-block">Marcar</button>
+                                                        <button class="btn btn-primary btn-block">Reservar</button>
                                                     </div>
                                                 </div>
 
