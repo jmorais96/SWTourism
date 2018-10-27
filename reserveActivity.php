@@ -9,7 +9,16 @@ $conn=new SWTourism('data/config.ini');
 //know if user can be here
 $conn->isClientLoggedOff();
 
+if (!isset($_GET['idActivity'])){
+    header("location:home.php");
+}
+
 $idActivity=$conn->idActivity($_GET['idActivity']);
+
+if ($idActivity==NULL){
+    header("location:home.php");
+}
+
 
 if(isset($_GET['logout'])) {
    $_SESSION['user']->logout();

@@ -59,7 +59,10 @@ class SWTourism extends Database
     public function idActivity ($idActivity)
     {
          $sql = 'SELECT * FROM activity where idActivity = :idActivity';
-         $pesquisa=$this->query($sql, array("idActivity" => $idActivity));   
+         $pesquisa=$this->query($sql, array("idActivity" => $idActivity));
+         if (!isset($pesquisa[0]))
+             return null;
+
          return $pesquisa[0];
     }
     
