@@ -131,7 +131,7 @@ if(isset($_GET['logout'])) {
                         <h2><?php echo $value['name']?></h2><!-- observacao de cetaceos -->
                         <p><?php echo $value['desc']?></p>
                   </div>
-                    <a class="btn btn-primary" href="reserveActivity.php">Reservar atividade</a>  
+                    <a class="btn btn-primary" href="reserveActivity.php?idActivity=<?php echo $value['idActivity']?>">Reservar atividade</a>  
                 </a>
             </div>
             <?php } ?>

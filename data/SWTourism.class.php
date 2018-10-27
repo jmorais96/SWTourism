@@ -53,7 +53,14 @@ class SWTourism extends Database
     {
          $sql = 'SELECT * FROM activity';
          $pesquisa=$this->query($sql);   
-        return $pesquisa;
+         return $pesquisa;
+    }
+    
+    public function idActivity ($idActivity)
+    {
+         $sql = 'SELECT * FROM activity where idActivity = :idActivity';
+         $pesquisa=$this->query($sql, array("idActivity" => $idActivity));   
+         return $pesquisa[0];
     }
     
     public function reserveActivity($dateReservation, $time, $name, $cardNumber, $expiry, $cardType, $securityCode)

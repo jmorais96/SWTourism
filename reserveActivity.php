@@ -8,7 +8,8 @@ $conn=new SWTourism('data/config.ini');
 
 //know if user can be here
 $conn->isClientLoggedOff();
-//$conn->getActivity();
+
+$idActivity=$conn->idActivity($_GET['idActivity']);
 
 if(isset($_GET['logout'])) {
    $_SESSION['user']->logout();
@@ -120,8 +121,8 @@ if(isset($_GET['logout'])) {
 
                                     <div class="tab-content">
                                         <div class="tab-content-inner active" data-content="signup">
-                                            <h3>Reservar atividade <?php echo reserveActivity[]?></h3>
-
+                                            <h3>Reservar atividade</h3>
+                                            <h4><?php echo $idActivity['name'];?></h4>
 
                                             <form class="login100-form validate-form" method="post">
                                                 <div class="row form-group">
