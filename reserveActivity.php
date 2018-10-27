@@ -120,7 +120,7 @@ if(isset($_GET['logout'])) {
 
                                     <div class="tab-content">
                                         <div class="tab-content-inner active" data-content="signup">
-                                            <h3>Reservar atividade <?php ?></h3>
+                                            <h3>Reservar atividade <?php echo reserveActivity[]?></h3>
 
 
                                             <form class="login100-form validate-form" method="post">
@@ -159,7 +159,12 @@ if(isset($_GET['logout'])) {
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="cardType">Tipo de cartão</label>
-                                                        <input type="text" id="cardType" name="cardType" class="form-control">
+                                                        <select type="text" id="cardType" name="cardType" class="form-control">
+                                                          <option value="Visa">Visa</option>
+                                                          <option value="MasterCard">MasterCard</option>
+                                                          <option value="American Express">American Express</option>
+                                                          <option value="AirPlus">AirPlus</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                  <div class="row form-group">
@@ -168,6 +173,7 @@ if(isset($_GET['logout'])) {
                                                         <input type="text" id="securityCode" name="securityCode" class="form-control">
                                                     </div>
                                                 </div>
+                                                
 
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
