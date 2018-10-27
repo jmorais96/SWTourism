@@ -139,13 +139,13 @@ $conn->isClientLoggedIn();
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="pass">Password</label>
-                                                        <input type="password" id="pass" name="pass" class="form-control">
+                                                        <input type="password" id="pass" name="pass" class="form-control" pattern="(?=.{8,})" hint="cenas">
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="retry">Confirmar password</label>
-                                                        <input type="password" id="pass" name="retype" class="form-control">
+                                                        <input type="password" id="pass" name="retype" class="form-control" pattern="(?=.{8,})">
                                                     </div>
                                                 </div>
 

@@ -1,14 +1,20 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: Oct 25, 2018 at 09:11 PM
--- Server version: 5.6.38
--- PHP Version: 7.2.1
+-- Host: localhost:3306
+-- Generation Time: Oct 27, 2018 at 09:39 PM
+-- Server version: 5.7.22-0ubuntu0.17.10.1
+-- PHP Version: 7.1.17-0ubuntu0.17.10.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `segurancaWeb`
@@ -22,10 +28,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `activity` (
   `idActivity` int(11) NOT NULL,
-  `nome` varchar(45) NOT NULL,
+  `name` varchar(45) NOT NULL,
   `desc` varchar(500) NOT NULL,
   `idAdmin` int(11) NOT NULL,
-  `location` varchar(75) NOT NULL
+  `location` varchar(75) NOT NULL,
+  `idImage` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -67,8 +74,21 @@ CREATE TABLE `creditCard` (
   `cardNumber` int(16) NOT NULL,
   `expiry` date NOT NULL,
   `cardType` enum('Visa','MasterCard','American Express','AirPlus') NOT NULL,
-  `securityCode` int(4) NOT NULL
+  `securityCode` int(4) NOT NULL,
+  `idUser` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `image`
+--
+
+CREATE TABLE `image` (
+  `idImage` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `imagePath` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -124,7 +144,8 @@ CREATE TABLE `user_activity` (
 --
 ALTER TABLE `activity`
   ADD PRIMARY KEY (`idActivity`),
-  ADD KEY `fk_activity_admin_idx` (`idAdmin`);
+  ADD KEY `fk_activity_admin_idx` (`idAdmin`),
+  ADD KEY `idImage` (`idImage`);
 
 --
 -- Indexes for table `admin`
@@ -144,7 +165,14 @@ ALTER TABLE `comments`
 -- Indexes for table `creditCard`
 --
 ALTER TABLE `creditCard`
-  ADD PRIMARY KEY (`idCreditCard`);
+  ADD PRIMARY KEY (`idCreditCard`),
+  ADD KEY `idUser` (`idUser`);
+
+--
+-- Indexes for table `image`
+--
+ALTER TABLE `image`
+  ADD PRIMARY KEY (`idImage`);
 
 --
 -- Indexes for table `reservation`
@@ -175,31 +203,31 @@ ALTER TABLE `user_activity`
 --
 ALTER TABLE `activity`
   MODIFY `idActivity` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
   MODIFY `idAdmin` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
   MODIFY `idComments` int(11) NOT NULL AUTO_INCREMENT;
-
+--
+-- AUTO_INCREMENT for table `image`
+--
+ALTER TABLE `image`
+  MODIFY `idImage` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
   MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- Constraints for dumped tables
 --
@@ -208,6 +236,7 @@ ALTER TABLE `user`
 -- Constraints for table `activity`
 --
 ALTER TABLE `activity`
+  ADD CONSTRAINT `activity_ibfk_1` FOREIGN KEY (`idImage`) REFERENCES `image` (`idImage`),
   ADD CONSTRAINT `fk_activity_admin` FOREIGN KEY (`idAdmin`) REFERENCES `admin` (`idAdmin`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
@@ -216,6 +245,12 @@ ALTER TABLE `activity`
 ALTER TABLE `comments`
   ADD CONSTRAINT `fk_comments_activity` FOREIGN KEY (`idActivity`) REFERENCES `activity` (`idActivity`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_comments_user` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `creditCard`
+--
+ALTER TABLE `creditCard`
+  ADD CONSTRAINT `creditCard_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`);
 
 --
 -- Constraints for table `reservation`
@@ -230,3 +265,7 @@ ALTER TABLE `reservation`
 ALTER TABLE `user_activity`
   ADD CONSTRAINT `fk_activity_user` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_user_activity` FOREIGN KEY (`idActivity`) REFERENCES `activity` (`idActivity`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
