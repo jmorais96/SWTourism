@@ -145,4 +145,20 @@ class SWTourism extends Database
 
     }
 
+    public function addActivity($name, $desc, $idAdmin, $location, $image)
+    {
+        $sqlReservation = "INSERT INTO activity (name, desc, idAdmin, location, image) VALUES (:name, :desc, :idAdmin, :location, :image)";
+
+        $fields=array('dateReservatio'=>$dateReservation, 'time'=>$time);
+
+        $this->query($sqlReservation, $fieldsReservation);
+
+
+        $sqlCard = "INSERT INTO creditCard (name, cardNumber, expiry, cardType, securityCode) VALUES (:name, :cardNumber, :expiry, :cardType, :securityCode)";
+
+        $fieldsCard = array('name'=>$name, 'cardNumber'=>$cardNumber, 'expiry'=>$expiry, 'cardType'=>$cardType, 'securityCode'=>$securityCode);
+
+        $this->query($sqlCard, $fieldsCard);
+    }
+
 }
