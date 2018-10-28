@@ -149,16 +149,11 @@ class SWTourism extends Database
     {
         $sqlReservation = "INSERT INTO activity (name, desc, idAdmin, location, image) VALUES (:name, :desc, :idAdmin, :location, :image)";
 
-        $fields=array('dateReservatio'=>$dateReservation, 'time'=>$time);
+        $fields=array('name' => $name, 'desc'=> $desc, 'idAdmin' => $idAdmin, 'location'=> $location, 'image'=> $image);
 
-        $this->query($sqlReservation, $fieldsReservation);
+        $this->query($sqlReservation, $fields);
 
-
-        $sqlCard = "INSERT INTO creditCard (name, cardNumber, expiry, cardType, securityCode) VALUES (:name, :cardNumber, :expiry, :cardType, :securityCode)";
-
-        $fieldsCard = array('name'=>$name, 'cardNumber'=>$cardNumber, 'expiry'=>$expiry, 'cardType'=>$cardType, 'securityCode'=>$securityCode);
-
-        $this->query($sqlCard, $fieldsCard);
+        header('location:home.php');
     }
 
 }

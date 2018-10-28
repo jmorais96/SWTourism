@@ -1,6 +1,20 @@
 <?php
 
 
+require_once('data/SWTourism.class.php');
+require_once('data/User.class.php');
+
+$conn=new SWTourism('data/config.ini');
+
+//know if user can be here
+$conn->isClientLoggedIn();
+
+
+if(isset($_GET['name'])){
+
+
+    $conn->loginClient($_GET['name'], $_GET['desc'], $_SESSION['admin']->getId(), $_GET['location'], $_GET['image']);
+}
     
 
 ?>
@@ -18,12 +32,12 @@
 </head>
 <body>
     <form action="" method="GET">
-        <input type="text" name="nome">
-        <input type="text" name="nome">
+        <input type="text" name="name">
         <textarea name="desc" id="" cols="30" rows="10">
 
         </textarea>
         <input type="text" name="location">
+        <input type="file" name="image">
     </form>
 </body>
 </html>
