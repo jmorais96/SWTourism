@@ -49,11 +49,16 @@ class SWTourism extends Database
         $this->loginClient($user, $pass);
     }
     
-    public function listActivity ()
+    public function listActivity ($idAdmin=null)
     {
-         $sql = 'SELECT * FROM activity';
-         $pesquisa=$this->query($sql);   
-         return $pesquisa;
+        if ($idAdmin){
+            $sql = 'SELECT * FROM activity where idAdmin = :idAdmin';
+            $pesquisa=$this->query($sql, array('idAdmin' => $idAdmin ));
+        }else {
+            $sql = 'SELECT * FROM activity';
+            $pesquisa = $this->query($sql);
+        }
+        return $pesquisa;
     }
     
     public function idActivity ($idActivity)
@@ -80,6 +85,14 @@ class SWTourism extends Database
         $fieldsCard = array('name'=>$name, 'cardNumber'=>$cardNumber, 'expiry'=>$expiry, 'cardType'=>$cardType, 'securityCode'=>$securityCode);
         
         $this->query($sqlCard, $fieldsCard);
+    }
+
+    public function imageActivity($idImage){
+
+        $sql = 'SELECT * FROM image where idImage = :idImage';
+        $pesquisa=$this->query($sql, array("idImage" => $idImage));
+        return $pesquisa[0]['imagePath'].$pesquisa[0]['name'];
+
     }
 
     public function isClientLoggedIn(){
@@ -127,7 +140,7 @@ class SWTourism extends Database
 
         }else {
             //since there wasn't anyone with those credentials send error message
-            echo "<script> alert('Não existe um utilizador com este email e password') </script>";
+            echo "<script> alert('Não existe um administrador com este email e password') </script>";
         }
 
     }

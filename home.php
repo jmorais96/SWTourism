@@ -125,7 +125,7 @@ if(isset($_GET['logout'])) {
                 <a class="fh5co-card-item">
                     <figure>
                         <div class="overlay"><i class="ti-plus"></i></div>
-                        <img src="images/img_1.jpg" alt="Image" class="img-responsive">
+                        <img src="<?php echo $conn->imageActivity($value['idImage']) ;?>" alt="Image" class="img-responsive">
                     </figure>
                     <div class="fh5co-text">
                         <h2><?php echo $value['name']?></h2><!-- observacao de cetaceos -->

@@ -24,6 +24,9 @@ class Admin
 
     }
 
-
+    public function getName()
+    {
+        return $this->name;
+    }
 
 }
