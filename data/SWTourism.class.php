@@ -147,13 +147,16 @@ class SWTourism extends Database
 
     public function addActivity($name, $desc, $idAdmin, $location, $image)
     {
-        $sqlReservation = "INSERT INTO activity (name, desc, idAdmin, location, image) VALUES (:name, :desc, :idAdmin, :location, :image)";
 
-        $fields=array('name' => $name, 'desc'=> $desc, 'idAdmin' => $idAdmin, 'location'=> $location, 'image'=> $image);
+        $sql='INSERT into image (name, imagePath) VALUES ( :name, "../image/")';
+        $this->query($sql, array('name' =>trim($image, " ")));
+        $sql="SELECT * FROM image ORDER BY idImage DESC LIMIT 1";
+        $image=$this->query($sql);
+        $sql = "INSERT INTO activity (name, activity.desc, idAdmin, location, idImage) VALUES (:name, :desc, :idAdmin, :location, :image)";
+        $fields=array('name' => $name, 'desc'=> $desc, 'idAdmin' => $idAdmin, 'location'=> $location, 'image'=> $image[0]['idImage']);
+        $this->query($sql, $fields);
+        
+      }
 
-        $this->query($sqlReservation, $fields);
-
-        header('location:home.php');
-    }
 
 }

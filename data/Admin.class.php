@@ -24,6 +24,11 @@ class Admin
 
     }
 
+    public function getIdAdmin()
+    {
+        return $this->idAdmin;
+    }
+
     public function getName()
     {
         return $this->name;
