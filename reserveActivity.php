@@ -11,6 +11,8 @@ $conn->isClientLoggedOff();
 
 $idActivity=$conn->idActivity($_GET['idActivity']);
 
+//echo $idActivity['idActivity'];
+
 if(isset($_GET['logout'])) {
    $_SESSION['user']->logout();
 }
@@ -21,9 +23,8 @@ if(isset($_GET['logout'])) {
             foreach ($_POST as $key => $value) {
                 $_POST["$key"] = filter_var($value, FILTER_SANITIZE_STRING);
             }
-
-            //call method to sign up
-            $conn->reserveActivity($_POST['dateReservation'], $_POST['time'], $_POST['name'], $_POST['cardNumber'], $_POST['expiry'], $_POST['cardType'], $_POST['securityCode']);
+            
+            $conn->reserveActivity($_GET['idActivity'], $_SESSION['user']->idUser(), $_POST['dateReservation'], $_POST['time'], $_POST['name'], $_POST['cardNumber'], $_POST['expiry'], $_POST['cardType'], $_POST['securityCode']);
     }
 
 ?>

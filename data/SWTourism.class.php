@@ -62,19 +62,20 @@ class SWTourism extends Database
          $pesquisa=$this->query($sql, array("idActivity" => $idActivity));   
          return $pesquisa[0];
     }
-    
-    public function reserveActivity($dateReservation, $time, $name, $cardNumber, $expiry, $cardType, $securityCode)
+   
+    public function reserveActivity($idUser, $idActivity, $dateReservation, $time, $name, $cardNumber, $expiry, $cardType, $securityCode)
     {
-        $sqlReservation = "INSERT INTO reservation (dateReservation, time) VALUES (:dateReservation, :time)";
+        $sqlReservation = "INSERT INTO reservation (idUser, idActivity, dateReservation, time, state) VALUES (:idUser, :idActivity, :dateReservation, :time, :state)";
         
-        $fieldsReservation=array('dateReservation'=>$dateReservation, 'time'=>$time);
+        $fieldsReservation=array('idUser'=>$idUser, 'idActivity'=>$idActivity, 'dateReservation'=>$dateReservation, 'time'=>$time, 'state'=>'reservada');
+        var_dump($fieldsReservation);
         
         $this->query($sqlReservation, $fieldsReservation);
         
         
-        $sqlCard = "INSERT INTO creditCard (name, cardNumber, expiry, cardType, securityCode) VALUES (:name, :cardNumber, :expiry, :cardType, :securityCode)";
+        $sqlCard = "INSERT INTO creditCard (name, cardNumber, expiry, cardType, securityCode, idUser) VALUES (:name, :cardNumber, :expiry, :cardType, :securityCode, :idUser)";
         
-        $fieldsCard = array('name'=>$name, 'cardNumber'=>$cardNumber, 'expiry'=>$expiry, 'cardType'=>$cardType, 'securityCode'=>$securityCode);
+        $fieldsCard = array('name'=>$name, 'cardNumber'=>$cardNumber, 'expiry'=>$expiry, 'cardType'=>$cardType, 'securityCode'=>$securityCode, 'idUser'=>$idUser);
         
         $this->query($sqlCard, $fieldsCard);
     }

@@ -20,6 +20,11 @@ class User
         $this->pass=$pass;
         $this->name=$name;
     }
+    
+    public function idUser()
+    {
+        return $this->idUser;
+    }
 
     public function getName()
     {
