@@ -49,23 +49,33 @@ class SWTourism extends Database
         $this->loginClient($user, $pass);
     }
     
-    public function listActivity ()
+    public function listActivity ($idAdmin=null)
     {
-         $sql = 'SELECT * FROM activity';
-         $pesquisa=$this->query($sql);   
-         return $pesquisa;
+        if ($idAdmin){
+            $sql = 'SELECT * FROM activity where idAdmin = :idAdmin';
+            $pesquisa=$this->query($sql, array('idAdmin' => $idAdmin ));
+        }else {
+            $sql = 'SELECT * FROM activity';
+            $pesquisa = $this->query($sql);
+        }
+        return $pesquisa;
     }
     
     public function idActivity ($idActivity)
     {
          $sql = 'SELECT * FROM activity where idActivity = :idActivity';
-         $pesquisa=$this->query($sql, array("idActivity" => $idActivity));   
+         $pesquisa=$this->query($sql, array("idActivity" => $idActivity));
+         if (!isset($pesquisa[0]))
+             return null;
+
          return $pesquisa[0];
     }
    
     public function reserveActivity($idUser, $idActivity, $dateReservation, $time, $name, $cardNumber, $expiry, $cardType, $securityCode)
     {
-        $sqlReservation = "INSERT INTO reservation (idUser, idActivity, dateReservation, time, state) VALUES (:idUser, :idActivity, :dateReservation, :time, :state)";
+
+        $sqlReservation = "INSERT INTO reservation (dateReservation, time) VALUES (:dateReservation, :time)";
+        //INSERT INTO reservation ( idUser, idActivity, dateReservation,  	state  ) VALUES (1, 2, "2008-11-11", "reservada")
         
         $fieldsReservation=array('idUser'=>$idUser, 'idActivity'=>$idActivity, 'dateReservation'=>$dateReservation, 'time'=>$time, 'state'=>'reservada');
         var_dump($fieldsReservation);
@@ -78,6 +88,14 @@ class SWTourism extends Database
         $fieldsCard = array('name'=>$name, 'cardNumber'=>$cardNumber, 'expiry'=>$expiry, 'cardType'=>$cardType, 'securityCode'=>$securityCode, 'idUser'=>$idUser);
         
         $this->query($sqlCard, $fieldsCard);
+    }
+
+    public function imageActivity($idImage){
+
+        $sql = 'SELECT * FROM image where idImage = :idImage';
+        $pesquisa=$this->query($sql, array("idImage" => $idImage));
+        return $pesquisa[0]['imagePath'].$pesquisa[0]['name'];
+
     }
 
     public function isClientLoggedIn(){
@@ -125,9 +143,23 @@ class SWTourism extends Database
 
         }else {
             //since there wasn't anyone with those credentials send error message
-            echo "<script> alert('Não existe um utilizador com este email e password') </script>";
+            echo "<script> alert('Não existe um administrador com este email e password') </script>";
         }
 
     }
+
+    public function addActivity($name, $desc, $idAdmin, $location, $image)
+    {
+
+        $sql='INSERT into image (name, imagePath) VALUES ( :name, "../image/")';
+        $this->query($sql, array('name' =>trim($image, " ")));
+        $sql="SELECT * FROM image ORDER BY idImage DESC LIMIT 1";
+        $image=$this->query($sql);
+        $sql = "INSERT INTO activity (name, activity.desc, idAdmin, location, idImage) VALUES (:name, :desc, :idAdmin, :location, :image)";
+        $fields=array('name' => $name, 'desc'=> $desc, 'idAdmin' => $idAdmin, 'location'=> $location, 'image'=> $image[0]['idImage']);
+        $this->query($sql, $fields);
+        
+      }
+
 
 }

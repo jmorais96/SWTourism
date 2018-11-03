@@ -2,40 +2,35 @@
 /**
  * Created by PhpStorm.
  * User: jose
- * Date: 27-10-2018
- * Time: 21:58
+ * Date: 28-10-2018
+ * Time: 17:11
  */
 
 require_once('../data/SWTourism.class.php');
 require_once('../data/Admin.class.php');
 
 $conn=new SWTourism('../data/config.ini');
+session_start();
 
-/*//know if user can be here
-$conn->isClientLoggedIn();*/
+echo $_SESSION['admin']->getName();
 
-
-if(isset($_POST['pass'])){
-
-
-    $conn->loginAdmin($_POST['username'], $_POST['pass']);
+foreach ($conn->listActivity() as $value) {
+    echo $value['name'] . "<br>";
 }
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Login Administrador</title>
+    <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
 </head>
 <body>
-    <form action="" method="post">
-        <input type="text" name="username">
-        <input type="password" name="pass">
-        <input type="submit" value="Login">
-    </form>
+    <a href="criar_atividade.php"><button>Criar atividade</button></a>
 </body>
 </html>
+

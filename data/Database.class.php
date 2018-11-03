@@ -62,7 +62,8 @@ class Database extends PDO {
 					else 
 						$type = PDO::PARAM_NULL;
 					
-					echo $this->queries->bindValue($placeholder, $value, $type);
+					$this->queries->bindValue($placeholder, $value, $type);
+
                 }
 
                 $this->queries->execute();
@@ -74,6 +75,7 @@ class Database extends PDO {
                     $results = $this->queries->fetchAll(PDO::FETCH_ASSOC);
 
                 return $results;
+
 
             } 
             catch (PDOException $e) {
