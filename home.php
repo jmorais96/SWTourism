@@ -129,7 +129,18 @@ if(isset($_GET['logout'])) {
                     </figure>
                     <div class="fh5co-text">
                         <h2><?php echo $value['name']?></h2><!-- observacao de cetaceos -->
+
+                        <?php
+                            if(strlen($value['desc'])> 100 ){
+                        ?>
+                                <p><?php echo substr($value['desc'], 0, 100) . "..." ?></p>
+                        <?php
+                            }else{
+                        ?>
                         <p><?php echo $value['desc']?></p>
+                        <?php
+                            }
+                        ?>
                   </div>
                     <a class="btn btn-primary" href="reserveActivity.php?idActivity=<?php echo $value['idActivity']?>">Reservar atividade</a>  
                 </a>
