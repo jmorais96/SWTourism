@@ -151,7 +151,7 @@ class SWTourism extends Database
     public function addActivity($name, $desc, $idAdmin, $location,$time, $image)
     {
 
-        $sql='INSERT into image (name, imagePath) VALUES ( :name, "image/")';
+        $sql='INSERT into image (name, imagePath) VALUES ( :name, "images/")';
         $this->query($sql, array('name' =>trim($image, " ")));
         $sql="SELECT * FROM image ORDER BY idImage DESC LIMIT 1";
         $image=$this->query($sql);

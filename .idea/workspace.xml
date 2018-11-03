@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="49d130d6-d61c-477a-87c3-7b66c44c8cc0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/administrator/criar_atividade.php" beforeDir="false" afterPath="$PROJECT_DIR$/administrator/criar_atividade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/SWTourism.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/data/SWTourism.class.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -67,14 +66,14 @@
         <counts>
           <entry key="dummy" value="16" />
           <entry key="ini" value="26" />
-          <entry key="php" value="3429" />
+          <entry key="php" value="3430" />
           <entry key="teste" value="1617" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Ini" value="26" />
-          <entry key="PHP" value="3429" />
+          <entry key="PHP" value="3430" />
           <entry key="PLAIN_TEXT" value="1633" />
         </counts>
       </usages-collector>
@@ -85,8 +84,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/data/SWTourism.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="155" column="65" lean-forward="true" selection-start-line="155" selection-start-column="65" selection-end-line="155" selection-end-column="65" />
+            <state relative-caret-position="100">
+              <caret line="153" column="73" selection-start-line="153" selection-start-column="73" selection-end-line="153" selection-end-column="73" />
             </state>
           </provider>
         </entry>
@@ -255,18 +254,18 @@
       <workItem from="1540765805074" duration="7867000" />
       <workItem from="1540912179978" duration="4478000" />
       <workItem from="1541273185985" duration="1934000" />
-      <workItem from="1541282621389" duration="4343000" />
+      <workItem from="1541282621389" duration="4452000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38584000" />
+    <option name="totallyTimeSpent" value="38693000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="28" width="1366" height="740" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28863636" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28863636" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -279,7 +278,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32838285" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32838285" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -410,8 +409,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data/SWTourism.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="155" column="65" lean-forward="true" selection-start-line="155" selection-start-column="65" selection-end-line="155" selection-end-column="65" />
+        <state relative-caret-position="100">
+          <caret line="153" column="73" selection-start-line="153" selection-start-column="73" selection-end-line="153" selection-end-column="73" />
         </state>
       </provider>
     </entry>
