@@ -1447,22 +1447,13 @@ form label {
   box-shadow: none;
   background: transparent;
   border: 2px solid rgba(0, 0, 0, 0.1);
-  height: 46px;
+  height: 146px;
   font-size: 16px;
   font-weight: 300;
   padding-left: 15px;
   padding-right: 15px;
 }
-.form-control {
-  box-shadow: none;
-  background: transparent;
-  border: 2px solid rgba(0, 0, 0, 0.1);
-  height: 46px;
-  font-size: 16px;
-  font-weight: 300;
-  padding-left: 15px;
-  padding-right: 15px;
-}
+
 .form-control:active, .form-control:focus {
   outline: none;
   box-shadow: none;

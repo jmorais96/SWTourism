@@ -131,7 +131,8 @@ if(isset($_GET['logout'])) {
                         <h2><?php echo $value['name']?></h2><!-- observacao de cetaceos -->
                         <p><?php echo $value['desc']?></p>
                   </div>
-                    <a class="btn btn-primary" href="reserveActivity.php?idActivity=<?php echo $value['idActivity']?>">Reservar atividade</a>  
+                    <a class="btn btn-primary" href="reserveActivity.php?idActivity=<?php echo $value['idActivity']?>">Reservar atividade</a> 
+                    <a class="btn btn-primary" href="commentActivity.php?idActivity=<?php echo $value['idActivity']?>">Deixar comentário</a>  
                 </a>
             </div>
             <?php } ?>
@@ -144,7 +145,7 @@ if(isset($_GET['logout'])) {
 <div id="gtco-features">
     <div class="gtco-container">
         <div class="row">
-            <<div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
+            <div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
                 <h2>Clientes felizes</h2>
 
             </div>

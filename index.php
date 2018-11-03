@@ -257,7 +257,7 @@
         <div id="gtco-features">
             <div class="gtco-container">
                 <div class="row">
-                    <<div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
+                    <div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
                         <h2>Clientes felizes</h2>
 
                     </div>
