@@ -20,12 +20,6 @@ if(isset($_POST['name'])){
     $arquivo_tmp = $_FILES['image']['tmp_name'];
 
     move_uploaded_file( $arquivo_tmp, $destino );
-    if (move_uploaded_file( $arquivo_tmp, $destino ) == true){
-        echo "ok";
-    }else{
-        echo "false";
-    }
-
     $conn->addActivity($_POST['name'], $_POST['desc'], $_SESSION['admin']->getIdAdmin(), $_POST['location'], $_POST['time'], $_FILES['image']['name']);
 }
     
