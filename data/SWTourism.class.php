@@ -74,10 +74,10 @@ class SWTourism extends Database
     public function reserveActivity($idUser, $idActivity, $dateReservation, $time, $name, $cardNumber, $expiry, $cardType, $securityCode)
     {
 
-        $sqlReservation = "INSERT INTO reservation (dateReservation, time) VALUES (:dateReservation, :time)";
+        $sqlReservation = "INSERT INTO reservation (idUser, idActivity, dateReservation, state) VALUES (:idUser, :idActivity, :dateReservation, :state)";
         //INSERT INTO reservation ( idUser, idActivity, dateReservation,  	state  ) VALUES (1, 2, "2008-11-11", "reservada")
         
-        $fieldsReservation=array('idUser'=>$idUser, 'idActivity'=>$idActivity, 'dateReservation'=>$dateReservation, 'time'=>$time, 'state'=>'reservada');
+        $fieldsReservation=array('idUser'=>$idUser, 'idActivity'=>$idActivity, 'dateReservation'=>$dateReservation, 'state'=>'reservada');
         var_dump($fieldsReservation);
         
         $this->query($sqlReservation, $fieldsReservation);
@@ -148,15 +148,15 @@ class SWTourism extends Database
 
     }
 
-    public function addActivity($name, $desc, $idAdmin, $location, $image)
+    public function addActivity($name, $desc, $idAdmin, $location,$time, $image)
     {
 
         $sql='INSERT into image (name, imagePath) VALUES ( :name, "../image/")';
         $this->query($sql, array('name' =>trim($image, " ")));
         $sql="SELECT * FROM image ORDER BY idImage DESC LIMIT 1";
         $image=$this->query($sql);
-        $sql = "INSERT INTO activity (name, activity.desc, idAdmin, location, idImage) VALUES (:name, :desc, :idAdmin, :location, :image)";
-        $fields=array('name' => $name, 'desc'=> $desc, 'idAdmin' => $idAdmin, 'location'=> $location, 'image'=> $image[0]['idImage']);
+        $sql = "INSERT INTO activity (name, activity.desc, idAdmin, location, timeActivity, idImage) VALUES (:name, :desc, :idAdmin, :location, :timeActivity, :image)";
+        $fields=array('name' => $name, 'desc'=> $desc, 'idAdmin' => $idAdmin, 'location'=> $location, 'timeActivity' => $time, 'image'=> $image[0]['idImage']);
         $this->query($sql, $fields);
         
       }

@@ -26,7 +26,7 @@ if(isset($_POST['name'])){
         echo "false";
     }
 
-    $conn->addActivity($_POST['name'], $_POST['desc'], $_SESSION['admin']->getIdAdmin(), $_POST['location'], $_FILES['image']['name']);
+    $conn->addActivity($_POST['name'], $_POST['desc'], $_SESSION['admin']->getIdAdmin(), $_POST['location'], $_POST['time'], $_FILES['image']['name']);
 }
     
 
@@ -50,6 +50,7 @@ if(isset($_POST['name'])){
 
         </textarea>
         <input type="text" name="location">
+        <input type="time" id="time" name="time">
         <input type="file" name="image">
         <input type="submit" value="Criar atividade">
         

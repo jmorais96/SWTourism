@@ -15,14 +15,12 @@ if (!isset($_GET['idActivity'])){
 
 $idActivity=$conn->idActivity($_GET['idActivity']);
 
-<<<<<<< HEAD
-//echo $idActivity['idActivity'];
-=======
+
 if ($idActivity==NULL){
     header("location:home.php");
 }
 
->>>>>>> b70d9f30d9e7719b8d12113a533df80ab1ac8fa2
+
 
 if(isset($_GET['logout'])) {
    $_SESSION['user']->logout();
@@ -35,7 +33,7 @@ if(isset($_GET['logout'])) {
                 $_POST["$key"] = filter_var($value, FILTER_SANITIZE_STRING);
             }
             
-            $conn->reserveActivity($_GET['idActivity'], $_SESSION['user']->idUser(), $_POST['dateReservation'], $_POST['time'], $_POST['name'], $_POST['cardNumber'], $_POST['expiry'], $_POST['cardType'], $_POST['securityCode']);
+            $conn->reserveActivity($_SESSION['user']->idUser(), $_GET['idActivity'],  $_POST['dateReservation'], $_POST['time'], $_POST['name'], $_POST['cardNumber'], $_POST['expiry'], $_POST['cardType'], $_POST['securityCode']);
     }
 
 ?>
@@ -141,12 +139,6 @@ if(isset($_GET['logout'])) {
                                                     <div class="col-md-12">
                                                         <label for="dateReservation">Data</label>
                                                         <input type="date" id="dateReservation" name="dateReservation" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col-md-12">
-                                                        <label for="time">Hora</label>
-                                                        <input type="time" id="time" name="time" class="form-control">
                                                     </div>
                                                 </div>
                                                 <br>
