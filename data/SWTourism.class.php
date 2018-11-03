@@ -74,6 +74,7 @@ class SWTourism extends Database
     public function reserveActivity($dateReservation, $time, $name, $cardNumber, $expiry, $cardType, $securityCode)
     {
         $sqlReservation = "INSERT INTO reservation (dateReservation, time) VALUES (:dateReservation, :time)";
+        //INSERT INTO reservation ( idUser, idActivity, dateReservation,  	state  ) VALUES (1, 2, "2008-11-11", "reservada")
         
         $fieldsReservation=array('dateReservation'=>$dateReservation, 'time'=>$time);
         
