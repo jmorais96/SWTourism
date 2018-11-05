@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jose
- * Date: 25-10-2018
- * Time: 21:31
- */
 
 class User
 {
@@ -21,7 +15,7 @@ class User
         $this->name=$name;
     }
     
-    public function idUser()
+    public function getIdUser()
     {
         return $this->idUser;
     }
