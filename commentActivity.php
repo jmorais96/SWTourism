@@ -27,13 +27,13 @@ if(isset($_GET['logout'])) {
 }
 
 //Know if data was sent by post
-if(isset($_POST['name'])){
+if(isset($_POST['comment'])){
         //filter special chars
         foreach ($_POST as $key => $value) {
             $_POST["$key"] = filter_var($value, FILTER_SANITIZE_STRING);
         }
             
-        $conn->reserveActivity($_SESSION['user']->idUser(), $_GET['idActivity'],  $_POST['dateReservation'], $_POST['time'], $_POST['name'], $_POST['cardNumber'], $_POST['expiry'], $_POST['cardType'], $_POST['securityCode']);
+        $conn->commentActivity($_SESSION['user']->idUser(), $_GET['idActivity'],  $_POST['comment']); // $_POST['dateComment']
 }
 
 ?>
@@ -135,8 +135,9 @@ if(isset($_POST['name'])){
                                             <form class="login100-form validate-form" method="post">
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
-                                                        <label for="dateReservation">Mensagem</label>
-                                                        <input type="text" id="dateReservation" name="dateReservation" class="form-control">
+                                                        <label for="comment">Mensagem</label>
+                                                        <textarea name="comment" class="form-control"></textarea>
+<!--                                                        <input type="text" id="dateReservation" name="dateReservation" class="form-control">-->
                                                     </div>
                                                 </div>
                                                 <br>
