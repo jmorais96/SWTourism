@@ -182,6 +182,7 @@ class SWTourism extends Database
         $fields=array('name' => $name, 'desc'=> $desc, 'idAdmin' => $idAdmin, 'location'=> $location, 'timeActivity' => $time, 'image'=> $image[0]['idImage']);
         $this->query($sql, $fields);
         
+
       }
     
     public function countUser()
@@ -191,5 +192,24 @@ class SWTourism extends Database
        return $result[0]['COUNT(*)'];
        //var_dump($result);
     }
+
+    
+
+    public function deleteActivity($id)
+    {
+
+        $sql = 'DELETE from activity where idActivity = :idActivity';
+        $this->query($sql, array('idActivity' => $id));
+
+    }
+
+    public function updateActivity($name, $desc, $location,$time,  $idActivity)
+    {echo "$time";
+        $sql="UPDATE activity set activity.name = :name, activity.desc = :desc, activity.location = :location, activity.timeActivity = :timeActivity where activity.idActivity = :idActivity";
+        $fields=array('name' => $name, 'desc'=> $desc, 'location'=> $location, 'timeActivity' => $time, 'idActivity'=> $idActivity);
+        $this->query($sql, $fields);
+
+    }
+
 
 }
