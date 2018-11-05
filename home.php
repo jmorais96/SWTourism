@@ -124,8 +124,9 @@ if(isset($_GET['logout'])) {
             <div class="col-lg-4 col-md-4 col-sm-6">
                 <a class="fh5co-card-item">
                     <figure>
-                        <div class="overlay"><i class="ti-plus"></i></div>
-                        <img src="<?php echo $conn->imageActivity($value['idImage']) ;?>" alt="Image" class="img-responsive">
+                        <div class="overlay"></i>
+                            <img src="<?php echo $conn->imageActivity($value['idImage']) ;?>" alt="Image" class="img-responsive">
+                        </div>
                     </figure>
                     <div class="fh5co-text">
                         <h2><?php echo $value['name']?></h2><!-- observacao de cetaceos -->
@@ -142,7 +143,8 @@ if(isset($_GET['logout'])) {
                             }
                         ?>
                   </div>
-                    <a class="btn btn-primary" href="reserveActivity.php?idActivity=<?php echo $value['idActivity']?>">Reservar atividade</a>  
+                    <a class="btn btn-primary" href="reserveActivity.php?idActivity=<?php echo $value['idActivity']?>">Reservar atividade</a> 
+                    <a class="btn btn-primary" href="commentActivity.php?idActivity=<?php echo $value['idActivity']?>">Deixar comentário</a>  
                 </a>
             </div>
             <?php } ?>
@@ -155,7 +157,7 @@ if(isset($_GET['logout'])) {
 <div id="gtco-features">
     <div class="gtco-container">
         <div class="row">
-            <<div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
+            <div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
                 <h2>Clientes felizes</h2>
 
             </div>

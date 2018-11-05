@@ -1447,22 +1447,13 @@ form label {
   box-shadow: none;
   background: transparent;
   border: 2px solid rgba(0, 0, 0, 0.1);
-  height: 46px;
+  height: 146px;
   font-size: 16px;
   font-weight: 300;
   padding-left: 15px;
   padding-right: 15px;
 }
-.form-control {
-  box-shadow: none;
-  background: transparent;
-  border: 2px solid rgba(0, 0, 0, 0.1);
-  height: 46px;
-  font-size: 16px;
-  font-weight: 300;
-  padding-left: 15px;
-  padding-right: 15px;
-}
+
 .form-control:active, .form-control:focus {
   outline: none;
   box-shadow: none;
@@ -1696,12 +1687,18 @@ form label {
   position: relative;
 }
 .fh5co-card-item figure .overlay {
-    -o-transition: 0.7s;
-    width: 500px;
-    height: 300px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.4);
+  -webkit-transition: 0.7s;
+  -o-transition: 0.7s;
+  transition: 0.7s;
 }
 .fh5co-card-item figure .overlay i {
   z-index: 12;

@@ -89,6 +89,16 @@ class SWTourism extends Database
         
         $this->query($sqlCard, $fieldsCard);
     }
+    
+    public function commentActivity($idUser, $idActivity, $comment)
+    {
+        $dateComment = date('Y-m-d H:i:s');
+        $sql = "INSERT INTO comments (idUser, idActivity, comment, dateComment) VALUES (:idUser, :idActivity, :comment, :dateComment)"; 
+        
+        $fields = array ('idUser'=>$idUser, 'idActivity'=>$idActivity, 'comment'=>$comment, 'dateComment'=>$dateComment);
+        
+        $this->query($sql, $fields);
+    }
 
     public function imageActivity($idImage){
 
