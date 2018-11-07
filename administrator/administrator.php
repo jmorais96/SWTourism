@@ -15,7 +15,7 @@ session_start();
 echo $_SESSION['admin']->getName();
 
 foreach ($conn->listActivity() as $value) {
-    echo "<a href='activity.php".$value['idActivity']."'>".$value['name']."</a>"."<a href='delete_activity.php?id=".$value['idActivity']."'>Eliminar</><br>"."<a href='update_activity.php?id=".$value['idActivity']."'>Editar</a><br>";
+    echo "<a href='activity.php?id=".$value['idActivity']."'>".$value['name']."</a>"."<a href='delete_activity.php?id=".$value['idActivity']."'>Eliminar</><br>"."<a href='update_activity.php?id=".$value['idActivity']."'>Editar</a><br>";
 }
 ?>
 

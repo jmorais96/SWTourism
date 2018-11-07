@@ -18,9 +18,15 @@ session_start();
 
 $idActivity=$conn->idActivity($_GET['id']);
 
+
 if ($idActivity==NULL){
     header("location:administrator.php");
 }
+
+foreach ($conn->listReservationsAdmin($idActivity['idActivity']) as $value){
+    echo $value['name']." <br>";
+}
+
 
 ?>
 

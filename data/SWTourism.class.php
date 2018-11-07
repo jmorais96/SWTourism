@@ -191,7 +191,7 @@ class SWTourism extends Database
     {
         $sql="SELECT * from reservation INNER JOIN user using (idUser) where idActivity= :idActivity";
         $fields=array('idActivity' => $idActivity);
-        $this->query($sql, $fields);
+        return $this->query($sql, $fields);
 
     }
 
