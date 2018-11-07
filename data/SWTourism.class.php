@@ -180,12 +180,19 @@ class SWTourism extends Database
     }
 
     public function updateActivity($name, $desc, $location,$time,  $idActivity)
-    {echo "$time";
+    {
         $sql="UPDATE activity set activity.name = :name, activity.desc = :desc, activity.location = :location, activity.timeActivity = :timeActivity where activity.idActivity = :idActivity";
         $fields=array('name' => $name, 'desc'=> $desc, 'location'=> $location, 'timeActivity' => $time, 'idActivity'=> $idActivity);
         $this->query($sql, $fields);
 
     }
 
+    public function listReservationsAdmin($idActivity)
+    {
+        $sql="SELECT * from reservation INNER JOIN user using (idUser) where idActivity= :idActivity";
+        $fields=array('idActivity' => $idActivity);
+        $this->query($sql, $fields);
+
+    }
 
 }
