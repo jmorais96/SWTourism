@@ -61,6 +61,14 @@ class SWTourism extends Database
         return $pesquisa;
     }
     
+       public function listActivityUser ($idUser)
+    {
+        $sql = 'SELECT * FROM reservation INNER JOIN activity USING (idActivity) where idUser = :idUser';        
+        $fields=array('idUser'=> $idUser);
+        $userReservations=$this->query($sql, $fields);
+        return $userReservations;
+    }
+    
     public function idActivity ($idActivity)
     {
          $sql = 'SELECT * FROM activity where idActivity = :idActivity';
@@ -70,15 +78,15 @@ class SWTourism extends Database
 
          return $pesquisa[0];
     }
-   
-    public function reserveActivity($idUser, $idActivity, $dateReservation, $time, $name, $cardNumber, $expiry, $cardType, $securityCode)
+
+    public function reserveActivity($idUser, $idActivity, $dateReservation, $name, $cardNumber, $expiry, $cardType, $securityCode)
     {
 
         $sqlReservation = "INSERT INTO reservation (idUser, idActivity, dateReservation, state) VALUES (:idUser, :idActivity, :dateReservation, :state)";
         //INSERT INTO reservation ( idUser, idActivity, dateReservation,  	state  ) VALUES (1, 2, "2008-11-11", "reservada")
         
         $fieldsReservation=array('idUser'=>$idUser, 'idActivity'=>$idActivity, 'dateReservation'=>$dateReservation, 'state'=>'reservada');
-        var_dump($fieldsReservation);
+        //var_dump($fieldsReservation);
         
         $this->query($sqlReservation, $fieldsReservation);
         
@@ -98,6 +106,13 @@ class SWTourism extends Database
         $fields = array ('idUser'=>$idUser, 'idActivity'=>$idActivity, 'comment'=>$comment, 'dateComment'=>$dateComment);
         
         $this->query($sql, $fields);
+    }
+    
+    public function listComments ()
+    {
+        $sql = "SELECT * FROM comments INNER JOIN user USING (idUser);";
+        $comments = $this->query($sql);
+        return $comments;
     }
 
     public function imageActivity($idImage){
@@ -125,8 +140,6 @@ class SWTourism extends Database
         }
 
     }
-
-
 
     public function loginAdmin($user, $pass)
     {
@@ -169,7 +182,18 @@ class SWTourism extends Database
         $fields=array('name' => $name, 'desc'=> $desc, 'idAdmin' => $idAdmin, 'location'=> $location, 'timeActivity' => $time, 'image'=> $image[0]['idImage']);
         $this->query($sql, $fields);
         
+
+      }
+    
+    public function countUser()
+    {
+       $sql='SELECT COUNT(*) FROM user';
+       $result = $this->query($sql);
+       return $result[0]['COUNT(*)'];
+       //var_dump($result);
     }
+
+    
 
     public function deleteActivity($id)
     {

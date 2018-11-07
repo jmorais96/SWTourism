@@ -9,6 +9,7 @@ $conn->isClientLoggedOff();
 $conn->listActivity(); 
 $conn->listComments(); 
 $conn->countUser();
+$conn->listActivityUser($_SESSION['user']->getIdUser());
 
 
 if(isset($_GET['logout'])) {
@@ -61,7 +62,7 @@ if(isset($_GET['logout'])) {
 	<link rel="stylesheet" href="css/owl.theme.default.min.css">
 
 	<!-- Theme style  -->
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/styleListActivity.css">
 
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
@@ -84,7 +85,6 @@ if(isset($_GET['logout'])) {
 				</div>
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
-					    <li><a href="listActivity.php">Reservas</a></li>
 						<li><a href="contact.html">Contactos</a></li>
 						<li><a href="?logout">Logout</a></li>
 					</ul>
@@ -102,7 +102,8 @@ if(isset($_GET['logout'])) {
 					<div class="row row-mt-15em">
 
 						<div class="col-md-12 mt-text animate-box" data-animate-effect="fadeInUp">
-							<h1>Bem vindo(a), <?php echo( $_SESSION['user']->getName()); ?></h1>
+<!--                            <h1>Lista de atividades</h1>-->
+                            <h2><?php echo( $_SESSION['user']->getName()); ?></h2>
 </div>
 
 </div>
@@ -118,13 +119,13 @@ if(isset($_GET['logout'])) {
     <div class="gtco-container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-                <h2>Atividades</h2>
-                <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                <h2>Lista de Atividades</h2>
+                <p>A seguinte lista mostra as atividades que tem reservadas até ao momento</p>
             </div>
         </div>
         <div class="row">
 
-           <?php foreach ($conn->listActivity() as $value) {
+           <?php foreach ($conn->listActivityUser($_SESSION['user']->getIdUser()) as $value) {
             ?>
             <div class="col-lg-4 col-md-4 col-sm-6">
                 <a class="fh5co-card-item">
@@ -158,68 +159,6 @@ if(isset($_GET['logout'])) {
     </div>
 </div>
 
-
-<div id="gtco-features">
-    <div class="gtco-container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
-                <h2>Clientes felizes</h2>
-
-            </div>
-
-        </div>
-        <div class="row">
-           <?php foreach ($conn->listComments() as $value) { ?>
-                <div class="col-md-4 col-sm-6">
-                    <div class="feature-center animate-box" data-animate-effect="fadeIn">
-                        <h1><?php echo $value['username']; ?></h1>
-                        <h3><?php echo $value['comment']; ?></h3>
-                        <h6><?php echo $value['dateComment']; ?></h6>
-                    </div>
-                </div>    
-         <?php } ?>
-        </div>
-    </div>
-</div>
-
-
-
-<div id="gtco-counter" class="gtco-section">
-    <div class="gtco-container">
-
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
-                <h2>O nosso sucesso</h2>
-                <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-            </div>
-        </div>
-
-        <div class="row">
-
-            <div class="col-md-3 col-sm-6 animate-box" data-animate-effect="fadeInUp">
-                <div class="feature-center">
-                    <span class="counter js-counter" data-from="0" data-to="196" data-speed="5000" data-refresh-interval="50">1</span>
-                    <span class="counter-label">Atividades</span>
-
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 animate-box" data-animate-effect="fadeInUp">
-                <div class="feature-center">
-                    <span class="counter js-counter" data-from="0" data-to="97" data-speed="5000" data-refresh-interval="50">1</span>
-                    <span class="counter-label">Visitas</span>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 animate-box" data-animate-effect="fadeInUp">
-                <div class="feature-center">
-                    <span class="counter js-counter" data-from="0" data-to="<?php echo $conn->countUser(); ?>" data-speed="5000" data-refresh-interval="50">1</span>
-                    <span class="counter-label">Clientes Satisfeitos</span>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-</div>
 <div class="gtco-cover gtco-cover-sm" style="background-image: url(images/img_bg_1.jpg)"  data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="gtco-container text-center">

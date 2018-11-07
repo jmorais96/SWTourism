@@ -248,6 +248,7 @@ h1, h2, h3, h4, h5, h6, figure {
 
 #gtco-header {
   background: #4d4d4d;
+    height: 250px;
 }
 @media screen and (max-width: 992px) {
   #gtco-header.gtco-cover {
@@ -267,7 +268,7 @@ h1, h2, h3, h4, h5, h6, figure {
   }
 }
 #gtco-header .mt-text {
-  margin-top: 7em;
+/*  margin-top: 7em;*/
   margin-bottom: 3em;
 }
 @media screen and (max-width: 768px) {
@@ -290,7 +291,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 #gtco-header h1 {
   margin-bottom: 0px;
-  font-size: 59px;
+/*  font-size: 59px;*/
   line-height: 1.5;
   font-weight: 300;
 }
@@ -1480,7 +1481,7 @@ form label {
 }
 
 .row-mt-15em {
-  margin-top: 15em;
+  margin-top: 10em;
     display: flex;
 }
 .row-mt-15emContact {
