@@ -219,4 +219,13 @@ class SWTourism extends Database
 
     }
 
+    public function changeState($state, $idActivity, $idUser)
+    {
+        $sql="UPDATE reservation set state = :state where idActivity = :idActivity and idUser =:idUser";
+        $fields=array('state' => $state, 'idActivity' => $idActivity, 'idUser' => $idUser);
+        //var_dump($fields);
+        $this->query($sql, $fields);
+
+    }
+
 }
