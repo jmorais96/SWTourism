@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="49d130d6-d61c-477a-87c3-7b66c44c8cc0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/administrator/administrator.php" beforeDir="false" afterPath="$PROJECT_DIR$/administrator/administrator.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/SWTourism.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/data/SWTourism.class.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -72,14 +69,14 @@
         <counts>
           <entry key="dummy" value="16" />
           <entry key="ini" value="44" />
-          <entry key="php" value="4744" />
+          <entry key="php" value="4753" />
           <entry key="teste" value="1617" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Ini" value="44" />
-          <entry key="PHP" value="4744" />
+          <entry key="PHP" value="4753" />
           <entry key="PLAIN_TEXT" value="1633" />
         </counts>
       </usages-collector>
@@ -87,11 +84,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/data/SWTourism.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="319" column="39" selection-start-line="319" selection-start-column="39" selection-end-line="319" selection-end-column="39" />
+            <state relative-caret-position="108">
+              <caret line="148" column="77" selection-start-line="148" selection-start-column="77" selection-end-line="148" selection-end-column="77" />
             </state>
           </provider>
         </entry>
@@ -100,7 +97,7 @@
         <entry file="file://$PROJECT_DIR$/test.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
-              <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+              <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -132,11 +129,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/administrator/administrator.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="40" column="63" selection-start-line="40" selection-start-column="63" selection-end-line="40" selection-end-column="63" />
+            <state relative-caret-position="265">
+              <caret line="50" column="68" selection-start-line="50" selection-start-column="68" selection-end-line="50" selection-end-column="68" />
             </state>
           </provider>
         </entry>
@@ -164,7 +161,6 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>Bem</find>
-      <find>pass</find>
       <find>ech</find>
       <find>ec</find>
       <find>retu</find>
@@ -173,6 +169,8 @@
       <find>'SELECT * FROM user WHERE username = :username  AND password = :password'</find>
       <find>GET</find>
       <find>reservation</find>
+      <find>pass</find>
+      <find>crypt</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -200,8 +198,8 @@
         <option value="$PROJECT_DIR$/data/config.ini" />
         <option value="$PROJECT_DIR$/administrator/activity.php" />
         <option value="$PROJECT_DIR$/test.php" />
-        <option value="$PROJECT_DIR$/data/SWTourism.class.php" />
         <option value="$PROJECT_DIR$/administrator/administrator.php" />
+        <option value="$PROJECT_DIR$/data/SWTourism.class.php" />
       </list>
     </option>
   </component>
@@ -304,18 +302,18 @@
       <workItem from="1541516989084" duration="755000" />
       <workItem from="1541625276219" duration="3730000" />
       <workItem from="1541670676081" duration="37000" />
-      <workItem from="1541693353697" duration="1071000" />
+      <workItem from="1541693353697" duration="1414000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47832000" />
+    <option name="totallyTimeSpent" value="48175000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="28" width="1366" height="740" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3121212" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3121212" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -328,7 +326,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32838285" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32838285" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -459,24 +457,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/administrator/administrator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="50" column="68" selection-start-line="50" selection-start-column="68" selection-end-line="50" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
-          <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data/SWTourism.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="319" column="39" selection-start-line="319" selection-start-column="39" selection-end-line="319" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/administrator/administrator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="40" column="63" selection-start-line="40" selection-start-column="63" selection-end-line="40" selection-end-column="63" />
+        <state relative-caret-position="108">
+          <caret line="148" column="77" selection-start-line="148" selection-start-column="77" selection-end-line="148" selection-end-column="77" />
         </state>
       </provider>
     </entry>
