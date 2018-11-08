@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 03, 2018 at 09:37 PM
+-- Generation Time: Nov 08, 2018 at 03:53 
 -- Server version: 5.7.22-0ubuntu0.17.10.1
 -- PHP Version: 7.1.17-0ubuntu0.17.10.1
 
@@ -41,7 +41,8 @@ CREATE TABLE `activity` (
 --
 
 INSERT INTO `activity` (`idActivity`, `name`, `desc`, `idAdmin`, `location`, `timeActivity`, `idImage`) VALUES
-(2, 'Mergulho', 'As atividades de mergulho restringem-se a profundidades relativamente rasas, devido aos efeitos da pressão nas áreas mais profundas do mundo, mesmo roupas de mergulho rígidas são incapazes de levar os mergulhadores a estes ambientes.', 1, 'Ponta Delgada', '08:18:00', 1);
+(2, 'Mergulho', 'As atividades de mergulho restringem-se a profundidades relativamente rasas, devido aos efeitos da pressão nas áreas mais profundas do mundo, mesmo roupas de mergulho rígidas são incapazes de levar os mergulhadores a estes ambientes.', 1, 'Ponta Delgada', '08:18:00', 1),
+(3, 'testes', 'sjfnskdfjbsakdjfbksdfbksdjafn\r\n        ', 2, 'asdfbskjgfbkdsfjgbd', '03:31:00', 2);
 
 -- --------------------------------------------------------
 
@@ -52,7 +53,7 @@ INSERT INTO `activity` (`idActivity`, `name`, `desc`, `idAdmin`, `location`, `ti
 CREATE TABLE `admin` (
   `idAdmin` int(11) NOT NULL,
   `username` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `name` varchar(75) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -61,8 +62,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`idAdmin`, `username`, `password`, `name`) VALUES
-(1, 'carina', '12345678', 'Carina Gomes'),
-(2, 'jose', '12345678', 'José Morais');
+(1, 'carina', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'Carina Gomes'),
+(2, 'jose', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'José Morais');
 
 -- --------------------------------------------------------
 
@@ -111,7 +112,8 @@ CREATE TABLE `image` (
 --
 
 INSERT INTO `image` (`idImage`, `name`, `imagePath`) VALUES
-(1, 'mergulho.jpg', 'images/');
+(1, 'mergulho.jpg', 'images/'),
+(2, 'Firefox_wallpaper.png', '../image/');
 
 -- --------------------------------------------------------
 
@@ -131,7 +133,7 @@ CREATE TABLE `reservation` (
 --
 
 INSERT INTO `reservation` (`idUser`, `idActivity`, `dateReservation`, `state`) VALUES
-(1, 2, '2018-11-14', 'reservada');
+(1, 2, '2018-11-14', 'cancelada');
 
 -- --------------------------------------------------------
 
@@ -142,7 +144,7 @@ INSERT INTO `reservation` (`idUser`, `idActivity`, `dateReservation`, `state`) V
 CREATE TABLE `user` (
   `idUser` int(11) NOT NULL,
   `username` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `name` varchar(75) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -151,8 +153,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`idUser`, `username`, `password`, `name`) VALUES
-(1, 'Alice', 'saX6EvfO393Go', 'Alice Gomes'),
-(2, 'Andre', 'samy4Tgypl9yA', 'Andre Oliveira');
+(1, 'Alice', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'Alice Gomes'),
+(2, 'Andre', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'Andre Oliveira');
 
 -- --------------------------------------------------------
 
@@ -232,7 +234,7 @@ ALTER TABLE `user_activity`
 -- AUTO_INCREMENT for table `activity`
 --
 ALTER TABLE `activity`
-  MODIFY `idActivity` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idActivity` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `admin`
 --
@@ -247,7 +249,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `image`
 --
 ALTER TABLE `image`
-  MODIFY `idImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `reservation`
 --

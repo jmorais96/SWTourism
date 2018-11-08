@@ -9,7 +9,7 @@ class SWTourism extends Database
         $sql = 'SELECT * FROM user WHERE username = :username  AND password = :password';
 
         //create array of fields to log in
-        $fields=array('username'=> $user, 'password' => crypt ( $pass ,"salt" ));
+        $fields=array('username'=> $user, 'password' => hash('sha256', $pass));
 
         //put the fields and prepared query + execute query
         $pesquisa=$this->query($sql, $fields);
@@ -40,7 +40,7 @@ class SWTourism extends Database
         $sql = "INSERT INTO user (username, password, name) VALUES (:username, :password, :name)";
 
         //create array of fields for query
-        $fields=array('username'=> $user, 'password' => crypt ( $pass ,"salt" ), 'name'=>$name );
+        $fields=array('username'=> $user, 'password' => hash('sha256', $pass), 'name'=>$name );
 
         //put the fields and prepared query + execute query
         $this->query($sql, $fields);
@@ -146,7 +146,7 @@ class SWTourism extends Database
         $sql = 'SELECT * FROM admin WHERE username = :username  AND password = :password';
 
         //create array of fields to log in
-        $fields=array('username'=> $user, 'password' => crypt ( $pass ,"salt" ));
+        $fields=array('username'=> $user, 'password' => hash('sha256', $pass));
 
         //put the fields and prepared query + execute query
         $pesquisa=$this->query($sql, $fields);
@@ -305,6 +305,22 @@ class SWTourism extends Database
         //var_dump($fields);
         $this->query($sql, $fields);
 
+    }
+
+
+    public function searchAdmin($search)
+    {
+        $sql = 'SELECT * FROM activity WHERE name LIKE :search';
+        $fields=array('search'=> $search."%");
+        $pesquisa=$this->query($sql, $fields);
+        $rows = count($pesquisa);
+        if($rows <= 0){
+            echo "Não tem resultados";
+            return [];
+        }
+        else{
+            return $pesquisa;
+        }
     }
 
 }

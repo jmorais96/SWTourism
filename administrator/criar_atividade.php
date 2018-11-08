@@ -10,7 +10,7 @@ session_start();
 //know if user can be here
 /*$conn->isClientLoggedIn();*/
 
-
+echo "<a href='?acao=logout'><button>LOGOUT</button></a>";
 if(isset($_POST['name'])){
 
     $folderPath = "../images/";

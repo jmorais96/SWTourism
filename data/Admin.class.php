@@ -34,4 +34,11 @@ class Admin
         return $this->name;
     }
 
+    public function logout()
+    {
+        session_destroy();
+        // unset($_SESSION['username']);
+        header('location:index.php');
+    }
+
 }
