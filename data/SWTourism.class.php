@@ -210,48 +210,39 @@ class SWTourism extends Database
     
      public function search()
     {
-        $option = isset($_POST['activityOption']) ? $_POST['activityOption'] : ''; 
-         echo $option;
-//         if (isset($_POST['activityOption']))
-//            {
-//                $activityOption = $_POST['activityOption'];
-//                echo $activityOption;
-//            }
-            
-             if ($search = (!empty($_GET['search'])) ? $_GET['search'] : '') 
-                {
-                    if($option == "name"){
-                        $sql = 'SELECT * FROM activity WHERE name LIKE :search';
-                        $fields=array('search'=> $search."%");
-                        $pesquisa=$this->query($sql, $fields);
-                        $rows = count($pesquisa);
-                            if($rows <= 0){
-                                echo "Não tem resultados";
-                                return [];
-                            }
-                            else{
-                                return $pesquisa;
-                            }
-                    } else if($option == "location") {
-                        $sql = 'SELECT * FROM activity WHERE location LIKE :search';
-                        $fields=array('search'=> $search."%");
-                        $pesquisa=$this->query($sql, $fields);
-                        $rows = count($pesquisa);
-                            if($rows <= 0){
-                                echo "Não tem resultados";
-                                return [];
-                            }
-                            else{
-                                return $pesquisa;
-                            }
-                    }
+        //selecao do select
+        $activityOption = isset($_GET['activityOption']) ? $_GET['activityOption'] : ''; 
+     
+        //
+        if ($search = (!empty($_GET['search'])) ? $_GET['search'] : "") 
+        {
+             if ($activityOption == "name") {
+                    $sql = 'SELECT * FROM activity WHERE name LIKE :search';
+                   
+             } else if ($activityOption == "location"){
+                $sql = 'SELECT * FROM activity WHERE location LIKE :search';
+             } else {
+                 echo "Não tem resultados";
+                 return [];
+             }
+                $fields=array('search'=> $search."%");
+                $pesquisa=$this->query($sql, $fields);
 
-                } else if (empty($_GET['search']))
-                {
-                     echo "Não tem resultados";
-                     return [];
+                $rows = count($pesquisa);
+                if($rows <= 0){
+                    echo "Não tem resultados";
+                    return [];
                 }
-         } 
+                else{
+                    return $pesquisa;
+                }
+
+        } else if (empty($_GET['search']))
+        {
+             echo "Não tem resultados";
+             return [];
+        }
+     }
     
     
     
