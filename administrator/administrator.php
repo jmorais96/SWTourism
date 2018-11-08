@@ -14,9 +14,6 @@ session_start();
 
 echo $_SESSION['admin']->getName();
 
-foreach ($conn->listActivity() as $value) {
-    echo "<a href='activity.php?id=".$value['idActivity']."'>".$value['name']."</a>"."<a href='delete_activity.php?id=".$value['idActivity']."'>Eliminar</><br>"."<a href='update_activity.php?id=".$value['idActivity']."'>Editar</a><br>";
-}
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +27,27 @@ foreach ($conn->listActivity() as $value) {
     <script src="main.js"></script>
 </head>
 <body>
+    <form method="get">
+        <input type="text" name="search">
+        <button>Pesquisar</button>
+    </form>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <?php
+        if (isset($_GET['search'])){
+         foreach ($conn->searchAdmin($_GET['search']) as $value ){
+             echo "<a href='activity.php?id=" . $value['idActivity'] . "'>" . $value['name'] . "</a>" . "<a href='delete_activity.php?id=" . $value['idActivity'] . "'>Eliminar</><br>" . "<a href='update_activity.php?id=" . $value['idActivity'] . "'>Editar</a><br>";
+         }
+        }else {
+            foreach ($conn->listActivity() as $value) {
+                echo "<a href='activity.php?id=" . $value['idActivity'] . "'>" . $value['name'] . "</a>" . "<a href='delete_activity.php?id=" . $value['idActivity'] . "'>Eliminar</><br>" . "<a href='update_activity.php?id=" . $value['idActivity'] . "'>Editar</a><br>";
+            }
+        }
+    ?>
+
     <a href="criar_atividade.php"><button>Criar atividade</button></a>
 </body>
 </html>

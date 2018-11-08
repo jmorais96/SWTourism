@@ -316,4 +316,20 @@ class SWTourism extends Database
 
     }
 
+
+    public function searchAdmin($search)
+    {
+        $sql = 'SELECT * FROM activity WHERE name LIKE :search';
+        $fields=array('search'=> $search."%");
+        $pesquisa=$this->query($sql, $fields);
+        $rows = count($pesquisa);
+        if($rows <= 0){
+            echo "Não tem resultados";
+            return [];
+        }
+        else{
+            return $pesquisa;
+        }
+    }
+
 }
