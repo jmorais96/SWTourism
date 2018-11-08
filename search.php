@@ -15,7 +15,7 @@ $conn->listActivityUser($_SESSION['user']->getIdUser());
 if(isset($_GET['logout'])) {
    $_SESSION['user']->logout();
 }
-
+//echo $_GET['search'];
 ?>
 
 <!DOCTYPE HTML>
@@ -85,6 +85,7 @@ if(isset($_GET['logout'])) {
 				</div>
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
+                        <li><a href="listActivity.php">Reservas</a></li>
 						<li><a href="contact.html">Contactos</a></li>
 						<li><a href="?logout">Logout</a></li>
 					</ul>
@@ -119,13 +120,12 @@ if(isset($_GET['logout'])) {
     <div class="gtco-container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-                <h2>Lista de Atividades Reservadas</h2>
-                <p>A seguinte lista mostra as atividades que tem reservadas até ao momento</p>
+                <h2>Resultado da pesquisa</h2>
             </div>
         </div>
         <div class="row">
 
-           <?php foreach ($conn->listActivityUser($_SESSION['user']->getIdUser()) as $value) {
+           <?php foreach ($conn->search() as $value) {
             ?>
             <div class="col-lg-4 col-md-4 col-sm-6">
                 <a class="fh5co-card-item">

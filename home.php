@@ -62,6 +62,8 @@ if(isset($_GET['logout'])) {
 
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.css">
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
@@ -88,6 +90,15 @@ if(isset($_GET['logout'])) {
 						<li><a href="contact.html">Contactos</a></li>
 						<li><a href="?logout">Logout</a></li>
 					</ul>
+					<form class="example" method="post" action="search.php" style="margin:auto;max-width:300px">
+                        <select name="activityOption"> 
+                            <option value="name">Nome</option>
+                            <option value="location">Localização</option>
+                        </select>
+                        <input type="text" placeholder="Pesquisar.." name="search">
+                      <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+					
 				</div>
 			</div>
 

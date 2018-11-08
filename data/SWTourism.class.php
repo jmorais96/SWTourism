@@ -181,8 +181,6 @@ class SWTourism extends Database
         $sql = "INSERT INTO activity (name, activity.desc, idAdmin, location, timeActivity, idImage) VALUES (:name, :desc, :idAdmin, :location, :timeActivity, :image)";
         $fields=array('name' => $name, 'desc'=> $desc, 'idAdmin' => $idAdmin, 'location'=> $location, 'timeActivity' => $time, 'image'=> $image[0]['idImage']);
         $this->query($sql, $fields);
-        
-
       }
     
     public function countUser()
@@ -193,23 +191,109 @@ class SWTourism extends Database
        //var_dump($result);
     }
 
-    
-
     public function deleteActivity($id)
     {
-
         $sql = 'DELETE from activity where idActivity = :idActivity';
         $this->query($sql, array('idActivity' => $id));
-
     }
 
-    public function updateActivity($name, $desc, $location,$time,  $idActivity)
+    public function updateActivity($name, $desc, $location, $time, $idActivity)
     {echo "$time";
         $sql="UPDATE activity set activity.name = :name, activity.desc = :desc, activity.location = :location, activity.timeActivity = :timeActivity where activity.idActivity = :idActivity";
         $fields=array('name' => $name, 'desc'=> $desc, 'location'=> $location, 'timeActivity' => $time, 'idActivity'=> $idActivity);
         $this->query($sql, $fields);
 
     }
+    
+     public function search()
+    {
+        $option = isset($_POST['activityOption']) ? $_POST['activityOption'] : ''; 
+         echo $option;
+//         if (isset($_POST['activityOption']))
+//            {
+//                $activityOption = $_POST['activityOption'];
+//                echo $activityOption;
+//            }
+            
+             if ($search = (!empty($_GET['search'])) ? $_GET['search'] : '') 
+                {
+                    if($option == "name"){
+                        $sql = 'SELECT * FROM activity WHERE name LIKE :search';
+                        $fields=array('search'=> $search."%");
+                        $pesquisa=$this->query($sql, $fields);
+                        $rows = count($pesquisa);
+                            if($rows <= 0){
+                                echo "Não tem resultados";
+                                return [];
+                            }
+                            else{
+                                return $pesquisa;
+                            }
+                    } else if($option == "location") {
+                        $sql = 'SELECT * FROM activity WHERE location LIKE :search';
+                        $fields=array('search'=> $search."%");
+                        $pesquisa=$this->query($sql, $fields);
+                        $rows = count($pesquisa);
+                            if($rows <= 0){
+                                echo "Não tem resultados";
+                                return [];
+                            }
+                            else{
+                                return $pesquisa;
+                            }
+                    }
 
+                } else if (empty($_GET['search']))
+                {
+                     echo "Não tem resultados";
+                     return [];
+                }
+         } 
+    
+    
+    
+//    public function search()
+//    {
+//         if ($search = (!empty($_GET['search'])) ? $_GET['search'] : "") 
+//            {
+//                $sql = 'SELECT * FROM activity WHERE name LIKE :search';
+//                $fields=array('search'=> $search."%");
+//                $pesquisa=$this->query($sql, $fields);
+//             
+//                    $rows = count($pesquisa);
+//                    if($rows <= 0){
+//                        echo "Não tem resultados";
+//                        return [];
+//                    }
+//                    else{
+//                        return $pesquisa;
+//                    }
+//
+//            } else if (empty($_GET['search']))
+//            {
+//                 echo "Não tem resultados";
+//                 return [];
+//            }
+//    }
+    
+//     public function search()
+//    {
+//         if(!empty($_GET['search'])){
+//             echo "Não tem resultados";
+//             return [];
+//         }else{
+//             $sql = 'SELECT * FROM activity WHERE name LIKE :search';
+//             $fields=array('search'=> $_GET['search']."%");
+//             $pesquisa=$this->query($sql, $fields);
+//             
+//             if(isset($pesquisa[0]['idActivity'])){
+//                return $pesquisa; 
+//             }else{
+//                 echo "Não tem resultados";
+//                 return [];
+//             }
+//         }
+//         
+//     }
 
 }
