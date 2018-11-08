@@ -12,7 +12,16 @@ require_once('../data/Admin.class.php');
 $conn=new SWTourism('../data/config.ini');
 session_start();
 
+
+
 echo $_SESSION['admin']->getName();
+
+echo "<a href='?acao=logout'><button>LOGOUT</button></a>";
+if (isset($_GET['acao'])){
+    if ($_GET['acao']=='logout'){
+        $_SESSION['admin']->logout();
+    }
+}
 
 ?>
 
