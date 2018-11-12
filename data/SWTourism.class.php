@@ -180,6 +180,7 @@ class SWTourism extends Database
         $image=$this->query($sql);
         $sql = "INSERT INTO activity (name, activity.desc, idAdmin, location, idImage) VALUES (:name, :desc, :idAdmin, :location, :image)";
         $fields=array('name' => $name, 'desc'=> $desc, 'idAdmin' => $idAdmin, 'location'=> $location, 'image'=> $image[0]['idImage']);
+     //   var_dump($fields);
         $this->query($sql, $fields);
       }
     
@@ -196,17 +197,19 @@ class SWTourism extends Database
         $sql = 'DELETE from activity where idActivity = :idActivity';
         $this->query($sql, array('idActivity' => $id));
     }
-
-
-    public function updateActivity($name, $desc, $location,$time,  $idActivity)
+    
+    public function updateActivity($idActivity, $name, $desc, $idAdmin, $location) //$image
     {
-
-        $sql="UPDATE activity set activity.name = :name, activity.desc = :desc, activity.location = :location, activity.timeActivity = :timeActivity where activity.idActivity = :idActivity";
-        $fields=array('name' => $name, 'desc'=> $desc, 'location'=> $location, 'timeActivity' => $time, 'idActivity'=> $idActivity);
+//        $sql='INSERT into image (name, imagePath) VALUES ( :name, "images/")';
+//        $this->query($sql, array('name' =>trim($image, " ")));
+//        $sql="SELECT * FROM image ORDER BY idImage DESC LIMIT 1";
+//        $image=$this->query($sql);
+        $sql="UPDATE activity set activity.idActivity = :idActivity, activity.name = :name, activity.desc = :desc, activity.idAdmin = :idAdmin, activity.location = :location"; // 
+        $fields=array('idActivity' => $idActivity, 'name' => $name, 'desc'=> $desc, 'idAdmin' => $idAdmin,'location'=> $location);
+        var_dump($fields);
         $this->query($sql, $fields);
 
     }
-
     
      public function search()
     {
