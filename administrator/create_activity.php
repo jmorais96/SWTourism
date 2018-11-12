@@ -1,62 +1,34 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jose
- * Date: 28-10-2018
- * Time: 17:11
- */
+
 
 require_once('../data/SWTourism.class.php');
 require_once('../data/Admin.class.php');
 
 $conn=new SWTourism('../data/config.ini');
+
 session_start();
-
-
-
-//echo $_SESSION['admin']->getName();
+//know if user can be here
+/*$conn->isClientLoggedIn();*/
 
 //echo "<a href='?acao=logout'><button>LOGOUT</button></a>";
-//if (isset($_GET['acao'])){
-//    if ($_GET['acao']=='logout'){
-//        $_SESSION['admin']->logout();
-//    }
-//}
+if(isset($_POST['name'])){
+
+    $folderPath = "../images/";
+
+    $destino = $folderPath.$_FILES['image']['name'];
+    //var_dump($_FILES);
+    $arquivo_tmp = $_FILES['image']['tmp_name'];
+
+    move_uploaded_file( $arquivo_tmp, $destino );
+    $conn->addActivity($_POST['name'], $_POST['desc'], $_SESSION['admin']->getIdAdmin(), $_POST['location'], $_FILES['image']['name']);
+}
 
 if(isset($_GET['logout'])) {
    $_SESSION['admin']->logout();
 }
+    
 
 ?>
-
-<!--
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
-</head>
-<body>
--->
-<!--
-    <form method="get">
-        <input type="text" name="search">
-        <button>Pesquisar</button>
-    </form>
-
-    <br>
-    <br>
-    <br>
-    <br>
--->
-<!--
-</body>
-</html>
--->
 
 <!DOCTYPE HTML>
 <html>
@@ -127,6 +99,7 @@ if(isset($_GET['logout'])) {
 				</div>
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
+					    <li><a href="administrator.php">Atividades</a></li>
 						<li><a href="?logout">Logout</a></li>
 					</ul>		
                     <!--
@@ -146,7 +119,7 @@ if(isset($_GET['logout'])) {
 		</div>
 	</nav>
 
-	<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(images/img_2.jpg)">
+	<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(../images/img_2.jpg)">
 		<div class="overlay"></div>
 		<div class="gtco-container">
 			<div class="row">
@@ -155,7 +128,7 @@ if(isset($_GET['logout'])) {
 
 						<div class="col-md-12 mt-text animate-box" data-animate-effect="fadeInUp">
 <!--                            <h1>Lista de atividades</h1>-->
-                            <h2>Bem vindo administrador(a), <?php echo( $_SESSION['admin']->getName()); ?></h2>
+                            <h2><?php echo( $_SESSION['admin']->getName()); ?></h2>
                         </div>
 
                     </div>
@@ -165,84 +138,67 @@ if(isset($_GET['logout'])) {
         </div>
     </header>
 
-
-
+    
 <div class="gtco-section">
     <div class="gtco-container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-                <h2>Atividades</h2>
-<!--                <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>-->
+                <h2>Criar Atividade</h2>
             </div>
         </div>
         <div class="row">
-         
-         <a href="create_activity.php"><button class="buttonAdmin">Criar atividade</button></a>
-         <br><br> <br><br>
-          
-        <?php
-        if (isset($_GET['search'])){  
-             echo "<table>
-                      <tr>
-                        <th>Atividade</th>
-                        <th>Eliminar</th>
-                        <th>Editar</th>
-                      </tr>
-                    </table>";
-            foreach ($conn->searchAdmin($_GET['search']) as $value ){
-                echo "<table>
-                      <tr>
-                        <td><a href='activity.php?id=" . $value['idActivity'] . "'>" . $value['name'] . "</a></td>                        
-                        <td><a href='delete_activity.php?id=" . $value['idActivity'] . "'>Eliminar</><br></td>
-                        <td><a href='update_activity.php?id=" . $value['idActivity'] . "'>Editar</a><br></td>
-                      </tr>
-                    </table>";
-            } 
-        } else {  
-            echo "<table>
-                      <tr>
-                        <th>Atividade</th>
-                        <th>Eliminar</th>
-                        <th>Editar</th>
-                      </tr>
-                    </table>";
-                foreach ($conn->listActivity() as $value) {
-                    echo "<table>
-                      <tr>
-                        <td><a href='activity.php?id=" . $value['idActivity'] . "'>" . $value['name'] . "</a></td>                        
-                        <td><a href='delete_activity.php?id=" . $value['idActivity'] . "'>Eliminar</><br></td>
-                        <td><a href='update_activity.php?id=" . $value['idActivity'] . "'>Editar</a><br></td>
-                      </tr>
-                    </table>";
-                }
-            }
-        
-        
-        ?>  
-                
-
 <!--
-       <?php/*
-            if (isset($_GET['search'])){
-             foreach ($conn->searchAdmin($_GET['search']) as $value ){
-                 echo "<a href='activity.php?id=" . $value['idActivity'] . "'>" . $value['name'] . "</a>" . "<a href='delete_activity.php?id=" . $value['idActivity'] . "'>Eliminar</><br>" . "<a href='update_activity.php?id=" . $value['idActivity'] . "'>Editar</a><br>";
-             }
-            }else {
-             foreach ($conn->listActivity() as $value) {
-                echo "<a href='activity.php?id=" . $value['idActivity'] . "'>" . $value['name'] . "</a>" . "<a href='delete_activity.php?id=" . $value['idActivity'] . "'>Eliminar</><br>" . "<a href='update_activity.php?id=" . $value['idActivity'] . "'>Editar</a><br>";
-                }
-            }*/
-        ?>
--->
+                                     <form action="" method="POST" enctype="multipart/form-data">
+        <input type="text" name="name">
+        <textarea name="desc" id="" cols="30" rows="10">
 
+        </textarea>
+        <input type="text" name="location">
+        <input type="file" name="image">
+        <input type="submit" value="Criar atividade">
+        
+    </form>
+-->
+                                    
+                    <form class="login100-form validate-form" method="post">
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <label for="name">Nome</label>
+                                <input type="text" id="name" name="name" class="form-control">
+                            </div>
+                        </div>
+                         <div class="row form-group">
+                            <div class="col-md-12">
+                                <label for="desc">Descrição</label>
+                                <textarea name="desc" id="" cols="30" rows="10" class="form-control"  placeholder=""></textarea>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <label for="location">Localização</label>
+                                <input type="text" id="location" name="location" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <label for="image">Imagem</label>
+                                <input type="file" name="image" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+                            </div>
+                        </div>
+
+
+                    </form>
+        
             
         </div>
     </div>
 </div>
-
-</div>
-
-
+    
 
 <footer id="gtco-footer" role="contentinfo">
     <div class="gtco-container">
