@@ -125,7 +125,7 @@ if (isset($_GET['acao'])){
 					<ul>
 					    <li><a href="listActivity.php">Reservas</a></li>
 						<li><a href="contact.html">Contactos</a></li>
-						<li><a href="?logout">Logout</a></li>
+						<li><a href="?acao=logout">Logout</a></li>
 					</ul>		
                     <!--
                         <form method="get">
