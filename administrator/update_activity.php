@@ -25,6 +25,12 @@ if(isset($_POST['name'])){
     $conn->updateActivity($idActivity['idActivity'], $_POST['name'], $_POST['desc'], $_SESSION['admin']->getIdAdmin(), $_POST['location']); //$_FILES['image']['name']
 }
 
+if (isset($_GET['acao'])){
+    if ($_GET['acao']=='logout'){
+        $_SESSION['admin']->logout();
+    }
+}
+
 ?>
 
 <!DOCTYPE HTML>
@@ -97,7 +103,7 @@ if(isset($_POST['name'])){
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
 					    <li><a href="administrator.php">Atividades</a></li>
-						<li><a href="?logout">Logout</a></li>
+						<li><a href="?acao=logout">Logout</a></li>
 					</ul>		
                     <!--
                         <form method="get">

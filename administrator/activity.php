@@ -31,6 +31,11 @@ foreach ($conn->listReservationsAdmin($idActivity['idActivity']) as $value){
     echo $value['name']." <br> <form method='post' action='activity.php?id=".$value['idActivity']."' > <select name='state'> <option value ='reservada'>Reservada</option> <option value ='adiada' >Adiada</option> <option value ='cancelada'>Cancelada</option> </select> <input type='hidden' name='idUser' value='".$value['idUser']."' >   <input type='submit' value='Mudar'> </form>";
 }
 
+if (isset($_GET['acao'])){
+    if ($_GET['acao']=='logout'){
+        $_SESSION['admin']->logout();
+    }
+}
 
 ?>
 

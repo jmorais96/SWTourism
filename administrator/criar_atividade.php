@@ -22,6 +22,12 @@ if(isset($_POST['name'])){
     move_uploaded_file( $arquivo_tmp, $destino );
     $conn->addActivity($_POST['name'], $_POST['desc'], $_SESSION['admin']->getIdAdmin(), $_POST['location'], $_FILES['image']['name']);
 }
+
+if (isset($_GET['acao'])){
+    if ($_GET['acao']=='logout'){
+        $_SESSION['admin']->logout();
+    }
+}
     
 
 ?>

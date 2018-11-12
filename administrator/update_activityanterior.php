@@ -20,6 +20,12 @@ if(isset($_POST['name'])){
     $conn->updateActivity($_POST['name'], $_POST['desc'], $_POST['location'], $_POST['time'], $idActivity['idActivity']);
 }
 
+if (isset($_GET['acao'])){
+    if ($_GET['acao']=='logout'){
+        $_SESSION['admin']->logout();
+    }
+}
+
 ?>
 
 <!DOCTYPE html>

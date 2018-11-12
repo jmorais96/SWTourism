@@ -127,6 +127,7 @@ if(isset($_GET['logout'])) {
 				</div>
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
+
 					    <li><a href="../listActivity.php">Reservas</a></li>
 						<li><a href="../contact.html">Contactos</a></li>
 						<li><a href="?logout">Logout</a></li>
