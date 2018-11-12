@@ -9,7 +9,7 @@ $conn->isClientLoggedOff();
 $conn->listActivity(); 
 $conn->listComments(); 
 $conn->countUser();
-$conn->listActivityUser($_SESSION['user']->getIdUser());
+$conn->listActivityUser($_SESSION['user']->idUser());
 
 
 if(isset($_GET['logout'])) {
@@ -125,7 +125,7 @@ if(isset($_GET['logout'])) {
         </div>
         <div class="row">
 
-           <?php foreach ($conn->listActivityUser($_SESSION['user']->getIdUser()) as $value) {
+           <?php foreach ($conn->listActivityUser($_SESSION['user']->idUser()) as $value) {
             ?>
             <div class="col-lg-4 col-md-4 col-sm-6">
                 <a class="fh5co-card-item">

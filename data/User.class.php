@@ -15,7 +15,7 @@ class User
         $this->name=$name;
     }
     
-    public function getIdUser()
+    public function idUser()
     {
         return $this->idUser;
     }

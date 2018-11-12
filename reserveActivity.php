@@ -33,7 +33,7 @@ if(isset($_GET['logout'])) {
                 $_POST["$key"] = filter_var($value, FILTER_SANITIZE_STRING);
             }
             
-            $conn->reserveActivity($_SESSION['user']->idUser(), $_GET['idActivity'],  $_POST['dateReservation'], $_POST['name'], $_POST['cardNumber'], $_POST['expiry'], $_POST['cardType'], $_POST['securityCode']);
+            $conn->reserveActivity($_SESSION['user']->idUser(), $_GET['idActivity'],  $_POST['dateReservation'], $_POST['timeReservation'], $_POST['name'], $_POST['cardNumber'], $_POST['expiry'], $_POST['cardType'], $_POST['securityCode']);
     }
 
 ?>
@@ -139,6 +139,12 @@ if(isset($_GET['logout'])) {
                                                     <div class="col-md-12">
                                                         <label for="dateReservation">Data</label>
                                                         <input type="date" id="dateReservation" name="dateReservation" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="row form-group">
+                                                    <div class="col-md-12">
+                                                        <label for="hourReservation">Hora</label>
+                                                        <input type="time" id="timeReservation" name="timeReservation" class="form-control">
                                                     </div>
                                                 </div>
                                                 <br>

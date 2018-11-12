@@ -20,7 +20,7 @@ if(isset($_POST['name'])){
     $arquivo_tmp = $_FILES['image']['tmp_name'];
 
     move_uploaded_file( $arquivo_tmp, $destino );
-    $conn->addActivity($_POST['name'], $_POST['desc'], $_SESSION['admin']->getIdAdmin(), $_POST['location'], $_POST['time'], $_FILES['image']['name']);
+    $conn->addActivity($_POST['name'], $_POST['desc'], $_SESSION['admin']->getIdAdmin(), $_POST['location'], $_FILES['image']['name']);
 }
     
 
@@ -44,7 +44,6 @@ if(isset($_POST['name'])){
 
         </textarea>
         <input type="text" name="location">
-        <input type="time" id="time" name="time">
         <input type="file" name="image">
         <input type="submit" value="Criar atividade">
         

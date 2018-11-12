@@ -1049,6 +1049,10 @@ pre code {
   left: 8.33333%;
 }
 
+.col-xs-push-1new {
+  left: 0;
+}
+
 .col-xs-push-2 {
   left: 16.66667%;
 }

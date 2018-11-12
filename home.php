@@ -90,7 +90,7 @@ if(isset($_GET['logout'])) {
 						<li><a href="contact.html">Contactos</a></li>
 						<li><a href="?logout">Logout</a></li>
 					</ul>
-					<form class="example" action="search.php" style="margin:auto;max-width:300px">
+					<form class="example" action="search.php" style="display:flex;margin:auto;max-width:300px">
                         <select name="activityOption"> 
                             <option value="name">Nome</option>
                             <option value="location">Localização</option>

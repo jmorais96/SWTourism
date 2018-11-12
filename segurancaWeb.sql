@@ -1,20 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb5
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Nov 08, 2018 at 03:53 
--- Server version: 5.7.22-0ubuntu0.17.10.1
--- PHP Version: 7.1.17-0ubuntu0.17.10.1
+-- Host: localhost:8889
+-- Generation Time: Nov 12, 2018 at 01:08 PM
+-- Server version: 5.6.38
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `segurancaWeb`
@@ -32,7 +26,6 @@ CREATE TABLE `activity` (
   `desc` varchar(500) NOT NULL,
   `idAdmin` int(11) NOT NULL,
   `location` varchar(75) NOT NULL,
-  `timeActivity` time NOT NULL,
   `idImage` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -40,9 +33,8 @@ CREATE TABLE `activity` (
 -- Dumping data for table `activity`
 --
 
-INSERT INTO `activity` (`idActivity`, `name`, `desc`, `idAdmin`, `location`, `timeActivity`, `idImage`) VALUES
-(2, 'Mergulho', 'As atividades de mergulho restringem-se a profundidades relativamente rasas, devido aos efeitos da pressão nas áreas mais profundas do mundo, mesmo roupas de mergulho rígidas são incapazes de levar os mergulhadores a estes ambientes.', 1, 'Ponta Delgada', '08:18:00', 1),
-(3, 'testes', 'sjfnskdfjbsakdjfbksdfbksdjafn\r\n        ', 2, 'asdfbskjgfbkdsfjgbd', '03:31:00', 2);
+INSERT INTO `activity` (`idActivity`, `name`, `desc`, `idAdmin`, `location`, `idImage`) VALUES
+(4, 'Mergulho', 'Bla bla', 3, 'Ponta Delgada', 4);
 
 -- --------------------------------------------------------
 
@@ -62,8 +54,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`idAdmin`, `username`, `password`, `name`) VALUES
-(1, 'carina', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'Carina Gomes'),
-(2, 'jose', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'José Morais');
+(3, 'andre', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'André Silva');
 
 -- --------------------------------------------------------
 
@@ -95,6 +86,13 @@ CREATE TABLE `creditCard` (
   `idUser` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `creditCard`
+--
+
+INSERT INTO `creditCard` (`idCreditCard`, `name`, `cardNumber`, `expiry`, `cardType`, `securityCode`, `idUser`) VALUES
+(0, 'Alice', 2147483647, '3235-02-12', 'Visa', 1223, 5);
+
 -- --------------------------------------------------------
 
 --
@@ -112,8 +110,8 @@ CREATE TABLE `image` (
 --
 
 INSERT INTO `image` (`idImage`, `name`, `imagePath`) VALUES
-(1, 'mergulho.jpg', 'images/'),
-(2, 'Firefox_wallpaper.png', '../image/');
+(3, 'mergulho.jpg', 'images/'),
+(4, 'mergulho.jpg', 'images/');
 
 -- --------------------------------------------------------
 
@@ -125,15 +123,17 @@ CREATE TABLE `reservation` (
   `idUser` int(11) NOT NULL,
   `idActivity` int(11) NOT NULL,
   `dateReservation` date NOT NULL,
-  `state` enum('reservada','adiada','cancelada') NOT NULL
+  `state` enum('reservada','adiada','cancelada') NOT NULL,
+  `idReservation` int(11) NOT NULL,
+  `timeReservation` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `reservation`
 --
 
-INSERT INTO `reservation` (`idUser`, `idActivity`, `dateReservation`, `state`) VALUES
-(1, 2, '2018-11-14', 'cancelada');
+INSERT INTO `reservation` (`idUser`, `idActivity`, `dateReservation`, `state`, `idReservation`, `timeReservation`) VALUES
+(5, 4, '2018-11-09', 'reservada', 1, '23:23:00');
 
 -- --------------------------------------------------------
 
@@ -153,8 +153,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`idUser`, `username`, `password`, `name`) VALUES
-(1, 'Alice', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'Alice Gomes'),
-(2, 'Andre', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'Andre Oliveira');
+(1, 'carina', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'Carina Gomes'),
+(2, 'jose', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'José Felizmino'),
+(5, 'alice', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'Alice Linda');
 
 -- --------------------------------------------------------
 
@@ -210,8 +211,9 @@ ALTER TABLE `image`
 -- Indexes for table `reservation`
 --
 ALTER TABLE `reservation`
-  ADD PRIMARY KEY (`idUser`,`idActivity`),
-  ADD KEY `fk_user_activity_idx` (`idActivity`);
+  ADD PRIMARY KEY (`idReservation`),
+  ADD KEY `fk_user_activity_idx` (`idActivity`),
+  ADD KEY `fk_user_reservation` (`idUser`);
 
 --
 -- Indexes for table `user`
@@ -234,32 +236,38 @@ ALTER TABLE `user_activity`
 -- AUTO_INCREMENT for table `activity`
 --
 ALTER TABLE `activity`
-  MODIFY `idActivity` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idActivity` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `idAdmin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idAdmin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
   MODIFY `idComments` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `image`
 --
 ALTER TABLE `image`
-  MODIFY `idImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idReservation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- Constraints for dumped tables
 --
@@ -297,7 +305,3 @@ ALTER TABLE `reservation`
 ALTER TABLE `user_activity`
   ADD CONSTRAINT `fk_activity_user` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_user_activity` FOREIGN KEY (`idActivity`) REFERENCES `activity` (`idActivity`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
