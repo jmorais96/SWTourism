@@ -17,10 +17,14 @@ session_start();
 //echo $_SESSION['admin']->getName();
 
 //echo "<a href='?acao=logout'><button>LOGOUT</button></a>";
-if (isset($_GET['acao'])){
-    if ($_GET['acao']=='logout'){
-        $_SESSION['admin']->logout();
-    }
+//if (isset($_GET['acao'])){
+//    if ($_GET['acao']=='logout'){
+//        $_SESSION['admin']->logout();
+//    }
+//}
+
+if(isset($_GET['logout'])) {
+   $_SESSION['admin']->logout();
 }
 
 ?>
@@ -119,12 +123,12 @@ if (isset($_GET['acao'])){
 
 			<div class="row">
 				<div class="col-sm-4 col-xs-12">
-					<div id="gtco-logo"><a href="index.php">Adventure <em>.</em></a></div>
+					<div id="gtco-logo"><a href="administrator.php">Adventure <em>.</em></a></div>
 				</div>
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
-					    <li><a href="listActivity.php">Reservas</a></li>
-						<li><a href="contact.html">Contactos</a></li>
+					    <li><a href="../listActivity.php">Reservas</a></li>
+						<li><a href="../contact.html">Contactos</a></li>
 						<li><a href="?logout">Logout</a></li>
 					</ul>		
                     <!--
