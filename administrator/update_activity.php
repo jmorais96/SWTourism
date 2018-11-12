@@ -116,7 +116,7 @@ if(isset($_POST['name'])){
 		</div>
 	</nav>
 
-	<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(images/img_2.jpg)">
+	<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(../images/img_2.jpg)">
 		<div class="overlay"></div>
 		<div class="gtco-container">
 			<div class="row">
@@ -167,7 +167,7 @@ if(isset($_POST['name'])){
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <label for="desc">Descrição</label>
-                                <textarea name="desc" id="" cols="30" rows="10" class="form-control"  placeholder="<?php echo $idActivity['desc'] ?>"></textarea>
+                                <textarea name="desc" id="" cols="30" rows="10" class="form-control"  placeholder=""><?php echo $idActivity['desc'] ?></textarea>
                             </div>
                         </div>
                         <div class="row form-group">

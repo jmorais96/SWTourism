@@ -204,9 +204,9 @@ class SWTourism extends Database
 //        $this->query($sql, array('name' =>trim($image, " ")));
 //        $sql="SELECT * FROM image ORDER BY idImage DESC LIMIT 1";
 //        $image=$this->query($sql);
-        $sql="UPDATE activity set activity.idActivity = :idActivity, activity.name = :name, activity.desc = :desc, activity.idAdmin = :idAdmin, activity.location = :location"; // 
-        $fields=array('idActivity' => $idActivity, 'name' => $name, 'desc'=> $desc, 'idAdmin' => $idAdmin,'location'=> $location);
-        var_dump($fields);
+        $sql="UPDATE activity set activity.name = :name, activity.desc = :desc, activity.idAdmin = :idAdmin, activity.location = :location where activity.idActivity = :idActivity";
+        $fields=array('name' => $name, 'desc'=> $desc, 'idAdmin' => $idAdmin,'location'=> $location, 'idActivity' => $idActivity);
+        //var_dump($fields);
         $this->query($sql, $fields);
 
     }
