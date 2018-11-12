@@ -1948,6 +1948,11 @@ td, th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
+    width: 33%;
+}
+
+td {
+    background: #dddddd;
 }
 
 tr:nth-child(even) {

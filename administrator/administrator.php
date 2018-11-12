@@ -180,13 +180,15 @@ if (isset($_GET['acao'])){
           
         <?php
         if (isset($_GET['search'])){  
-            foreach ($conn->searchAdmin($_GET['search']) as $value ){
-                echo "<table>
+             echo "<table>
                       <tr>
                         <th>Atividade</th>
                         <th>Eliminar</th>
                         <th>Editar</th>
                       </tr>
+                    </table>";
+            foreach ($conn->searchAdmin($_GET['search']) as $value ){
+                echo "<table>
                       <tr>
                         <td><a href='activity.php?id=" . $value['idActivity'] . "'>" . $value['name'] . "</a></td>                        
                         <td><a href='delete_activity.php?id=" . $value['idActivity'] . "'>Eliminar</><br></td>
@@ -194,14 +196,16 @@ if (isset($_GET['acao'])){
                       </tr>
                     </table>";
             } 
-        } else {
-                foreach ($conn->listActivity() as $value) {
-                    echo "<table>
+        } else {  
+            echo "<table>
                       <tr>
                         <th>Atividade</th>
                         <th>Eliminar</th>
                         <th>Editar</th>
                       </tr>
+                    </table>";
+                foreach ($conn->listActivity() as $value) {
+                    echo "<table>
                       <tr>
                         <td><a href='activity.php?id=" . $value['idActivity'] . "'>" . $value['name'] . "</a></td>                        
                         <td><a href='delete_activity.php?id=" . $value['idActivity'] . "'>Eliminar</><br></td>
