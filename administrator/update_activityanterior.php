@@ -110,7 +110,7 @@ if (isset($_GET['acao'])){
         </div>
     </nav>
 
-    <header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style="background-image: url(images/img_8_dark.jpg)">
+    <header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style="background-image: url(../images/img_8_dark.jpg)">
         <div class="overlay"></div>
         <div class="gtco-container">
             <div class="row">

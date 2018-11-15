@@ -138,13 +138,13 @@ if(isset($_GET['logout'])) {
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="dateReservation">Data</label>
-                                                        <input type="date" id="dateReservation" name="dateReservation" class="form-control">
+                                                        <input type="date" id="dateReservation" name="dateReservation" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="hourReservation">Hora</label>
-                                                        <input type="time" id="timeReservation" name="timeReservation" class="form-control">
+                                                        <input type="time" id="timeReservation" name="timeReservation" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <br>
@@ -152,25 +152,25 @@ if(isset($_GET['logout'])) {
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="name">Nome</label>
-                                                        <input type="text" id="name" name="name" class="form-control">
+                                                        <input type="text" id="name" name="name" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="cardNumber">Número</label>
-                                                        <input type="text" id="cardNumber" name="cardNumber" class="form-control">
+                                                        <input type="text" id="cardNumber" name="cardNumber" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="expiry">Data de validade</label>
-                                                        <input type="date" id="expiry" name="expiry" class="form-control">
+                                                        <input type="date" id="expiry" name="expiry" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="cardType">Tipo de cartão</label>
-                                                        <select type="text" id="cardType" name="cardType" class="form-control">
+                                                        <select type="text" id="cardType" name="cardType" class="form-control" required>
                                                           <option value="Visa">Visa</option>
                                                           <option value="MasterCard">MasterCard</option>
                                                           <option value="American Express">American Express</option>
@@ -181,7 +181,7 @@ if(isset($_GET['logout'])) {
                                                  <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="securityCode">Código de segurança</label>
-                                                        <input type="text" id="securityCode" name="securityCode" class="form-control">
+                                                        <input type="text" id="securityCode" name="securityCode" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 
