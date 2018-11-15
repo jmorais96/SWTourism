@@ -17,10 +17,14 @@ session_start();
 //echo $_SESSION['admin']->getName();
 
 //echo "<a href='?acao=logout'><button>LOGOUT</button></a>";
-if (isset($_GET['acao'])){
-    if ($_GET['acao']=='logout'){
-        $_SESSION['admin']->logout();
-    }
+//if (isset($_GET['acao'])){
+//    if ($_GET['acao']=='logout'){
+//        $_SESSION['admin']->logout();
+//    }
+//}
+
+if(isset($_GET['logout'])) {
+   $_SESSION['admin']->logout();
 }
 
 ?>
@@ -119,13 +123,11 @@ if (isset($_GET['acao'])){
 
 			<div class="row">
 				<div class="col-sm-4 col-xs-12">
-					<div id="gtco-logo"><a href="index.php">Adventure <em>.</em></a></div>
+					<div id="gtco-logo"><a href="administrator.php">Adventure <em>.</em></a></div>
 				</div>
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
-					    <li><a href="listActivity.php">Reservas</a></li>
-						<li><a href="contact.html">Contactos</a></li>
-						<li><a href="?acao=logout">Logout</a></li>
+						<li><a href="?logout">Logout</a></li>
 					</ul>		
                     <!--
                         <form method="get">
@@ -175,7 +177,7 @@ if (isset($_GET['acao'])){
         </div>
         <div class="row">
          
-         <a href="criar_atividade.php"><button class="buttonAdmin">Criar atividade</button></a>
+         <a href="create_activity.php"><button class="buttonAdmin">Criar atividade</button></a>
          <br><br> <br><br>
           
         <?php

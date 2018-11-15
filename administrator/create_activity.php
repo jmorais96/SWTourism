@@ -1,5 +1,6 @@
 <?php
 
+
 require_once('../data/SWTourism.class.php');
 require_once('../data/Admin.class.php');
 
@@ -9,27 +10,23 @@ session_start();
 //know if user can be here
 /*$conn->isClientLoggedIn();*/
 
-$idActivity=$conn->idActivity($_GET['id']);
-
-if ($idActivity==NULL){
-    header("location:administrator.php");
-}
+//echo "<a href='?acao=logout'><button>LOGOUT</button></a>";
 if(isset($_POST['name'])){
+
+    $folderPath = "../images/";
+
+    $destino = $folderPath.$_FILES['image']['name'];
+    //var_dump($_FILES);
+    $arquivo_tmp = $_FILES['image']['tmp_name'];
+
+    move_uploaded_file( $arquivo_tmp, $destino );
+    $conn->addActivity($_POST['name'], $_POST['desc'], $_SESSION['admin']->getIdAdmin(), $_POST['location'], $_FILES['image']['name']);
+}
+
+if(isset($_GET['logout'])) {
+   $_SESSION['admin']->logout();
+}
     
-  //  $folderPath = "../images/";
-
- //   $destino = $folderPath.$_FILES['image']['name'];
- //   $arquivo_tmp = $_FILES['image']['tmp_name'];
-
-  //  move_uploaded_file( $arquivo_tmp, $destino );
-    $conn->updateActivity($idActivity['idActivity'], $_POST['name'], $_POST['desc'], $_SESSION['admin']->getIdAdmin(), $_POST['location']); //$_FILES['image']['name']
-}
-
-if (isset($_GET['acao'])){
-    if ($_GET['acao']=='logout'){
-        $_SESSION['admin']->logout();
-    }
-}
 
 ?>
 
@@ -103,7 +100,7 @@ if (isset($_GET['acao'])){
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
 					    <li><a href="administrator.php">Atividades</a></li>
-						<li><a href="?acao=logout">Logout</a></li>
+						<li><a href="?logout">Logout</a></li>
 					</ul>		
                     <!--
                         <form method="get">
@@ -146,53 +143,51 @@ if (isset($_GET['acao'])){
     <div class="gtco-container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-                <h2>Editar Atividade <?php echo $idActivity['name'] ?></h2>
+                <h2>Criar Atividade</h2>
             </div>
         </div>
         <div class="row">
-         
-                           <!--
-                    <form method="post">
+<!--
+                                     <form action="" method="POST" enctype="multipart/form-data">
+        <input type="text" name="name">
+        <textarea name="desc" id="" cols="30" rows="10">
 
-                        <input type="text" name="name" value="<?php //echo $idActivity['name'] ?>">
-                        <textarea name="desc" id="" cols="30" rows="10" ><?php //echo $idActivity['desc'] ?></textarea>
-                        <input type="text" name="location" value="<?php //echo $idActivity['location'] ?>">
-                        <input type="time" id="time" name="time" value="<?php //echo $idActivity['time'] ?>">
-                        <input type="submit" value="Editar">
-                    </form>
-                    -->
-                                           
-                                           
+        </textarea>
+        <input type="text" name="location">
+        <input type="file" name="image">
+        <input type="submit" value="Criar atividade">
+        
+    </form>
+-->
+                                    
                     <form class="login100-form validate-form" method="post">
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <label for="name">Nome</label>
-                                <input type="text" id="name" name="name" class="form-control" value="<?php echo $idActivity['name'] ?>">
+                                <input type="text" id="name" name="name" class="form-control">
                             </div>
                         </div>
-                        <div class="row form-group">
+                         <div class="row form-group">
                             <div class="col-md-12">
                                 <label for="desc">Descrição</label>
-                                <textarea name="desc" id="" cols="30" rows="10" class="form-control"  placeholder=""><?php echo $idActivity['desc'] ?></textarea>
+                                <textarea name="desc" id="" cols="30" rows="10" class="form-control"  placeholder=""></textarea>
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <label for="location">Localização</label>
-                                <input type="text" id="location" name="location" class="form-control" value="<?php echo $idActivity['location'] ?>">
+                                <input type="text" id="location" name="location" class="form-control">
                             </div>
                         </div>
-<!--
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <label for="image">Imagem</label>
                                 <input type="file" name="image" class="form-control">
                             </div>
                         </div>
--->
                         <div class="row form-group">
                             <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary btn-block">Editar</button>
+                                <button type="submit" class="btn btn-primary btn-block">Guardar</button>
                             </div>
                         </div>
 
