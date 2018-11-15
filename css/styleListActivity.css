@@ -1951,6 +1951,14 @@ td, th {
     width: 33%;
 }
 
+.formOption {
+    display: flex;
+}
+
+select[name='state']{
+    width: 50%;
+}
+
 td {
     background: #dddddd;
 }

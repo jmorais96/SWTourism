@@ -13,7 +13,6 @@ session_start();
 //echo "<a href='?acao=logout'><button>LOGOUT</button></a>";
 $success = "";
 if(isset($_POST['name']) && isset($_POST['desc']) && isset($_POST['location']) && isset($_FILES['image']) ){
->>>>>>> 8bb51fe37339bf0a8409d523cc7d862d64814c89
 
     $folderPath = "../images/";
 

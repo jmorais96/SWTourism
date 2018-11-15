@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Nov 12, 2018 at 01:08 PM
+-- Generation Time: Nov 15, 2018 at 10:21 PM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -34,7 +34,10 @@ CREATE TABLE `activity` (
 --
 
 INSERT INTO `activity` (`idActivity`, `name`, `desc`, `idAdmin`, `location`, `idImage`) VALUES
-(4, 'Mergulho', 'Bla bla', 3, 'Ponta Delgada', 4);
+(4, 'Mergulho', 'Teste', 3, 'Ponta Delgada', 4),
+(5, 'Pesca', 'Bla', 3, 'Ponta Delgada', 7),
+(15, 'Canyoning', 'Os Açores são um arquipélago situado na crista Média Oceânica de origem vulcânica e constituído por 9 ilhas, das quais três apresentam excelentes condições para a prática de canyoning.', 3, 'Ribeira Grande', 18),
+(16, 'Golfe', 'Olhar em redor e não ver qualquer tipo de construção humana na linha do horizonte. Só paz e natureza. Mais uma tacada e temos o Atlântico à espreita. A morfologia dos greens convida à caminhada, na companhia de uma explosão colorida de flores. ', 3, 'Ribeira Grande', 19);
 
 -- --------------------------------------------------------
 
@@ -69,6 +72,16 @@ CREATE TABLE `comments` (
   `comment` varchar(500) NOT NULL,
   `dateComment` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`idComments`, `idUser`, `idActivity`, `comment`, `dateComment`) VALUES
+(1, 6, 15, 'Adorei a experiência!', '2018-11-15 16:56:21'),
+(2, 6, 15, 'o jose é toto', '2018-11-15 16:59:05'),
+(3, 6, 15, 'teste', '2018-11-15 16:59:44'),
+(4, 6, 15, 'teste', '2018-11-15 17:00:31');
 
 -- --------------------------------------------------------
 
@@ -111,7 +124,34 @@ CREATE TABLE `image` (
 
 INSERT INTO `image` (`idImage`, `name`, `imagePath`) VALUES
 (3, 'mergulho.jpg', 'images/'),
-(4, 'mergulho.jpg', 'images/');
+(4, 'mergulho.jpg', 'images/'),
+(5, '4', 'images/'),
+(6, '4', 'images/'),
+(7, 'img_7_dark.jpg', 'images/'),
+(8, '', 'images/'),
+(9, '', 'images/'),
+(10, '', 'images/'),
+(11, '', 'images/'),
+(12, '', 'images/'),
+(13, '', 'images/'),
+(14, '', 'images/'),
+(15, '', 'images/'),
+(16, '', 'images/'),
+(17, '', 'images/'),
+(18, 'canyoning.jpg', 'images/'),
+(19, 'golfe.jpg', 'images/'),
+(20, '', 'images/'),
+(21, '', 'images/'),
+(22, '', 'images/'),
+(23, '', 'images/'),
+(24, '', 'images/'),
+(25, '', 'images/'),
+(26, '', 'images/'),
+(27, '', 'images/'),
+(28, '', 'images/'),
+(29, '', 'images/'),
+(30, '', 'images/'),
+(31, '', 'images/');
 
 -- --------------------------------------------------------
 
@@ -133,7 +173,10 @@ CREATE TABLE `reservation` (
 --
 
 INSERT INTO `reservation` (`idUser`, `idActivity`, `dateReservation`, `state`, `idReservation`, `timeReservation`) VALUES
-(5, 4, '2018-11-09', 'reservada', 1, '23:23:00');
+(5, 4, '2018-11-09', 'cancelada', 1, '23:23:00'),
+(6, 4, '2018-11-07', 'reservada', 2, '22:02:00'),
+(6, 4, '2018-11-07', 'reservada', 3, '22:02:00'),
+(5, 4, '0000-00-00', 'cancelada', 4, '00:00:00');
 
 -- --------------------------------------------------------
 
@@ -155,7 +198,8 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`idUser`, `username`, `password`, `name`) VALUES
 (1, 'carina', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'Carina Gomes'),
 (2, 'jose', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'José Felizmino'),
-(5, 'alice', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'Alice Linda');
+(5, 'alice', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'Alice Linda'),
+(6, 'ana', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Ana');
 
 -- --------------------------------------------------------
 
@@ -236,7 +280,7 @@ ALTER TABLE `user_activity`
 -- AUTO_INCREMENT for table `activity`
 --
 ALTER TABLE `activity`
-  MODIFY `idActivity` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idActivity` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -248,25 +292,25 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `idComments` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idComments` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `image`
 --
 ALTER TABLE `image`
-  MODIFY `idImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `idReservation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idReservation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
