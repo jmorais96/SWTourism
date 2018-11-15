@@ -8,8 +8,9 @@ $conn=new SWTourism('data/config.ini');
 //know if user can be here
 $conn->isClientLoggedIn();
 
+<<<<<<< HEAD
 //Know if data was sent by post
-if(isset($_POST['pass'])){
+if(isset($_POST['pass']) && isset($_POST['username']) && isset($_POST['name']) && isset($_POST['retype'])){
     //know if password equals confirmation
     if ($_POST['pass']==$_POST['retype']){
 
@@ -126,25 +127,25 @@ if(isset($_POST['pass'])){
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="name">Nome</label>
-                                                        <input type="text" id="name" name="name" class="form-control">
+                                                        <input type="text" id="name" name="name" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="username">Username</label>
-                                                        <input type="text" id="username" name="username" class="form-control">
+                                                        <input type="text" id="username" name="username" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="pass">Password</label>
-                                                        <input type="password" id="pass" name="pass" class="form-control" >
+                                                        <input type="password" id="pass" name="pass" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="retry">Confirmar password</label>
-                                                        <input type="password" id="pass" name="retype" class="form-control">
+                                                        <input type="password" id="pass" name="retype" class="form-control" required>
                                                     </div>
                                                 </div>
 

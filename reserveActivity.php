@@ -188,7 +188,9 @@ if(isset($_POST['name'])){
                                                  <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="securityCode">Código de segurança</label>
+
                                                         <input type="password" id="securityCode" name="securityCode" class="form-control" required>
+
                                                     </div>
                                                 </div>
 

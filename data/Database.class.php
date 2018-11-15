@@ -61,6 +61,8 @@ class Database extends PDO {
 						$type = PDO::PARAM_BOOL;
 					else 
 						$type = PDO::PARAM_NULL;
+
+                    $value =filter_var($value, FILTER_SANITIZE_STRING);
 					
 					$this->queries->bindValue($placeholder, $value, $type);
 
