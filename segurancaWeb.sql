@@ -1,14 +1,20 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: Nov 15, 2018 at 10:21 PM
--- Server version: 5.6.38
--- PHP Version: 7.2.1
+-- Host: localhost:3306
+-- Generation Time: Nov 15, 2018 at 10:02 
+-- Server version: 5.7.22-0ubuntu0.17.10.1
+-- PHP Version: 7.1.17-0ubuntu0.17.10.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `segurancaWeb`
@@ -92,10 +98,10 @@ INSERT INTO `comments` (`idComments`, `idUser`, `idActivity`, `comment`, `dateCo
 CREATE TABLE `creditCard` (
   `idCreditCard` int(11) NOT NULL,
   `name` varchar(75) NOT NULL,
-  `cardNumber` int(16) NOT NULL,
-  `expiry` date NOT NULL,
-  `cardType` enum('Visa','MasterCard','American Express','AirPlus') NOT NULL,
-  `securityCode` int(4) NOT NULL,
+  `cardNumber` varchar(100) NOT NULL,
+  `expiry` varchar(100) NOT NULL,
+  `cardType` varchar(100) NOT NULL,
+  `securityCode` varchar(100) NOT NULL,
   `idUser` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -104,7 +110,7 @@ CREATE TABLE `creditCard` (
 --
 
 INSERT INTO `creditCard` (`idCreditCard`, `name`, `cardNumber`, `expiry`, `cardType`, `securityCode`, `idUser`) VALUES
-(0, 'Alice', 2147483647, '3235-02-12', 'Visa', 1223, 5);
+(2, 'WVWaek97hCS6MkLRTSWShQ==', '96eM/GGlv16pAm59YEUHIq5AmRuGvmAxv3/lp/344X4=', 'KV9lCCOa6Ax5nzSsqmvuNg==', 'iu4nWXEmgKcYluMOZ7Cv1lHv5tWXdAU9z9pw1LubiTw=', 'FbmWnlGHKWpnIK0il503Hg==', 5);
 
 -- --------------------------------------------------------
 
@@ -176,7 +182,9 @@ INSERT INTO `reservation` (`idUser`, `idActivity`, `dateReservation`, `state`, `
 (5, 4, '2018-11-09', 'cancelada', 1, '23:23:00'),
 (6, 4, '2018-11-07', 'reservada', 2, '22:02:00'),
 (6, 4, '2018-11-07', 'reservada', 3, '22:02:00'),
-(5, 4, '0000-00-00', 'cancelada', 4, '00:00:00');
+(5, 4, '0000-00-00', 'cancelada', 4, '00:00:00'),
+(5, 16, '2018-11-14', 'reservada', 16, '00:31:00'),
+(5, 16, '2018-11-14', 'reservada', 17, '00:31:00');
 
 -- --------------------------------------------------------
 
@@ -281,37 +289,36 @@ ALTER TABLE `user_activity`
 --
 ALTER TABLE `activity`
   MODIFY `idActivity` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
-
 --
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
   MODIFY `idAdmin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
   MODIFY `idComments` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
+--
+-- AUTO_INCREMENT for table `creditCard`
+--
+ALTER TABLE `creditCard`
+  MODIFY `idCreditCard` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `image`
 --
 ALTER TABLE `image`
   MODIFY `idImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
-
 --
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `idReservation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
+  MODIFY `idReservation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
 --
 -- Constraints for dumped tables
 --
@@ -349,3 +356,7 @@ ALTER TABLE `reservation`
 ALTER TABLE `user_activity`
   ADD CONSTRAINT `fk_activity_user` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_user_activity` FOREIGN KEY (`idActivity`) REFERENCES `activity` (`idActivity`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

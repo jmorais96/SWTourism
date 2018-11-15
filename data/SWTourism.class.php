@@ -112,8 +112,6 @@ class SWTourism extends Database
 
         $fieldsCard['idUser']=$idUser;
 
-        var_dump($fieldsCard);
-
         $this->query($sqlCard, $fieldsCard);
     }
     
