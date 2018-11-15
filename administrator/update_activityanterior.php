@@ -143,25 +143,25 @@ if (isset($_GET['acao'])){
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="name">Nome</label>
-                                                        <input type="text" id="name" name="name" class="form-control" value="<?php echo $idActivity['name'] ?>">
+                                                        <input type="text" id="name" name="name" class="form-control" value="<?php echo $idActivity['name'] ?>" required>
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="desc">Descrição</label>
-                                                        <textarea name="desc" id="" cols="30" rows="10" class="form-control" value="<?php echo $idActivity['desc'] ?>"</textarea>
+                                                        <textarea name="desc" id="" cols="30" rows="10" class="form-control" value="<?php echo $idActivity['desc'] ?>" required></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="location">Localização</label>
-                                                        <input type="text" id="location" name="location" class="form-control" value="<?php echo $idActivity['location'] ?>">
+                                                        <input type="text" id="location" name="location" class="form-control" value="<?php echo $idActivity['location'] ?>" required>
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="time">Hora</label>
-                                                        <input type="time" id="time" name="time" class="form-control" value="<?php echo $idActivity['time'] ?>">
+                                                        <input type="time" id="time" name="time" class="form-control" value="<?php echo $idActivity['time'] ?>" required>
                                                     </div>
                                                 </div>
 

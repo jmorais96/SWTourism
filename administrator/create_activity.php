@@ -11,7 +11,7 @@ session_start();
 /*$conn->isClientLoggedIn();*/
 
 //echo "<a href='?acao=logout'><button>LOGOUT</button></a>";
-if(isset($_POST['name'])){
+if(isset($_POST['name']) && isset($_POST['desc']) && isset($_POST['location']) && isset($_FILES['image']) ){
 
     $folderPath = "../images/";
 
@@ -109,7 +109,7 @@ if(isset($_GET['logout'])) {
                         </form>
                     -->	
 					<form method="get" class="example" style="display:flex;margin:auto;max-width:300px">
-                        <input type="text" placeholder="Pesquisar.." name="search">
+                        <input type="text" placeholder="Pesquisar.." name="search" >
                       <button class="buttonAdmin" type="submit"><i class="fa fa-search"></i></button>
                     </form>
 					
@@ -164,25 +164,25 @@ if(isset($_GET['logout'])) {
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <label for="name">Nome</label>
-                                <input type="text" id="name" name="name" class="form-control">
+                                <input type="text" id="name" name="name" class="form-control" required>
                             </div>
                         </div>
                          <div class="row form-group">
                             <div class="col-md-12">
                                 <label for="desc">Descrição</label>
-                                <textarea name="desc" id="" cols="30" rows="10" class="form-control"  placeholder=""></textarea>
+                                <textarea name="desc" id="" cols="30" rows="10" class="form-control"  placeholder="" required></textarea>
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <label for="location">Localização</label>
-                                <input type="text" id="location" name="location" class="form-control">
+                                <input type="text" id="location" name="location" class="form-control" required>
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <label for="image">Imagem</label>
-                                <input type="file" name="image" class="form-control">
+                                <input type="file" name="image" class="form-control" required>
                             </div>
                         </div>
                         <div class="row form-group">

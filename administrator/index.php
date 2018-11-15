@@ -9,7 +9,7 @@ $conn=new SWTourism('../data/config.ini');
 $conn->isClientLoggedIn();*/
 
 
-if(isset($_POST['pass'])){
+if(isset($_POST['pass']) && isset($_POST['username'])){
 
 
     $conn->loginAdmin($_POST['username'], $_POST['pass']);
@@ -127,13 +127,13 @@ if(isset($_POST['pass'])){
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="fullname">Username</label>
-                                                        <input type="text" id="username" name="username" class="form-control">
+                                                        <input type="text" id="username" name="username" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="fullname">Password</label>
-                                                        <input type="password" id="pass" name="pass" class="form-control">
+                                                        <input type="password" id="pass" name="pass" class="form-control" required>
                                                     </div>
                                                 </div>
 
