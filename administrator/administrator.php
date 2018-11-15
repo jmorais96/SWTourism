@@ -27,6 +27,13 @@ if(isset($_GET['logout'])) {
    $_SESSION['admin']->logout();
 }
 
+$success = "";
+if (isset($_GET['deleted'])) {
+    $success = "<div class='alert alert-success'>
+    <strong>Sucesso!</strong> A sua atividade foi eliminada com sucesso.
+    </div>";
+}
+
 ?>
 
 <!--
@@ -172,7 +179,6 @@ if(isset($_GET['logout'])) {
         <div class="row">
             <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
                 <h2>Atividades</h2>
-<!--                <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>-->
             </div>
         </div>
         <div class="row">
@@ -181,10 +187,11 @@ if(isset($_GET['logout'])) {
          <br><br> <br><br>
           
         <?php
+        echo $success;
         if (isset($_GET['search'])){  
              echo "<table>
                       <tr>
-                        <th>Atividade</th>
+                        <th>Atividade [estado]*</th>
                         <th>Eliminar</th>
                         <th>Editar</th>
                       </tr>
@@ -201,7 +208,7 @@ if(isset($_GET['logout'])) {
         } else {  
             echo "<table>
                       <tr>
-                        <th>Atividade</th>
+                        <th>Atividade [estado]*</th>
                         <th>Eliminar</th>
                         <th>Editar</th>
                       </tr>
@@ -215,27 +222,12 @@ if(isset($_GET['logout'])) {
                       </tr>
                     </table>";
                 }
-            }
-        
-        
+            }     
         ?>  
-                
-
-<!--
-       <?php/*
-            if (isset($_GET['search'])){
-             foreach ($conn->searchAdmin($_GET['search']) as $value ){
-                 echo "<a href='activity.php?id=" . $value['idActivity'] . "'>" . $value['name'] . "</a>" . "<a href='delete_activity.php?id=" . $value['idActivity'] . "'>Eliminar</><br>" . "<a href='update_activity.php?id=" . $value['idActivity'] . "'>Editar</a><br>";
-             }
-            }else {
-             foreach ($conn->listActivity() as $value) {
-                echo "<a href='activity.php?id=" . $value['idActivity'] . "'>" . $value['name'] . "</a>" . "<a href='delete_activity.php?id=" . $value['idActivity'] . "'>Eliminar</><br>" . "<a href='update_activity.php?id=" . $value['idActivity'] . "'>Editar</a><br>";
-                }
-            }*/
-        ?>
--->
-
-            
+        </div>
+        <div class="ativityOther">
+           <br>
+            <h4>*Para saber o ESTADO da atividade clique numa das opções a baixo</h4>
         </div>
     </div>
 </div>
@@ -303,3 +295,9 @@ if(isset($_GET['logout'])) {
 
 </body>
 </html>
+
+<!-- fade out do alert ao fim de 15 segundos -->
+<script> $(function() {
+    		$(".alert").delay(1500).fadeOut(1500);
+	});
+</script>

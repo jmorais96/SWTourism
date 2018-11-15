@@ -11,7 +11,9 @@ session_start();
 /*$conn->isClientLoggedIn();*/
 
 //echo "<a href='?acao=logout'><button>LOGOUT</button></a>";
+$success = "";
 if(isset($_POST['name']) && isset($_POST['desc']) && isset($_POST['location']) && isset($_FILES['image']) ){
+>>>>>>> 8bb51fe37339bf0a8409d523cc7d862d64814c89
 
     $folderPath = "../images/";
 
@@ -21,6 +23,10 @@ if(isset($_POST['name']) && isset($_POST['desc']) && isset($_POST['location']) &
 
     move_uploaded_file( $arquivo_tmp, $destino );
     $conn->addActivity($_POST['name'], $_POST['desc'], $_SESSION['admin']->getIdAdmin(), $_POST['location'], $_FILES['image']['name']);
+    
+    $success = "<div class='alert alert-success'>
+    <strong>Sucesso!</strong> A sua atividade foi criada com sucesso.
+    </div>";
 }
 
 if(isset($_GET['logout'])) {
@@ -80,6 +86,7 @@ if(isset($_GET['logout'])) {
 
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 	</head>
 	<body>
@@ -159,8 +166,9 @@ if(isset($_GET['logout'])) {
         
     </form>
 -->
-                                    
-                    <form class="login100-form validate-form" method="post">
+            <?php echo $success; ?>
+                                   
+                    <form class="login100-form validate-form" method="post" enctype="multipart/form-data">
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <label for="name">Nome</label>
@@ -259,3 +267,9 @@ if(isset($_GET['logout'])) {
 
 </body>
 </html>
+
+<!-- fade out do alert ao fim de 15 segundos -->
+<script> $(function() {
+    		$(".alert").delay(1500).fadeOut(1500);
+	});
+</script>
