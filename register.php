@@ -14,9 +14,9 @@ $conn->isClientLoggedIn();
         if ($_POST['pass']==$_POST['retype']){
 
             //filter special chars
-            foreach ($_POST as $key => $value) {
+            /*foreach ($_POST as $key => $value) {
                 $_POST["$key"] = filter_var($value, FILTER_SANITIZE_STRING);
-            }
+            }*/
 
             //call method to sign up
             $conn->signUpClient($_POST['username'], $_POST['pass'],$_POST['name']);
