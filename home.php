@@ -148,9 +148,9 @@ if(isset($_GET['logout'])) {
                         <h2><?php echo $value['name']?></h2><!-- observacao de cetaceos -->
 
                         <?php
-                            if(strlen($value['desc'])> 100 ){
+                            if(strlen($value['desc'])> 120 ){
                         ?>
-                                <p><?php echo substr($value['desc'], 0, 100) . "..." ?></p>
+                                <p><?php echo substr($value['desc'], 0, 120) . "..." ?></p>
                         <?php
                             }else{
                         ?>
