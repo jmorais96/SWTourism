@@ -23,6 +23,6 @@ if ($idActivity==NULL){
 
 $conn->deleteActivity($idActivity['idActivity']);
 
-header("location:administrator.php");
+header("location:administrator.php?deleted");
 
 ?>

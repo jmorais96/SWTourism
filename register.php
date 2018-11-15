@@ -8,22 +8,22 @@ $conn=new SWTourism('data/config.ini');
 //know if user can be here
 $conn->isClientLoggedIn();
 
-    //Know if data was sent by post
-    if(isset($_POST['pass'])){
-        //know if password equals confirmation
-        if ($_POST['pass']==$_POST['retype']){
+//Know if data was sent by post
+if(isset($_POST['pass'])){
+    //know if password equals confirmation
+    if ($_POST['pass']==$_POST['retype']){
 
-            //filter special chars
-            foreach ($_POST as $key => $value) {
-                $_POST["$key"] = filter_var($value, FILTER_SANITIZE_STRING);
-            }
-
-            //call method to sign up
-            $conn->signUpClient($_POST['username'], $_POST['pass'],$_POST['name']);
-
+        //filter special chars
+        foreach ($_POST as $key => $value) {
+            $_POST["$key"] = filter_var($value, FILTER_SANITIZE_STRING);
         }
 
+        //call method to sign up
+        $conn->signUpClient($_POST['username'], $_POST['pass'],$_POST['name']);
+
     }
+   
+}
 
 ?>
 <!DOCTYPE html>
@@ -157,7 +157,6 @@ $conn->isClientLoggedIn();
 
 
                                             </form>
-
 
                                         </div>
 

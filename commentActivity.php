@@ -27,6 +27,7 @@ if(isset($_GET['logout'])) {
 }
 
 //Know if data was sent by post
+$success = "";
 if(isset($_POST['comment'])){
         //filter special chars
         foreach ($_POST as $key => $value) {
@@ -34,6 +35,10 @@ if(isset($_POST['comment'])){
         }
             
         $conn->commentActivity($_SESSION['user']->idUser(), $_GET['idActivity'],  $_POST['comment']); // $_POST['dateComment']
+    
+        $success = "<div class='alert alert-success'>
+        <strong>Sucesso!</strong> O seu comentário foi enviado com sucesso.
+        </div>";
 }
 
 ?>
@@ -140,6 +145,7 @@ if(isset($_POST['comment'])){
 <!--                                                        <input type="text" id="dateReservation" name="dateReservation" class="form-control">-->
                                                     </div>
                                                 </div>
+                                                <?php echo $success; ?>
                                                 <br>
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
@@ -276,3 +282,9 @@ if(isset($_POST['comment'])){
 
 </body>
 </html>
+
+<!-- fade out do alert ao fim de 15 segundos -->
+<script> $(function() {
+    		$(".alert").delay(1500).fadeOut(1500);
+	});
+</script>

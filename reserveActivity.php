@@ -26,15 +26,21 @@ if(isset($_GET['logout'])) {
    $_SESSION['user']->logout();
 }
 
-    //Know if data was sent by post
-    if(isset($_POST['name'])){
-            //filter special chars
-            foreach ($_POST as $key => $value) {
-                $_POST["$key"] = filter_var($value, FILTER_SANITIZE_STRING);
-            }
-            
-            $conn->reserveActivity($_SESSION['user']->idUser(), $_GET['idActivity'],  $_POST['dateReservation'], $_POST['timeReservation'], $_POST['name'], $_POST['cardNumber'], $_POST['expiry'], $_POST['cardType'], $_POST['securityCode']);
-    }
+//Know if data was sent by post
+$success = "";
+if(isset($_POST['name'])){
+        //filter special chars
+        foreach ($_POST as $key => $value) {
+            $_POST["$key"] = filter_var($value, FILTER_SANITIZE_STRING);
+        }
+
+        $conn->reserveActivity($_SESSION['user']->idUser(), $_GET['idActivity'],  $_POST['dateReservation'], $_POST['timeReservation'], $_POST['name'], $_POST['cardNumber'], $_POST['expiry'], $_POST['cardType'], $_POST['securityCode']);
+
+        $success = "<div class='alert alert-success'>
+        <strong>Sucesso!</strong> O seu comentário foi enviado com sucesso.
+        </div>";
+} 
+//var_dump ($_POST);
 
 ?>
 <!DOCTYPE html>
@@ -124,8 +130,9 @@ if(isset($_GET['logout'])) {
 
 
                     <div class="row row-mt-15em">
-
-                        <div class="col-md-4 col-md-push-1-reg animate-box" data-animate-effect="fadeInRight">
+                    <div class="success"><?php echo $success; ?>
+                       
+                        <div class="col-md-4_2 col-md-push-1-reg animate-box" data-animate-effect="fadeInRight">
                             <div class="form-wrap">
                                 <div class="tab">
 
@@ -138,13 +145,13 @@ if(isset($_GET['logout'])) {
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="dateReservation">Data</label>
-                                                        <input type="date" id="dateReservation" name="dateReservation" class="form-control">
+                                                        <input type="date" id="dateReservation" name="dateReservation" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="hourReservation">Hora</label>
-                                                        <input type="time" id="timeReservation" name="timeReservation" class="form-control">
+                                                        <input type="time" id="timeReservation" name="timeReservation" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <br>
@@ -152,25 +159,25 @@ if(isset($_GET['logout'])) {
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="name">Nome</label>
-                                                        <input type="text" id="name" name="name" class="form-control">
+                                                        <input type="text" id="name" name="name" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="cardNumber">Número</label>
-                                                        <input type="text" id="cardNumber" name="cardNumber" class="form-control">
+                                                        <input type="text" id="cardNumber" name="cardNumber" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="expiry">Data de validade</label>
-                                                        <input type="date" id="expiry" name="expiry" class="form-control">
+                                                        <input type="date" id="expiry" name="expiry" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="cardType">Tipo de cartão</label>
-                                                        <select type="text" id="cardType" name="cardType" class="form-control">
+                                                        <select type="text" id="cardType" name="cardType" class="form-control" required>
                                                           <option value="Visa">Visa</option>
                                                           <option value="MasterCard">MasterCard</option>
                                                           <option value="American Express">American Express</option>
@@ -181,10 +188,9 @@ if(isset($_GET['logout'])) {
                                                  <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="securityCode">Código de segurança</label>
-                                                        <input type="text" id="securityCode" name="securityCode" class="form-control">
+                                                        <input type="password" id="securityCode" name="securityCode" class="form-control" required>
                                                     </div>
                                                 </div>
-                                                
 
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
@@ -203,6 +209,7 @@ if(isset($_GET['logout'])) {
                                 </div>
                             </div>
                         </div>
+                      </div>      
                     </div>
 
 
@@ -210,56 +217,6 @@ if(isset($_GET['logout'])) {
             </div>
         </div>
     </header>
-
-
-    <div id="gtco-counter" class="gtco-section">
-        <div class="gtco-container">
-
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
-                    <h2>O nosso sucesso</h2>
-                    <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-                </div>
-            </div>
-
-            <div class="row">
-
-                <div class="col-md-3 col-sm-6 animate-box" data-animate-effect="fadeInUp">
-                    <div class="feature-center">
-                        <span class="counter js-counter" data-from="0" data-to="196" data-speed="5000" data-refresh-interval="50">1</span>
-                        <span class="counter-label">Atividades</span>
-
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 animate-box" data-animate-effect="fadeInUp">
-                    <div class="feature-center">
-                        <span class="counter js-counter" data-from="0" data-to="97" data-speed="5000" data-refresh-interval="50">1</span>
-                        <span class="counter-label">Visitas</span>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 animate-box" data-animate-effect="fadeInUp">
-                    <div class="feature-center">
-                        <span class="counter js-counter" data-from="0" data-to="99" data-speed="5000" data-refresh-interval="50">1</span>
-                        <span class="counter-label">Clientes Satisfeitos</span>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-    <div class="gtco-cover gtco-cover-sm" style="background-image: url(images/img_bg_1.jpg)"  data-stellar-background-ratio="0.5">
-        <div class="overlay"></div>
-        <div class="gtco-container text-center">
-            <div class="display-t">
-                <div class="display-tc">
-                    <h1>Embarque nesta aventura!</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 
 <footer id="gtco-footer" role="contentinfo">
@@ -321,3 +278,9 @@ if(isset($_GET['logout'])) {
 
 </body>
 </html>
+
+<!-- fade out do alert ao fim de 15 segundos -->
+<script> $(function() {
+    		$(".alert").delay(1500).fadeOut(1500);
+	});
+</script>

@@ -209,14 +209,14 @@ if(isset($_GET['logout'])) {
 
             <div class="col-md-3 col-sm-6 animate-box" data-animate-effect="fadeInUp">
                 <div class="feature-center">
-                    <span class="counter js-counter" data-from="0" data-to="196" data-speed="5000" data-refresh-interval="50">1</span>
+                    <span class="counter js-counter" data-from="0" data-to="<?php echo $conn->countActivity(); ?>" data-speed="5000" data-refresh-interval="50">1</span>
                     <span class="counter-label">Atividades</span>
 
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 animate-box" data-animate-effect="fadeInUp">
                 <div class="feature-center">
-                    <span class="counter js-counter" data-from="0" data-to="97" data-speed="5000" data-refresh-interval="50">1</span>
+                    <span class="counter js-counter" data-from="0" data-to="<?php echo $conn->countVisit(); ?>" data-speed="5000" data-refresh-interval="50">1</span>
                     <span class="counter-label">Visitas</span>
                 </div>
             </div>

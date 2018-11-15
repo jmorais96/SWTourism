@@ -183,6 +183,22 @@ class SWTourism extends Database
      //   var_dump($fields);
         $this->query($sql, $fields);
       }
+   
+    public function countActivity()
+    {
+       $sql='SELECT COUNT(*) FROM activity';
+       $result = $this->query($sql);
+       return $result[0]['COUNT(*)'];
+       //var_dump($result);
+    }
+    
+    public function countVisit()
+    {
+       $sql='SELECT COUNT(*) FROM reservation';
+       $result = $this->query($sql);
+       return $result[0]['COUNT(*)'];
+       //var_dump($result);
+    }
     
     public function countUser()
     {
