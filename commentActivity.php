@@ -136,7 +136,7 @@ if(isset($_POST['comment'])){
 
                                     <div class="tab-content">
                                         <div class="tab-content-inner active" data-content="signup">
-                                            <h3>Deixe aqui o seu comentário sobre a atividade: <?php echo $idActivity['name'];?></h3>
+                                            <h3>Deixe aqui o seu comentário sobre a atividade <strong><?php echo $idActivity['name'];?></strong></h3>
                                             <form class="login100-form validate-form" method="post">
                                                 <div class="row form-group">
                                                     <div class="col-md-12">

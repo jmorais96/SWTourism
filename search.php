@@ -9,7 +9,7 @@ $conn->isClientLoggedOff();
 $conn->listActivity(); 
 $conn->listComments(); 
 $conn->countUser();
-$conn->listActivityUser($_SESSION['user']->getIdUser());
+$conn->listActivityUser($_SESSION['user']->idUser());
 
 
 if(isset($_GET['logout'])) {

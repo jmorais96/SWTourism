@@ -283,6 +283,6 @@ if(isset($_POST['name'])){
 
 <!-- fade out do alert ao fim de 15 segundos -->
 <script> $(function() {
-    		$(".alert").delay(1500).fadeOut(1500);
+    		$(".alert").delay(2500).fadeOut(1500);
 	});
 </script>

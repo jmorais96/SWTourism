@@ -22,7 +22,7 @@ if(isset($_GET['logout'])) {
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Adventure</title>
+	<title>Adventure | Home</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by GetTemplates.co" />
 	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -61,7 +61,7 @@ if(isset($_GET['logout'])) {
 	<link rel="stylesheet" href="css/owl.theme.default.min.css">
 
 	<!-- Theme style  -->
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/styleListActivity.css">
 	
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -90,7 +90,7 @@ if(isset($_GET['logout'])) {
 						<li><a href="contact.html">Contactos</a></li>
 						<li><a href="?logout">Logout</a></li>
 					</ul>
-					<form class="example" action="search.php" style="display:flex;margin:auto;max-width:300px">
+					<form class="example" action="search.php" style="display:flex;margin-right:0;max-width:300px">
                         <select name="activityOption"> 
                             <option value="name">Nome</option>
                             <option value="location">Localização</option>
@@ -113,7 +113,7 @@ if(isset($_GET['logout'])) {
 					<div class="row row-mt-15em">
 
 						<div class="col-md-12 mt-text animate-box" data-animate-effect="fadeInUp">
-							<h1>Bem vindo(a), <?php echo( $_SESSION['user']->getName()); ?></h1>
+							<h2>Bem vindo(a), <?php echo( $_SESSION['user']->getName()); ?></h2>
 </div>
 
 </div>

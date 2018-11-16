@@ -40,7 +40,7 @@ if(isset($_GET['logout'])) {
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Administrator</title>
+	<title>Administrator | Criar atividade</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by GetTemplates.co" />
 	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -114,7 +114,7 @@ if(isset($_GET['logout'])) {
                             <button>Pesquisar</button>
                         </form>
                     -->	
-					<form method="get" class="example" style="display:flex;margin:auto;max-width:300px">
+					<form method="get" class="example" style="display:flex;margin-right:0;max-width:300px">
                         <input type="text" placeholder="Pesquisar.." name="search" >
                       <button class="buttonAdmin" type="submit"><i class="fa fa-search"></i></button>
                     </form>
@@ -134,8 +134,7 @@ if(isset($_GET['logout'])) {
 
 						<div class="col-md-12 mt-text animate-box" data-animate-effect="fadeInUp">
 <!--                            <h1>Lista de atividades</h1>-->
-                            <h2><?php echo( $_SESSION['admin']->getName()); ?></h2>
-                        </div>
+                        <h2>Bem vindo administrador(a), <?php echo( $_SESSION['admin']->getName()); ?></h2>                        </div>
 
                     </div>
 
@@ -269,6 +268,6 @@ if(isset($_GET['logout'])) {
 
 <!-- fade out do alert ao fim de 15 segundos -->
 <script> $(function() {
-    		$(".alert").delay(1500).fadeOut(1500);
+    		$(".alert").delay(2500).fadeOut(1500);
 	});
 </script>
