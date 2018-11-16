@@ -89,12 +89,29 @@ class SWTourism extends Database
         //var_dump($fieldsReservation);
         
         $this->query($sqlReservation, $fieldsReservation);
-        
-        
+
+
+
         $sqlCard = "INSERT INTO creditCard (name, cardNumber, expiry, cardType, securityCode, idUser) VALUES (:name, :cardNumber, :expiry, :cardType, :securityCode, :idUser)";
         
-        $fieldsCard = array('name'=>$name, 'cardNumber'=>$cardNumber, 'expiry'=>$expiry, 'cardType'=>$cardType, 'securityCode'=>$securityCode, 'idUser'=>$idUser);
-        
+        $fieldsCard = array('name'=>$name, 'cardNumber'=>$cardNumber, 'expiry'=>$expiry, 'cardType'=>$cardType, 'securityCode'=>$securityCode);
+
+        /*    */
+        $password = '3sc3RLrpd17';
+        $method = 'aes-256-cbc';
+
+        // Must be exact 32 chars (256 bit)
+        $password = substr(hash('sha256', $password, true), 0, 32);
+
+        // IV must be exact 16 chars (128 bit)
+        $iv = chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0);
+
+        foreach ($fieldsCard as $key => $value){
+            $fieldsCard[$key]=base64_encode(openssl_encrypt($value, $method, $password, OPENSSL_RAW_DATA, $iv));
+        }
+
+        $fieldsCard['idUser']=$idUser;
+
         $this->query($sqlCard, $fieldsCard);
     }
     
@@ -104,7 +121,9 @@ class SWTourism extends Database
         $sql = "INSERT INTO comments (idUser, idActivity, comment, dateComment) VALUES (:idUser, :idActivity, :comment, :dateComment)"; 
         
         $fields = array ('idUser'=>$idUser, 'idActivity'=>$idActivity, 'comment'=>$comment, 'dateComment'=>$dateComment);
-        
+
+
+
         $this->query($sql, $fields);
     }
     
