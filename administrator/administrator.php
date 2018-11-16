@@ -142,7 +142,7 @@ if (isset($_GET['deleted'])) {
                             <button>Pesquisar</button>
                         </form>
                     -->	
-					<form method="get" class="example" style="display:flex;margin:auto;max-width:300px">
+					<form method="get" class="example" style="display:flex;margin-right:0;max-width:300px">
                         <input type="text" placeholder="Pesquisar.." name="search">
                       <button class="buttonAdmin" type="submit"><i class="fa fa-search"></i></button>
                     </form>
@@ -153,7 +153,7 @@ if (isset($_GET['deleted'])) {
 		</div>
 	</nav>
 
-	<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(images/img_2.jpg)">
+	<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(../images/img_2.jpg)">
 		<div class="overlay"></div>
 		<div class="gtco-container">
 			<div class="row">
@@ -191,7 +191,7 @@ if (isset($_GET['deleted'])) {
         if (isset($_GET['search'])){  
              echo "<table>
                       <tr>
-                        <th>Atividade [estado]*</th>
+                        <th>Atividade*</th>
                         <th>Eliminar</th>
                         <th>Editar</th>
                       </tr>
@@ -208,7 +208,7 @@ if (isset($_GET['deleted'])) {
         } else {  
             echo "<table>
                       <tr>
-                        <th>Atividade [estado]*</th>
+                        <th>Atividade*</th>
                         <th>Eliminar</th>
                         <th>Editar</th>
                       </tr>
@@ -227,7 +227,7 @@ if (isset($_GET['deleted'])) {
         </div>
         <div class="ativityOther">
            <br>
-            <h4>*Para saber o ESTADO da atividade clique numa das opções a baixo</h4>
+            <h4>*Para saber o ESTADO DA ATIVIDADE RESERVADA clique numa das opções</h4>
         </div>
     </div>
 </div>
@@ -298,6 +298,6 @@ if (isset($_GET['deleted'])) {
 
 <!-- fade out do alert ao fim de 15 segundos -->
 <script> $(function() {
-    		$(".alert").delay(1500).fadeOut(1500);
+    		$(".alert").delay(2500).fadeOut(1500);
 	});
 </script>

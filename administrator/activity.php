@@ -16,7 +16,7 @@ if (isset($_POST['state'])){
     $conn->changeState($_POST['state'], $idActivity['idActivity'], $_POST['idUser']);
     
     $success =  "<div class='alert alert-success'>
-    <strong>Sucesso!</strong> A sua atividade foi criada com sucesso.
+    <strong>Sucesso!</strong> O estado da sua atividade foi alterado com sucesso.
     </div>";
 }
 
@@ -37,7 +37,7 @@ if (isset($_GET['acao'])){
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Administrator | State Activities</title>
+	<title>Administrator | Estado da atividade</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by GetTemplates.co" />
 	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -101,9 +101,10 @@ if (isset($_GET['acao'])){
 				</div>
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
+					    <li><a href="administrator.php">Atividades</a></li>
 						<li><a href="?logout">Logout</a></li>
 					</ul>		
-					<form method="get" class="example" style="display:flex;margin:auto;max-width:300px">
+					<form method="get" class="example" style="display:flex;margin-right:0;max-width:300px">
                         <input type="text" placeholder="Pesquisar.." name="search">
                       <button class="buttonAdmin" type="submit"><i class="fa fa-search"></i></button>
                     </form>
@@ -114,7 +115,7 @@ if (isset($_GET['acao'])){
 		</div>
 	</nav>
 
-	<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(images/img_2.jpg)">
+	<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(../images/img_2.jpg)">
 		<div class="overlay"></div>
 		<div class="gtco-container">
 			<div class="row">
@@ -136,62 +137,63 @@ if (isset($_GET['acao'])){
 
 
 <div class="gtco-section">
+<?php if($conn->listReservationsAdmin($idActivity['idActivity']) != null){;?>
     <div class="gtco-container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-                <h2>Estado da atividade <?php echo $idActivity['name']?></h2>
+                <h2>Atividade <strong><?php echo $idActivity['name']?></strong></h2>
             </div>
         </div>
         <div class="row">
           
         <?php
         echo $success;
-        foreach ($conn->listReservationsAdmin($idActivity['idActivity']) as $value){
-            echo "<table>
+        echo "<table>
                   <tr>
                     <th>Cliente</th>
                     <th>Estado</th>
                   </tr>
-                  <tr>
-                    <td>" . $value['name'] . "</td>                            
+                </table";
+        foreach ($conn->listReservationsAdmin($idActivity['idActivity']) as $value){
+            echo "<table><tr>
+                    <td>" . $value['name'] . "</td>  
+                    
                 ";
                     if($value['state'] == 'reservada'){
                        echo " <td>
                        <form class='formOption' method='post' action='activity.php?id=".$value['idActivity']."' > 
                             <select name='state'> 
-                                <option value=''>".$value['state']."</option>
+                                <option value ='reservada'>reservada</option>
                                 <option value ='adiada' >adiada</option> 
                                 <option value ='cancelada'>cancelada</option> 
                             </select> <input type='hidden' name='idUser' value='".$value['idUser']."' >   
-                            <input type='submit' value='Mudar'> 
+                            <input class='submitOption' type='submit' value='Mudar'> 
                         </form>
-                        </td>
-                        </table"; 
+                        </td>"; 
                     }  else if($value['state'] == 'cancelada'){
                        echo " <td>
                        <form class='formOption' method='post' action='activity.php?id=".$value['idActivity']."' > 
                             <select name='state'> 
-                                <option value=''>".$value['state']."</option>
+                                <option value= 'cancelada'>cancelada</option>
                                 <option value ='adiada' >adiada</option> 
                                 <option value ='reservada'>reservada</option> 
                             </select> <input type='hidden' name='idUser' value='".$value['idUser']."' >   
-                            <input type='submit' value='Mudar'> 
+                            <input class='submitOption' type='submit' value='Mudar'> 
                         </form>
-                        </td>
-                        </table>"; 
+                        </td>"; 
                     }  else {
                        echo " <td>
                        <form class='formOption' method='post' action='activity.php?id=".$value['idActivity']."' > 
                             <select name='state'> 
-                                <option value=''>".$value['state']."</option>
+                                <option value ='adiada'>adiada</option>
                                 <option value ='reservada' >reservada</option> 
                                 <option value ='cancelada'>cancelada</option> 
                             </select> <input type='hidden' name='idUser' value='".$value['idUser']."' >   
-                            <input type='submit' value='Mudar'> 
+                            <input class='submitOption' type='submit' value='Mudar'> 
                         </form>
-                        </td>
-                        </table>"; 
-                    } 
+                        </td>"; 
+                    }" </tr>
+                        </table>";
         }
             
            
@@ -201,14 +203,31 @@ if (isset($_GET['acao'])){
 //    echo $value['name']." <br> <form method='post' action='activity.php?id=".$value['idActivity']."' > <select name='state'> <option value ='reservada'>Reservada</option> <option value ='adiada' >Adiada</option> <option value ='cancelada'>Cancelada</option> </select> <input type='hidden' name='idUser' value='".$value['idUser']."' >   <input type='submit' value='Mudar'> </form>";
 
         ?> 
-         <?php echo $success; ?> 
+        
         </div>
     </div>
+<?php } else {; ?>
+        <div class="gtco-container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+                    <h3>Sem atividades <?php echo $idActivity['name']?> reservadas </h3>
+                </div>
+            </div>
+        </div>
+<?php }; ?>   
+        
 </div>
 
 </div>
 
 
+</div>
+
+<div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+</div>
+
+<!--
 
 <footer id="gtco-footer" role="contentinfo">
     <div class="gtco-container">
@@ -232,13 +251,8 @@ if (isset($_GET['acao'])){
 
     </div>
 </footer>
+-->
 <!-- </div> -->
-
-</div>
-
-<div class="gototop js-top">
-    <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
-</div>
 
 <!-- jQuery -->
 <script src="../js/jquery.min.js"></script>

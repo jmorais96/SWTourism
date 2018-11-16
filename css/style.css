@@ -118,7 +118,7 @@ h1, h2, h3, h4, h5, h6, figure {
   }
 }
 .gtco-nav #gtco-logo {
-  font-size: 20px;
+  font-size: 23px;
   margin: 0;
   padding: 0;
   text-transform: uppercase;
@@ -139,6 +139,7 @@ h1, h2, h3, h4, h5, h6, figure {
 .gtco-nav ul {
   padding: 0;
   margin: 2px 0 0 0;
+  margin-right: 20px;
 }
 .gtco-nav ul li {
   padding: 0;
@@ -153,6 +154,7 @@ h1, h2, h3, h4, h5, h6, figure {
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
+  margin-right: 40px;
 }
 .gtco-nav ul li a:hover, .gtco-nav ul li a:focus, .gtco-nav ul li a:active {
   color: white;

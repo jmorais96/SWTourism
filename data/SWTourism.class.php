@@ -353,7 +353,9 @@ class SWTourism extends Database
         $pesquisa=$this->query($sql, $fields);
         $rows = count($pesquisa);
         if($rows <= 0){
-            echo "Não tem resultados";
+            echo "<div class='alert alert-danger'><strong>Erro!</strong>Não tem resultados</div>";
+            
+
             return [];
         }
         else{
