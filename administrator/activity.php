@@ -141,7 +141,7 @@ if (isset($_GET['acao'])){
     <div class="gtco-container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-                <h2>Estado da Reserva <strong><?php echo $idActivity['name']?></strong></h2>
+                <h2>Atividade <strong><?php echo $idActivity['name']?></strong></h2>
             </div>
         </div>
         <div class="row">
