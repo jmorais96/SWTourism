@@ -149,7 +149,15 @@ if(isset($_GET['logout'])) {
                             }
                         ?>
                   </div>
-                    <a class="btn btn-primary" href="commentActivity.php?idActivity=<?php echo $value['idActivity']?>">Deixar comentário</a>  
+                    <?php
+                        if($value['dateReservation'] < date('Y-m-d')) {
+                            ?>
+                            <a class="btn btn-primary"
+                               href="commentActivity.php?idActivity=<?php echo $value['idActivity'] ?>">Deixar
+                                comentário</a>
+                            <?php
+                        }
+                    ?>
                 </a>
             </div>
             <?php } ?>
