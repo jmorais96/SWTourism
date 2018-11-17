@@ -1,14 +1,20 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: Nov 17, 2018 at 12:24 PM
--- Server version: 5.6.38
--- PHP Version: 7.2.1
+-- Host: localhost:3306
+-- Generation Time: Nov 17, 2018 at 11:56 
+-- Server version: 5.7.22-0ubuntu0.17.10.1
+-- PHP Version: 7.1.17-0ubuntu0.17.10.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `segurancaWeb`
@@ -97,11 +103,11 @@ INSERT INTO `comments` (`idComments`, `idUser`, `idActivity`, `comment`, `dateCo
 
 CREATE TABLE `creditCard` (
   `idCreditCard` int(11) NOT NULL,
-  `name` varchar(75) NOT NULL,
-  `cardNumber` int(16) NOT NULL,
-  `expiry` date NOT NULL,
-  `cardType` enum('Visa','MasterCard','American Express','AirPlus') NOT NULL,
-  `securityCode` int(4) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `cardNumber` varchar(100) NOT NULL,
+  `expiry` varchar(100) NOT NULL,
+  `cardType` varchar(100) NOT NULL,
+  `securityCode` varchar(100) NOT NULL,
   `idUser` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -110,7 +116,7 @@ CREATE TABLE `creditCard` (
 --
 
 INSERT INTO `creditCard` (`idCreditCard`, `name`, `cardNumber`, `expiry`, `cardType`, `securityCode`, `idUser`) VALUES
-(0, 'Alice', 2147483647, '3235-02-12', 'Visa', 1223, 5);
+(1, 'EbEoyHXQYmYXh7R/M52asQ==', 'Lk7dKUmpQ7OaUZr4Sx9AgQ==', 'djewtcf/1ZoEyp+5R/uVSw==', 'XdUukbUpzLOcBSzqyLckpQ==', 'FByXS1J80JRDFlkQFH7hkA==', 5);
 
 -- --------------------------------------------------------
 
@@ -293,37 +299,36 @@ ALTER TABLE `user_activity`
 --
 ALTER TABLE `activity`
   MODIFY `idActivity` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
-
 --
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
   MODIFY `idAdmin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
   MODIFY `idComments` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
+--
+-- AUTO_INCREMENT for table `creditCard`
+--
+ALTER TABLE `creditCard`
+  MODIFY `idCreditCard` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `image`
 --
 ALTER TABLE `image`
   MODIFY `idImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
-
 --
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
   MODIFY `idReservation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
 --
 -- Constraints for dumped tables
 --
@@ -361,3 +366,7 @@ ALTER TABLE `reservation`
 ALTER TABLE `user_activity`
   ADD CONSTRAINT `fk_activity_user` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_user_activity` FOREIGN KEY (`idActivity`) REFERENCES `activity` (`idActivity`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

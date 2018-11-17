@@ -163,7 +163,18 @@ if (isset($_GET['acao'])){
               </tr>
         <?php foreach ($conn->listReservationsAdmin($idActivity['idActivity']) as $value){ ?>
                 <tr>
-                    <td> <?php echo $value['name']; ?> </td>     
+                    <td> <?php
+                        $password = '3sc3RLrpd17';
+                        $method = 'aes-256-cbc';
+
+                        // Must be exact 32 chars (256 bit)
+                        $password = substr(hash('sha256', $password, true), 0, 32);
+
+                        // IV must be exact 16 chars (128 bit)
+                        $iv = chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0);
+
+                        echo openssl_decrypt(base64_decode($value['name']), $method, $password, OPENSSL_RAW_DATA, $iv); ?>
+                    </td>
                     <td>
                        <form class='formOption' method='post' action='activity.php?id=<?php echo $value['idActivity']; ?>'>
                             <select name='state'> 
@@ -175,11 +186,15 @@ if (isset($_GET['acao'])){
                         </form>
                      </td> 
                      <?php           
-                        $ccNum = $value['cardNumber'];
-                        $last4Digits = preg_replace( "#(.*?)(\d{4})$#", "$2", $ccNum);
-                        $firstDigits = preg_replace( "#(.*?)(\d{4})$#", "$1", $ccNum);
-                       $ccX = preg_replace("#(\d)#", "*", $firstDigits);
-                        $ccX .= $last4Digits;  
+                         $ccNum = $value['cardNumber'];
+
+                         // decript
+                         $ccNum = openssl_decrypt(base64_decode($ccNum), $method, $password, OPENSSL_RAW_DATA, $iv);
+
+                         $last4Digits = preg_replace( "#(.*?)(\d{4})$#", "$2", $ccNum);
+                         $firstDigits = preg_replace( "#(.*?)(\d{4})$#", "$1", $ccNum);
+                         $ccX = preg_replace("#(\d)#", "*", $firstDigits);
+                         $ccX .= $last4Digits;
                     ?>
                      <td class="sectionValue" id='account_changed'><?php 
                         echo $ccX; ?></td>
