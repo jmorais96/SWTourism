@@ -162,7 +162,15 @@ if(isset($_GET['logout'])) {
                         <div class="columnActivity"><h2>Hora: &nbsp;</h2><p>Hora: <?php echo $value['timeReservation']?></p></div>
                         <div class="columnActivity"><h2>Estado: &nbsp;</h2><p>Estado: <?php echo $value['state']?></p></div>
                   </div>
-                    <a class="btn btn-primary" href="commentActivity.php?idActivity=<?php echo $value['idActivity']?>">Deixar comentário</a>  
+                    <?php
+                        if($value['dateReservation'] < date('Y-m-d')) {
+                            ?>
+                            <a class="btn btn-primary"
+                               href="commentActivity.php?idActivity=<?php echo $value['idActivity'] ?>">Deixar
+                                comentário</a>
+                            <?php
+                        }
+                    ?>
                 </a>
             </div>
             <?php } ?>
