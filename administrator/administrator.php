@@ -227,7 +227,7 @@ if (isset($_GET['deleted'])) {
         </div>
         <div class="ativityOther">
            <br>
-            <h4>*Para saber o ESTADO DA ATIVIDADE RESERVADA clique numa das opções</h4>
+            <h4 style="color: black;">*Para saber o ESTADO DA ATIVIDADE RESERVADA clique numa das opções</h4>
         </div>
     </div>
 </div>

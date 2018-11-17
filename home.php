@@ -67,7 +67,7 @@ if(isset($_GET['logout'])) {
 
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
-
+ 
 	</head>
 	<body>
 
@@ -160,7 +160,7 @@ if(isset($_GET['logout'])) {
                         ?>
                   </div>
                     <a class="btn btn-primary" href="reserveActivity.php?idActivity=<?php echo $value['idActivity']?>">Reservar atividade</a> 
-                    <a class="btn btn-primary" href="commentActivity.php?idActivity=<?php echo $value['idActivity']?>">Deixar comentário</a>  
+<!--                    <a class="btn btn-primary" href="commentActivity.php?idActivity=<?php //echo $value['idActivity']?>">Deixar comentário</a>  -->
                 </a>
             </div>
             <?php } ?>
@@ -181,11 +181,11 @@ if(isset($_GET['logout'])) {
         </div>
         <div class="row">
            <?php foreach ($conn->listComments() as $value) { ?>
-                <div class="col-md-4 col-sm-6">
+                <div class="col-md-4_3 col-sm-6">
                     <div class="feature-center animate-box" data-animate-effect="fadeIn">
-                        <h1><?php echo $value['username']; ?></h1>
-                        <h3><?php echo $value['comment']; ?></h3>
-                        <h6><?php echo $value['dateComment']; ?></h6>
+                        <h1><strong><?php echo $value['username']; ?></strong></h1>
+                        <h2><?php echo $value['comment']; ?></h2>
+                        <h4>Atividade <strong><?php echo $value['name']; ?></strong><br> realizada em <strong><?php echo $value['dateComment']; ?></strong></h4>
                     </div>
                 </div>    
          <?php } ?>

@@ -129,7 +129,7 @@ class SWTourism extends Database
     
     public function listComments ()
     {
-        $sql = "SELECT * FROM comments INNER JOIN user USING (idUser);";
+        $sql = "SELECT * FROM comments INNER JOIN user USING (idUser) INNER JOIN activity USING (idActivity);";
         $comments = $this->query($sql);
         return $comments;
     }
@@ -260,7 +260,7 @@ class SWTourism extends Database
              } else if ($activityOption == "location"){
                 $sql = 'SELECT * FROM activity WHERE location LIKE :search';
              } else {
-                 echo "Não tem resultados";
+                 echo "<div class='alert alert-danger'><strong>Erro!</strong>Não tem resultados</div>";
                  return [];
              }
                 $fields=array('search'=> $search."%");
@@ -268,7 +268,7 @@ class SWTourism extends Database
 
                 $rows = count($pesquisa);
                 if($rows <= 0){
-                    echo "Não tem resultados";
+                    echo "<div class='alert alert-danger'><strong>Erro!</strong>Não tem resultados</div>";
                     return [];
                 }
                 else{
@@ -277,7 +277,7 @@ class SWTourism extends Database
 
         } else if (empty($_GET['search']))
         {
-             echo "Não tem resultados";
+             echo "<div class='alert alert-danger'><strong>Erro!</strong>Não tem resultados</div>";
              return [];
         }
      }
@@ -330,7 +330,7 @@ class SWTourism extends Database
 
     public function listReservationsAdmin($idActivity)
     {
-        $sql="SELECT * from reservation INNER JOIN user using (idUser) where idActivity= :idActivity";
+        $sql="SELECT * from reservation INNER JOIN user using (idUser) INNER JOIN creditCard using (idUser) where idActivity= :idActivity";
         $fields=array('idActivity' => $idActivity);
         return $this->query($sql, $fields);
 

@@ -14,7 +14,9 @@ $idActivity=$conn->idActivity($_GET['id']);
 if ($idActivity==NULL){
     header("location:administrator.php");
 }
-if(isset($_POST['name'])){
+
+$success = "";
+if(isset($_POST['name']) || isset($_POST['desc']) || isset($_POST['location'])){
     
   //  $folderPath = "../images/";
 
@@ -23,6 +25,10 @@ if(isset($_POST['name'])){
 
   //  move_uploaded_file( $arquivo_tmp, $destino );
     $conn->updateActivity($idActivity['idActivity'], $_POST['name'], $_POST['desc'], $_SESSION['admin']->getIdAdmin(), $_POST['location']); //$_FILES['image']['name']
+    
+    $success = "<div class='alert alert-success'>
+    <strong>Sucesso!</strong> A sua atividade foi editada com sucesso.
+    </div>";
 }
 
 if (isset($_GET['acao'])){
@@ -38,7 +44,7 @@ if (isset($_GET['acao'])){
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Administrator</title>
+	<title>Administrator | Editar atividade</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by GetTemplates.co" />
 	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -111,7 +117,7 @@ if (isset($_GET['acao'])){
                             <button>Pesquisar</button>
                         </form>
                     -->	
-					<form method="get" class="example" style="display:flex;margin:auto;max-width:300px">
+					<form method="get" class="example" style="display:flex;margin-right=0;max-width:300px">
                         <input type="text" placeholder="Pesquisar.." name="search">
                       <button class="buttonAdmin" type="submit"><i class="fa fa-search"></i></button>
                     </form>
@@ -161,15 +167,15 @@ if (isset($_GET['acao'])){
                         <input type="submit" value="Editar">
                     </form>
                     -->
+                   <?php echo $success; ?>                        
                                            
-                                           
-                    <form class="login100-form validate-form" method="post">
+                    <form class="login100-form validate-form" method="post" value="">
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <label for="name">Nome</label>
                                 <input type="text" id="name" name="name" class="form-control" value="<?php echo $idActivity['name'] ?>">
                             </div>
-                        </div>
+                        </div> 
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <label for="desc">Descrição</label>
@@ -264,3 +270,9 @@ if (isset($_GET['acao'])){
 
 </body>
 </html>
+
+<!-- fade out do alert ao fim de 15 segundos -->
+<script> $(function() {
+    		$(".alert").delay(2500).fadeOut(1500);
+	});
+</script>

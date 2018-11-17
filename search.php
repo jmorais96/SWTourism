@@ -63,6 +63,8 @@ if(isset($_GET['logout'])) {
 
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/styleListActivity.css">
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
@@ -85,10 +87,19 @@ if(isset($_GET['logout'])) {
 				</div>
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
-                        <li><a href="listActivity.php">Reservas</a></li>
+					    <li><a href="listActivity.php">Reservas</a></li>
 						<li><a href="contact.html">Contactos</a></li>
 						<li><a href="?logout">Logout</a></li>
 					</ul>
+					<form class="example" action="search.php" style="display:flex;margin-right:0;max-width:300px">
+                        <select name="activityOption"> 
+                            <option value="name" <?php if ($_GET['activityOption'] == 'name'){echo "selected"; } ?>>Nome</option>
+                            <option value="location" <?php if ($_GET['activityOption'] == 'location'){echo "selected"; } ?>>Localização</option>
+                        </select>
+                        <input type="text" placeholder="Pesquisar.." name="search" value="<?php echo $_GET['search']; ?>">
+                      <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+				 	
 				</div>
 			</div>
 
@@ -104,9 +115,9 @@ if(isset($_GET['logout'])) {
 
 						<div class="col-md-12 mt-text animate-box" data-animate-effect="fadeInUp">
 <!--                            <h1>Lista de atividades</h1>-->
-                            <h2><?php echo( $_SESSION['user']->getName()); ?></h2>
+                            <h2>Bem vindo(a), <?php echo( $_SESSION['user']->getName()); ?></h2>
 </div>
-
+ 
 </div>
 
 </div>

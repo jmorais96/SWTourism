@@ -13,6 +13,7 @@ $idActivity=$conn->idActivity($_GET['id']);
 
 $success = "";
 if (isset($_POST['state'])){
+//    var_dump($_POST['state']);
     $conn->changeState($_POST['state'], $idActivity['idActivity'], $_POST['idUser']);
     
     $success =  "<div class='alert alert-success'>
@@ -30,7 +31,10 @@ if (isset($_GET['acao'])){
     }
 }
 
+
+
 ?>
+
 
 <!DOCTYPE HTML>
 <html>
@@ -145,65 +149,43 @@ if (isset($_GET['acao'])){
             </div>
         </div>
         <div class="row">
-          
+           
         <?php
         echo $success;
-        echo "<table>
-                  <tr>
-                    <th>Cliente</th>
-                    <th>Estado</th>
-                  </tr>
-                </table";
-        foreach ($conn->listReservationsAdmin($idActivity['idActivity']) as $value){
-            echo "<table><tr>
-                    <td>" . $value['name'] . "</td>  
-                    
-                ";
-                    if($value['state'] == 'reservada'){
-                       echo " <td>
-                       <form class='formOption' method='post' action='activity.php?id=".$value['idActivity']."' > 
+        ?>
+    
+<!--      $activityOption = $_GET['activityOption'];                                        -->
+        <table>
+              <tr>
+                <th>Cliente</th>
+                <th>Estado</th>
+                <th>Cartão de crédito</th>
+              </tr>
+        <?php foreach ($conn->listReservationsAdmin($idActivity['idActivity']) as $value){ ?>
+                <tr>
+                    <td> <?php echo $value['name']; ?> </td>     
+                    <td>
+                       <form class='formOption' method='post' action='activity.php?id=<?php echo $value['idActivity']; ?>'>
                             <select name='state'> 
-                                <option value ='reservada'>reservada</option>
-                                <option value ='adiada' >adiada</option> 
-                                <option value ='cancelada'>cancelada</option> 
-                            </select> <input type='hidden' name='idUser' value='".$value['idUser']."' >   
+                                <option value ='reservada' <?php if ($value['state'] == 'reservada'){echo "selected";}?>>reservada</option>
+                                <option value ='adiada' <?php if ($value['state'] == 'adiada'){echo "selected";}?>>adiada</option> 
+                                <option value ='cancelada' <?php if ($value['state'] == 'cancelada'){echo "selected";}?>>cancelada</option> 
+                            </select> <input type='hidden' name='idUser' value='<?php echo $value['idUser'];?>'>  
                             <input class='submitOption' type='submit' value='Mudar'> 
                         </form>
-                        </td>"; 
-                    }  else if($value['state'] == 'cancelada'){
-                       echo " <td>
-                       <form class='formOption' method='post' action='activity.php?id=".$value['idActivity']."' > 
-                            <select name='state'> 
-                                <option value= 'cancelada'>cancelada</option>
-                                <option value ='adiada' >adiada</option> 
-                                <option value ='reservada'>reservada</option> 
-                            </select> <input type='hidden' name='idUser' value='".$value['idUser']."' >   
-                            <input class='submitOption' type='submit' value='Mudar'> 
-                        </form>
-                        </td>"; 
-                    }  else {
-                       echo " <td>
-                       <form class='formOption' method='post' action='activity.php?id=".$value['idActivity']."' > 
-                            <select name='state'> 
-                                <option value ='adiada'>adiada</option>
-                                <option value ='reservada' >reservada</option> 
-                                <option value ='cancelada'>cancelada</option> 
-                            </select> <input type='hidden' name='idUser' value='".$value['idUser']."' >   
-                            <input class='submitOption' type='submit' value='Mudar'> 
-                        </form>
-                        </td>"; 
-                    }" </tr>
-                        </table>";
-        }
-            
-           
-         
-            
-//            foreach ($conn->listReservationsAdmin($idActivity['idActivity']) as $value){
-//    echo $value['name']." <br> <form method='post' action='activity.php?id=".$value['idActivity']."' > <select name='state'> <option value ='reservada'>Reservada</option> <option value ='adiada' >Adiada</option> <option value ='cancelada'>Cancelada</option> </select> <input type='hidden' name='idUser' value='".$value['idUser']."' >   <input type='submit' value='Mudar'> </form>";
-
-        ?> 
-        
+                     </td> 
+                     <?php           
+                        $ccNum = $value['cardNumber'];
+                        $last4Digits = preg_replace( "#(.*?)(\d{4})$#", "$2", $ccNum);
+                        $firstDigits = preg_replace( "#(.*?)(\d{4})$#", "$1", $ccNum);
+                       $ccX = preg_replace("#(\d)#", "*", $firstDigits);
+                        $ccX .= $last4Digits;  
+                    ?>
+                     <td class="sectionValue" id='account_changed'><?php 
+                        echo $ccX; ?></td>
+                 </tr>
+                 <?php } ?>
+            </table>
         </div>
     </div>
 <?php } else {; ?>

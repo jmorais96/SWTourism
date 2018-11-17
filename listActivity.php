@@ -63,6 +63,8 @@ if(isset($_GET['logout'])) {
 
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/styleListActivity.css">
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
@@ -88,6 +90,14 @@ if(isset($_GET['logout'])) {
 						<li><a href="contact.html">Contactos</a></li>
 						<li><a href="?logout">Logout</a></li>
 					</ul>
+					<form class="example" action="search.php" style="display:flex;margin-right:0;max-width:300px">
+                        <select name="activityOption"> 
+                            <option value="name">Nome</option>
+                            <option value="location">Localização</option>
+                        </select>
+                        <input type="text" placeholder="Pesquisar.." name="search">
+                      <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
 				</div>
 			</div>
 
@@ -148,6 +158,9 @@ if(isset($_GET['logout'])) {
                         <?php
                             }
                         ?>
+                        <div class="columnActivity"><h2>Data: &nbsp;</h2><p><?php echo $value['dateReservation']?></p></div>
+                        <div class="columnActivity"><h2>Hora: &nbsp;</h2><p>Hora: <?php echo $value['timeReservation']?></p></div>
+                        <div class="columnActivity"><h2>Estado: &nbsp;</h2><p>Estado: <?php echo $value['state']?></p></div>
                   </div>
                     <a class="btn btn-primary" href="commentActivity.php?idActivity=<?php echo $value['idActivity']?>">Deixar comentário</a>  
                 </a>

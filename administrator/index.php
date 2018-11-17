@@ -41,7 +41,7 @@ if(isset($_POST['pass']) && isset($_POST['username'])){
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Login Administrador</title>
+    <title>Administrador | Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Free HTML5 Website Template by GetTemplates.co" />
     <meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />

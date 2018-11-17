@@ -73,10 +73,13 @@ p {
 }
 
 h1, h2, h3, h4, h5, h6, figure {
-  color: #000;
+  color: white;
   font-family: "Lato", Arial, sans-serif;
   font-weight: 400;
   margin: 0 0 20px 0;
+}
+h4 {
+      color: lightgoldenrodyellow;
 }
 
 ::-webkit-selection {
@@ -1758,6 +1761,7 @@ form label {
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
+  hyphens: auto;
 }
 .fh5co-card-item .fh5co-text span.btn {
   color: #fff !important;
@@ -1975,4 +1979,10 @@ td {
 
 tr:nth-child(even) {
     background-color: #dddddd;
+}
+
+.columnActivity {
+    display:flex; 
+    flex-direction:row; 
+    justify-content: center;
 }
