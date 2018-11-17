@@ -201,7 +201,25 @@ class SWTourism extends Database
         $fields=array('name' => $name, 'desc'=> $desc, 'idAdmin' => $idAdmin, 'location'=> $location, 'image'=> $image[0]['idImage']);
      //   var_dump($fields);
         $this->query($sql, $fields);
-      }
+    }
+
+    public function isAdminLoggedIn(){
+        session_start();
+
+        if (isset($_SESSION['admin'])) {
+            header("location:administrator.php");
+        }
+
+    }
+
+    public function isAdminLoggedOff(){
+        session_start();
+
+        if (!isset($_SESSION['admin'])) {
+            header("location:index.php");
+        }
+
+    }
    
     public function countActivity()
     {

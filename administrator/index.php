@@ -5,9 +5,7 @@ require_once('../data/Admin.class.php');
 
 $conn=new SWTourism('../data/config.ini');
 
-/*//know if user can be here
-$conn->isClientLoggedIn();*/
-
+$conn->isAdminLoggedIn();
 
 if(isset($_POST['pass']) && isset($_POST['username'])){
 

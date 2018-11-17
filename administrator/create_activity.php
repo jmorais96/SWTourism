@@ -6,9 +6,7 @@ require_once('../data/Admin.class.php');
 
 $conn=new SWTourism('../data/config.ini');
 
-session_start();
-//know if user can be here
-/*$conn->isClientLoggedIn();*/
+$conn->isAdminLoggedOff();
 
 //echo "<a href='?acao=logout'><button>LOGOUT</button></a>";
 $success = "";
