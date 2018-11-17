@@ -25,7 +25,38 @@ if ($idActivity==NULL){
 if(isset($_GET['logout'])) {
    $_SESSION['user']->logout();
 }
+?>
 
+<script>
+function is_creditCard(number, type)
+{
+    if(type.value == "American Express"){
+        regexp = /^(?:3[47][0-9]{13})$/;
+    } else if(type.value == "Visa"){
+        regexp = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
+    } else if(type.value == "MasterCard"){
+        regexp = /^(?:5[1-5][0-9]{14})$/;
+    }
+    if (regexp.test(number.value))
+          {
+            console.log('true');
+            document.getElementById('submitInactive').style.display = "none";
+            document.getElementById('submitActive').style.display = "block";
+            document.getElementById('submitActive').innerHTML="<div class='col-md-12'><button class='btn btn-primary btn-block' id='submitActive' >Reservar</button></div>";
+          } else
+          {
+            console.log('false');
+            document.getElementById('error').innerHTML="<div class='alert alert-danger'><strong>Erro!</strong>Insira um cartão de crédito válido.</div>";
+            document.getElementById('submitActive').style.display = "none";
+            document.getElementById('submitInactive').style.display = "block";
+              $(function() {
+                    $(".alert").delay(2500).fadeOut(1500);
+               });
+          }
+}
+</script>
+
+<?php
 //Know if data was sent by post
 $success = "";
 if(isset($_POST['name'])){
@@ -37,7 +68,7 @@ if(isset($_POST['name'])){
         $conn->reserveActivity($_SESSION['user']->idUser(), $_GET['idActivity'],  $_POST['dateReservation'], $_POST['timeReservation'], $_POST['name'], $_POST['cardNumber'], $_POST['expiry'], $_POST['cardType'], $_POST['securityCode']);
 
         $success = "<div class='alert alert-success'>
-        <strong>Sucesso!</strong> O seu comentário foi enviado com sucesso.
+        <strong>Sucesso!</strong> A atividade foi reservada com sucesso.
         </div>";
 } 
 //var_dump ($_POST);
@@ -163,21 +194,10 @@ if(isset($_POST['name'])){
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
-                                                    <div class="col-md-12">
-                                                        <label for="cardNumber">Número</label>
-                                                        <input type="text" id="cardNumber" name="cardNumber" class="form-control" required>
-                                                    </div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col-md-12">
-                                                        <label for="expiry">Data de validade</label>
-                                                        <input type="date" id="expiry" name="expiry" class="form-control" required>
-                                                    </div>
-                                                </div>
-                                                <div class="row form-group">
+
                                                     <div class="col-md-12">
                                                         <label for="cardType">Tipo de cartão</label>
-                                                        <select type="text" id="cardType" name="cardType" class="form-control" required>
+                                                        <select type="text" id="cardType" name="cardType" class="form-control" onChange="is_creditCard(cardNumber, cardType)" required>
                                                           <option value="Visa">Visa</option>
                                                           <option value="MasterCard">MasterCard</option>
                                                           <option value="American Express">American Express</option>
@@ -185,19 +205,45 @@ if(isset($_POST['name'])){
                                                         </select>
                                                     </div>
                                                 </div>
+                                                <div class="row form-group" >
+                                                    <div class="col-md-12">
+                                                        <label for="cardNumber">Número</label>
+                                                        <input type="number" id="cardNumber" name="cardNumber" class="form-control" required onkeyup="is_creditCard(cardNumber, cardType)">
+<!--
+<p><input type="text" size="20" name="cardNumber"
+  onkeyup="validatecardnumber(this.value)"></p>
+
+<p id="notice">(no card number entered)</p>
+-->
+                                                    </div>
+                                                </div>
+                                                <div id="error"></div>
+                                                <div class="row form-group">
+                                                    <div class="col-md-12">
+                                                        <label for="expiry">Data de validade</label>
+                                                        <input type="date" id="expiry" name="expiry" class="form-control" >
+                                                    </div>
+                                                </div>
                                                  <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="securityCode">Código de segurança</label>
 
-                                                        <input type="password" id="securityCode" name="securityCode" class="form-control" required>
+                                                        <input type="number" id="securityCode" name="securityCode" class="form-control" >
 
                                                     </div>
                                                 </div>
-
-                                                <div class="row form-group">
+                                                <div class="row form-group" id="submitInactive">
                                                     <div class="col-md-12">
-                                                        <button class="btn btn-primary btn-block">Reservar</button>
+                                                        <div class="btn btn-primary2 btn-block" 
+                                                        >Reservar</div>
                                                     </div>
+                                                </div>
+                                                <div class="row form-group"  id="submitActive" style="display:none;">
+<!--
+                                                    <div class="col-md-12">
+                                                        <button class="btn btn-primary btn-block" style="visibility: hidden">Reservar</button>
+                                                    </div>
+-->
                                                 </div>
 
 
@@ -285,4 +331,6 @@ if(isset($_POST['name'])){
 <script> $(function() {
     		$(".alert").delay(2500).fadeOut(1500);
 	});
+
+
 </script>

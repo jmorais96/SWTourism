@@ -146,7 +146,7 @@ if(isset($_GET['logout'])) {
                     </figure>
                     <div class="fh5co-text">
                         <h2><?php echo $value['name']?></h2><!-- observacao de cetaceos -->
-
+                        <p><?php echo $value['location']?></p>
                         <?php
                             if(strlen($value['desc'])> 120 ){
                         ?>
@@ -201,7 +201,7 @@ if(isset($_GET['logout'])) {
         <div class="row">
             <div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
                 <h2>O nosso sucesso</h2>
-                <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                <p>O nosso sucesso é o reflexo da determinação de cada um de vós. <br>Seja bem vindo, e divirta-se!</p>
             </div>
         </div>
 

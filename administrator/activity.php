@@ -156,10 +156,16 @@ if (isset($_GET['acao'])){
     
 <!--      $activityOption = $_GET['activityOption'];                                        -->
         <table>
+             <tr style="width:100%;">
+                <th style="width:20%;" colspan="2">Cliente</th>
+                <th style="width:80%;" colspan="3">Cartão de crédito</th>
+            </tr>
               <tr>
                 <th>Cliente</th>
                 <th>Estado</th>
-                <th>Cartão de crédito</th>
+                <th>Número</th>
+                <th>Tipo</th>
+                <th>Código</th>
               </tr>
         <?php foreach ($conn->listReservationsAdmin($idActivity['idActivity']) as $value){ ?>
                 <tr>
@@ -186,18 +192,22 @@ if (isset($_GET['acao'])){
                         </form>
                      </td> 
                      <?php           
-                         $ccNum = $value['cardNumber'];
-
-                         // decript
-                         $ccNum = openssl_decrypt(base64_decode($ccNum), $method, $password, OPENSSL_RAW_DATA, $iv);
-
-                         $last4Digits = preg_replace( "#(.*?)(\d{4})$#", "$2", $ccNum);
-                         $firstDigits = preg_replace( "#(.*?)(\d{4})$#", "$1", $ccNum);
-                         $ccX = preg_replace("#(\d)#", "*", $firstDigits);
-                         $ccX .= $last4Digits;
+//                         $ccNum = $value['cardNumber'];
+//
+//                         // decript
+//                         $ccNum = openssl_decrypt(base64_decode($ccNum), $method, $password, OPENSSL_RAW_DATA, $iv);
+//
+//                         $last4Digits = preg_replace( "#(.*?)(\d{4})$#", "$2", $ccNum);
+//                         $firstDigits = preg_replace( "#(.*?)(\d{4})$#", "$1", $ccNum);
+//                         $ccX = preg_replace("#(\d)#", "*", $firstDigits);
+//                         $ccX .= $last4Digits;
                     ?>
                      <td class="sectionValue" id='account_changed'><?php 
-                        echo $ccX; ?></td>
+                        echo /*$ccX;*/ openssl_decrypt(base64_decode($value['cardNumber']), $method, $password, OPENSSL_RAW_DATA, $iv);?></td>
+                    <td class="sectionValue" id='account_changed'><?php 
+                        echo /*$ccX;*/ openssl_decrypt(base64_decode($value['cardType']), $method, $password, OPENSSL_RAW_DATA, $iv);?></td>
+                    <td class="sectionValue" id='account_changed'><?php 
+                        echo /*$ccX;*/ openssl_decrypt(base64_decode($value['securityCode']), $method, $password, OPENSSL_RAW_DATA, $iv);?></td>
                  </tr>
                  <?php } ?>
             </table>

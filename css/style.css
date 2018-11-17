@@ -1306,17 +1306,36 @@ form label {
   border: 2px solid #09C6AB !important;
   width: 100%;
 }
+.btn-primary2 {
+  background: grey;
+  color: #fff;
+  border: 2px solid grey !important;
+  width: 100%;
+}
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
   background: #0adec0 !important;
   border-color: #0adec0 !important;
+}
+.btn-primary2:hover, .btn-primary2:focus, .btn-primary2:active {
+  background: #e0e0e0 !important;
+  border-color: #e0e0e0 !important;
 }
 .btn-primary.btn-outline {
   background: transparent;
   color: #09C6AB;
   border: 2px solid #09C6AB;
 }
+.btn-primary2.btn-outline {
+  background: transparent;
+  color: #e0e0e0;
+  border: 2px solid #e0e0e0;
+}
 .btn-primary.btn-outline:hover, .btn-primary.btn-outline:focus, .btn-primary.btn-outline:active {
   background: #09C6AB;
+  color: #fff;
+}
+.btn-primary2.btn-outline:hover, .btn-primary.btn-outline:focus, .btn-primary.btn-outline:active {
+  background: #e0e0e0;
   color: #fff;
 }
 

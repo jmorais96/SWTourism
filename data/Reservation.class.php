@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: carina
- * Date: 26-10-2018
- * Time: 21:31
- */
 
 class Reservation
 {

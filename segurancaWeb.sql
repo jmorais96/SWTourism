@@ -1,20 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb5
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Nov 17, 2018 at 11:56 
--- Server version: 5.7.22-0ubuntu0.17.10.1
--- PHP Version: 7.1.17-0ubuntu0.17.10.1
+-- Host: localhost:8889
+-- Generation Time: Nov 17, 2018 at 10:18 PM
+-- Server version: 5.6.38
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `segurancaWeb`
@@ -41,14 +35,12 @@ CREATE TABLE `activity` (
 
 INSERT INTO `activity` (`idActivity`, `name`, `desc`, `idAdmin`, `location`, `idImage`) VALUES
 (4, 'Passeios a Cavalo', 'Para quem gosta de praticar atividades equestres, os Açores são o local ideal, pois é muito fácil encontrar cavalos Lusitano e Cruzado Português bem treinados.\r\n\r\nAlém disso, as ilhas açorianas oferecem uma diversidade de cenários deslumbrantes sobre o Oceano Atlântico, embelezadas pelos jardins alegres e vibrantes, bem como pelos pastos verdes.\r\n\r\nA trote, os cavaleiros poderão desfrutar da serenidade dos caminhos, com alguma aventura à mistura, rendendo-se, por fim, às bonitas paisagens.', 3, 'Ponta Delgada', 4),
-(5, 'Pesca', 'Bla', 3, 'Ponta Delgada', 7),
 (15, 'Canyoning', 'Os Açores são um arquipélago situado na crista Média Oceânica de origem vulcânica e constituído por 9 ilhas, das quais três apresentam excelentes condições para a prática de canyoning.', 3, 'Ribeira Grande', 18),
 (16, 'Golfe', 'Olhar em redor e não ver qualquer tipo de construção humana na linha do horizonte. Só paz e natureza. Mais uma tacada e temos o Atlântico à espreita. A morfologia dos greens convida à caminhada, na companhia de uma explosão colorida de flores. ', 3, 'Ribeira Grande', 19),
 (30, 'Observação de Aves', 'Os Açores são conhecidos internacionalmente como destino para a observação de determinados grupos de espécies de aves. Devido à sua posição central no Oceano Atlântico, é possível observar várias espécies migratórias que ocorrem ocasionalmente nos Açores por desvios migratórios provocados principalmente por intempéries.', 3, 'Ponta Delgada', 33),
 (31, 'Geoturismo', 'A génese dos Açores está impressa em 1766 vulcões, nove dos quais ainda placidamente activos. No subsolo, estão assinaladas quase três centenas de cavidades vulcânicas, sob a forma de grutas, algares e fendas. Na paisagem, há caldeiras secas, lagoas em crateras, campos fumarólicos e nascentes termais. No mar, encontram-se fontes geotermais submarinas. A majestosa montanha do Pico, de cone ainda intacto, parece proteger todas estas riquezas geológicas. Testemunho do poder da Natureza, o vulcanism', 3, 'Lagoa', 34),
 (32, 'Observação de Cetáceos', 'Os Açores são actualmente um dos maiores santuários de baleias do mundo. Entre espécies residentes e migratórias, comuns ou raras, avistam-se mais de 20 tipos diferentes de cetáceos nas suas águas. O número impressiona e corresponde a um terço do total de espécies existentes. Estamos num ecossistema de características únicas. Com a presença das majestosas baleias e dos simpáticos golfinhos, o azul do Atlântico torna-se ainda mais mágico e abençoado em redor destas nove ilhas. E traz para os novo', 3, 'Ponta Delgada', 35),
-(33, 'Parapente', 'Os Açores são considerados por muitos como um destino singular para prática do parapente, com variadíssimos spots, bem como zonas de descolagem e aterragem. É possível voar durante todo o ano, mas os meses de verão afirmam-se como os melhores para a prática da modalidade.\r\nDesde voos técnicos em cross country passando pelas crateras vulcânicas das Furnas, Lagoa do Fogo ', 3, 'Sete Cidades', 36),
-(34, 'huhb', 'sds', 3, 'sd', 37);
+(33, 'Parapente', 'Os Açores são considerados por muitos como um destino singular para prática do parapente, com variadíssimos spots, bem como zonas de descolagem e aterragem. É possível voar durante todo o ano, mas os meses de verão afirmam-se como os melhores para a prática da modalidade.\r\nDesde voos técnicos em cross country passando pelas crateras vulcânicas das Furnas, Lagoa do Fogo ', 3, 'Sete Cidades', 36);
 
 -- --------------------------------------------------------
 
@@ -90,10 +82,8 @@ CREATE TABLE `comments` (
 
 INSERT INTO `comments` (`idComments`, `idUser`, `idActivity`, `comment`, `dateComment`) VALUES
 (1, 6, 15, 'Adorei a experiência!', '2018-11-15 16:56:21'),
-(2, 6, 15, 'o jose é toto', '2018-11-15 16:59:05'),
-(3, 6, 15, 'teste', '2018-11-15 16:59:44'),
-(4, 6, 15, 'teste', '2018-11-15 17:00:31'),
-(5, 5, 16, 'O nelson é um mano fixe!', '2018-11-16 11:59:14');
+(6, 5, 4, 'Adorei a experiência, foi incrível! Sem dúvida, um momento a repetir.', '2018-11-17 13:43:45'),
+(10, 2, 31, 'Uma equipa fantástica, de pessoas contagiantes. A repetir!', '2018-11-17 14:52:13');
 
 -- --------------------------------------------------------
 
@@ -116,7 +106,12 @@ CREATE TABLE `creditCard` (
 --
 
 INSERT INTO `creditCard` (`idCreditCard`, `name`, `cardNumber`, `expiry`, `cardType`, `securityCode`, `idUser`) VALUES
-(1, 'EbEoyHXQYmYXh7R/M52asQ==', 'Lk7dKUmpQ7OaUZr4Sx9AgQ==', 'djewtcf/1ZoEyp+5R/uVSw==', 'XdUukbUpzLOcBSzqyLckpQ==', 'FByXS1J80JRDFlkQFH7hkA==', 5);
+(1, 'EbEoyHXQYmYXh7R/M52asQ==', 'Lk7dKUmpQ7OaUZr4Sx9AgQ==', 'djewtcf/1ZoEyp+5R/uVSw==', 'XdUukbUpzLOcBSzqyLckpQ==', 'FByXS1J80JRDFlkQFH7hkA==', 5),
+(2, 'suddC375uI8XNzS+oVNXrg==', 'LoGgLCu48QrsdwmvsMh11dXgN0R0qQ/QpQxOXC2r9YE=', 'HBz/zwnj/DPZiMVps5tadw==', 'XdUukbUpzLOcBSzqyLckpQ==', '7h0fLo2LJjukFOK8iJZIYA==', 5),
+(3, 'H4DK8btaR508ntZgR4cXOw==', 'c5DlmuNUdMv1CV6Gl3hLwxHAJm4YlwEZbGGXEbEIsdM=', 'ZYx+/irDPdNZ3wCQPocIuQ==', 'XdUukbUpzLOcBSzqyLckpQ==', 'FbmWnlGHKWpnIK0il503Hg==', 5),
+(4, 'mIcuWz7rPcURhIzLXmvlNA==', 'LoGgLCu48QrsdwmvsMh11dXgN0R0qQ/QpQxOXC2r9YE=', 'oVOmfuOUTGusSpA3i28esA==', 'XdUukbUpzLOcBSzqyLckpQ==', 'FbmWnlGHKWpnIK0il503Hg==', 5),
+(5, 'ybTakPpBPu0f1UGBdMAyVA==', 'LoGgLCu48QrsdwmvsMh11dXgN0R0qQ/QpQxOXC2r9YE=', 'SGUCUTYMnWxzhqW1nU0fdw==', 'XdUukbUpzLOcBSzqyLckpQ==', 'FbmWnlGHKWpnIK0il503Hg==', 2),
+(12, '', '12', '', 'Visa', '', 2);
 
 -- --------------------------------------------------------
 
@@ -194,7 +189,9 @@ INSERT INTO `reservation` (`idUser`, `idActivity`, `dateReservation`, `state`, `
 (5, 4, '2018-11-09', 'adiada', 1, '23:23:00'),
 (6, 4, '2018-11-07', 'cancelada', 2, '22:02:00'),
 (6, 4, '2018-11-07', 'cancelada', 3, '22:02:00'),
-(5, 4, '0000-00-00', 'adiada', 4, '00:00:00');
+(5, 31, '2018-11-15', 'reservada', 16, '14:02:00'),
+(5, 33, '2018-11-15', 'reservada', 18, '22:34:00'),
+(2, 31, '2018-11-09', 'reservada', 19, '22:03:00');
 
 -- --------------------------------------------------------
 
@@ -299,36 +296,43 @@ ALTER TABLE `user_activity`
 --
 ALTER TABLE `activity`
   MODIFY `idActivity` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
 --
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
   MODIFY `idAdmin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `idComments` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idComments` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT for table `creditCard`
 --
 ALTER TABLE `creditCard`
-  MODIFY `idCreditCard` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idCreditCard` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
 --
 -- AUTO_INCREMENT for table `image`
 --
 ALTER TABLE `image`
   MODIFY `idImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
 --
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `idReservation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `idReservation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- Constraints for dumped tables
 --
@@ -366,7 +370,3 @@ ALTER TABLE `reservation`
 ALTER TABLE `user_activity`
   ADD CONSTRAINT `fk_activity_user` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_user_activity` FOREIGN KEY (`idActivity`) REFERENCES `activity` (`idActivity`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

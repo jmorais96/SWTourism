@@ -233,6 +233,12 @@ class SWTourism extends Database
         $this->query($sql, array('idActivity' => $id));
     }
     
+     public function deleteReservation($id)
+    {
+        $sql = 'DELETE from reservation where idReservation = :idReservation';
+        $this->query($sql, array('idReservation' => $id));
+    }
+    
     public function updateActivity($idActivity, $name, $desc, $idAdmin, $location) //$image
     {
 //        $sql='INSERT into image (name, imagePath) VALUES ( :name, "images/")';
