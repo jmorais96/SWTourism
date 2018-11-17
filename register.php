@@ -8,7 +8,6 @@ $conn=new SWTourism('data/config.ini');
 //know if user can be here
 $conn->isClientLoggedIn();
 
-<<<<<<< HEAD
 //Know if data was sent by post
 if(isset($_POST['pass']) && isset($_POST['username']) && isset($_POST['name']) && isset($_POST['retype'])){
     //know if password equals confirmation
@@ -96,7 +95,6 @@ if(isset($_POST['pass']) && isset($_POST['username']) && isset($_POST['name']) &
                 <div class="col-xs-8 text-right menu-1">
                     <ul>
 
-                        <li><a href="pricing.html">Preços</a></li>
                         <li><a href="contact.html">Contactos</a></li>
                     </ul>
                 </div>

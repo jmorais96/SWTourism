@@ -130,7 +130,7 @@ if(isset($_GET['logout'])) {
         <div class="row">
             <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
                 <h2>Atividades</h2>
-                <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                <p>Consulte aqui as atividades que temos disponíveis e faça a sua reserva!</p>
             </div>
         </div>
         <div class="row">
