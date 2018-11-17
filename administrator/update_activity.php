@@ -5,13 +5,16 @@ require_once('../data/Admin.class.php');
 
 $conn=new SWTourism('../data/config.ini');
 
-session_start();
-//know if user can be here
-/*$conn->isClientLoggedIn();*/
+$conn->isAdminLoggedOff();
 
 $idActivity=$conn->idActivity($_GET['id']);
 
+
 if ($idActivity==NULL){
+    header("location:administrator.php");
+}
+
+if ($idActivity['idAdmin']!=$_SESSION['admin']->getIdAdmin() ){
     header("location:administrator.php");
 }
 
